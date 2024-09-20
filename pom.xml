@@ -30,18 +30,21 @@
     </dependency>
 
     <dependency>
+      <groupId>jakarta.servlet</groupId>
+      <artifactId>jakarta.servlet-api</artifactId>
+      <version>5.0.0</version> <!-- Use version 5.0.0 or higher -->
+      <scope>provided</scope>
+  </dependency>
+  
+    <dependency>
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
       <version>8.0.30</version>
     </dependency>
 
-    <dependency>
-      <groupId>javax.servlet</groupId>
-      <artifactId>javax.servlet-api</artifactId>
-      <version>4.0.1</version> <!-- Use the appropriate version -->
-      <scope>provided</scope>
-    </dependency>
+
   </dependencies>
+
 
   <build>
     <finalName>project-management-portal</finalName>

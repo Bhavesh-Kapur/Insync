@@ -55,9 +55,9 @@ public class searchStudent extends HttpServlet {
             }
         }
 
-        // Attach the student list to the request object and forward it to the JSP page
-        request.setAttribute("studentList", studentList);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("createTeam.jsp");
-        dispatcher.forward(request, response);
+        // // Attach the student list to the request object and forward it to the JSP page
+        // request.setAttribute("studentList", studentList);
+        // RequestDispatcher dispatcher = request.getRequestDispatcher("createTeam.jsp");
+        // dispatcher.forward(request, response);
     }
 }

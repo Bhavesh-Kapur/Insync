@@ -24,16 +24,16 @@ public class searchStudent extends HttpServlet {
         if (searchQuery != null && !searchQuery.isEmpty()) {
             try {
                 // Database credentials
-                String dbURL = "jdbc:mysql://localhost:3306/your_database_name";
-                String dbUser = "your_username";
-                String dbPassword = "your_password";
+                String dbURL = "jdbc:mysql://localhost:3306/insync";
+                String dbUser = "root";
+                String dbPassword = "rootbhavesh";
 
                 // Load MySQL JDBC Driver
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 Connection conn = DriverManager.getConnection(dbURL, dbUser, dbPassword);
 
                 // SQL Query: Search by SAP ID or name
-                String sql = "SELECT sapid, name, semester, program FROM students WHERE " +
+                String sql = "SELECT sapid, name, semester, program FROM student WHERE " +
                              (searchType.equals("sapid") ? "sapid LIKE ?" : "name LIKE ?");
                 PreparedStatement stmt = conn.prepareStatement(sql);
                 stmt.setString(1, "%" + searchQuery + "%");
@@ -42,7 +42,7 @@ public class searchStudent extends HttpServlet {
                 // Store the result in a list
                 while (rs.next()) {
                     Student student = new Student();
-                    student.setSapid(rs.getString("sapid"));
+                    student.setSapid(rs.getString("sapId"));
                     student.setName(rs.getString("name"));
                     student.setSemester(rs.getString("semester"));
                     student.setProgram(rs.getString("program"));

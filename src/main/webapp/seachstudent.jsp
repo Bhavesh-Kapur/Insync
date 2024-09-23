@@ -116,7 +116,7 @@
     <!-- Sidebar with redirect icon -->
     <div class="sidebar">
         <div class="redirect-icon">
-            <a href="dashboard.html">
+            <a href="dashboard.jsp">
                 <img src="https://img.icons8.com/ios-glyphs/30/000000/home.png" alt="Dashboard Icon" title="Go to Dashboard">
             </a>
         </div>

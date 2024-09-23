@@ -38,7 +38,7 @@ public class LoginServlet extends HttpServlet {
 
             if (rs.next()) {
                 // Login successful
-                response.sendRedirect("welcome.html"); // Redirect to a welcome page
+                response.sendRedirect("dashboard.jsp"); // Redirect to a welcome page
             } else {
                 // Login failed
                 response.sendRedirect("index.jsp?error=1"); // Redirect back to login with error

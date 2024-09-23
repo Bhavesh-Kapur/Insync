@@ -18,7 +18,7 @@ public class LoginServlet extends HttpServlet {
     // Database credentials
     private static final String DB_URL = "jdbc:mysql://localhost:3306/insync";
     private static final String DB_USER = "root";     //enter your username 
-    private static final String DB_PASSWORD = "rootbhavesh";   //enter your password 
+    private static final String DB_PASSWORD = "root";   //enter your password 
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

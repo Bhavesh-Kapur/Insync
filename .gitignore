@@ -1,4 +1,4 @@
 # this will hold the ignored files 
 
 .vscode
-# target/
+target/

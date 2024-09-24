@@ -10,9 +10,32 @@
         <load-on-startup>1</load-on-startup>
     </servlet>
 
+    <servlet>
+        <servlet-name>logoutServlet</servlet-name>
+        <servlet-class>in.upes.projectmanagement.logoutServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <!-- <servlet>
+        <servlet-name>searchStudent</servlet-name>
+        <servlet-class>in.upes.projectmanagement </servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet> -->
+
+    <servlet-mapping>
+        <servlet-name>logoutServlet</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+
+    <!-- <servlet-mapping>
+        <servlet-name>searchStudent</servlet-name>
+        <url-pattern>/searchStudent</url-pattern>
+    </servlet-mapping> -->
+
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
     
+
+
 </web-app>

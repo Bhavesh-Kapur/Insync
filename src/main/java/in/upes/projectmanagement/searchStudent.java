@@ -18,7 +18,7 @@ public class searchStudent extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String searchQuery = request.getParameter("searchQuery");
         String searchType = request.getParameter("searchType"); // Either "sapid" or "name"
-
+        
         ArrayList<Student> studentList = new ArrayList<>();
 
         if (searchQuery != null && !searchQuery.isEmpty()) {
@@ -35,6 +35,8 @@ public class searchStudent extends HttpServlet {
                 // SQL Query: Search by SAP ID or name
                 String sql = "SELECT sapid, name, semester, program FROM student WHERE " +
                              (searchType.equals("sapid") ? "sapid LIKE ?" : "name LIKE ?");
+
+                // String sql = "SELECT * FROM student WHERE name = ? AND password = ?";
                 PreparedStatement stmt = conn.prepareStatement(sql);
                 stmt.setString(1, "%" + searchQuery + "%");
                 ResultSet rs = stmt.executeQuery();
@@ -56,7 +58,8 @@ public class searchStudent extends HttpServlet {
         }
 
         // // Attach the student list to the request object and forward it to the JSP page
-        // request.setAttribute("studentList", studentList);
+        request.setAttribute("studentList", studentList);
+        System.out.println(studentList);
         // RequestDispatcher dispatcher = request.getRequestDispatcher("createTeam.jsp");
         // dispatcher.forward(request, response);
     }

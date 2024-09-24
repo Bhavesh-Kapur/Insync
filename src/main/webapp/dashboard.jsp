@@ -1,4 +1,10 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%> 
+<%
+    // HttpSession session = request.getSession(false);
+    if (session == null ) {
+        response.sendRedirect("index.jsp"); // If not logged in, redirect to login page
+    }
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -106,12 +112,12 @@
     <div class="sidebar">
         <h3>(Student Logo)</h3>
         <ul class="student-details">
-            <li><span>Name:</span> Vibhav Khaneja</li>
-            <li><span>SAP ID:</span> 500105662</li>
-            <li><span>Program:</span> B.Tech CSE</li>
-            <li><span>Specialization:</span> DevOps</li>
-            <li><span>Semester:</span> 5th</li>
+            <li><span>Name:</span>  ${sessionScope.name}</li>
+            <li><span>SAP ID:</span>  ${sessionScope.sapid}</li>
+            <li><span>Program:</span>  ${sessionScope.program}</li>
+            <li><span>Semester:</span>  ${sessionScope.semester}</li>
         </ul>
+        <a href="logout" class="logout-button">Logout</a>
     </div>
 
     <!-- Main content -->

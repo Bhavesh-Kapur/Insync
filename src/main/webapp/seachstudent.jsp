@@ -136,15 +136,17 @@
             </select>
 
             <!-- Input fields for typing either name or SAP ID -->
-            <div id="name-container" style="display: none;">
+            <form action="searchStudent" method="POST">
+                <div id="name-container" style="display: none;">
                 <input type="text" id="name-input" placeholder="Enter Name">
-                <button id="search-name-button" onclick="searchStudent('name')" style="display: inline;">Search</button>
-            </div>
+                <button id="search-name-button" onclick="searchStudent('name')" name="name" style="display: inline;">Search</button>
+                    </div>
             
             <div id="sap-container" style="display: none;">
                 <input type="text" id="sap-id-input" placeholder="Enter SAP ID">
-                <button id="search-sap-button" onclick="searchStudent('sap')" style="display: inline;">Search</button>
+                <button id="search-sap-button" onclick="searchStudent('sap')" name="sapid" style="display: inline;">Search</button>
             </div>
+         </form>
         </div>
 
     </div>

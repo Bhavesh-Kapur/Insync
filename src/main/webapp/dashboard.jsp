@@ -1,4 +1,4 @@
-<!-- <%@page contentType="text/html" pageEncoding="UTF-8"%> -->
+<%@page contentType="text/html" pageEncoding="UTF-8"%> 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -118,6 +118,11 @@
     <div class="content">
         <div class="team-box">
             <a href="seachstudent.jsp">Team Formation</a>
+        </div>
+    </div>
+    <div class="content">
+        <div class="team-box">
+            <a href="awaited.jsp">Team Status</a>
         </div>
     </div>
 

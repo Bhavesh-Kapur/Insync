@@ -1,66 +1,44 @@
 package in.upes.projectmanagement;
 
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
+
+import java.io.IOException;
+
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
-// @WebServlet("/SearchStudentServlet")
 public class searchStudent extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String searchQuery = request.getParameter("searchQuery");
-        String searchType = request.getParameter("searchType"); // Either "sapid" or "name"
-        
-        ArrayList<Student> studentList = new ArrayList<>();
+   // Database credentials
+   private static final String DB_URL = "jdbc:mysql://localhost:3306/insync";
+   private static final String DB_USER = "root";     //enter your username 
+   private static final String DB_PASSWORD = "rootbhavesh";   //enter your password 
 
-        if (searchQuery != null && !searchQuery.isEmpty()) {
-            try {
-                // Database credentials
-                String dbURL = "jdbc:mysql://localhost:3306/insync";
-                String dbUser = "root";
-                String dbPassword = "rootbhavesh";
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    String sapid = request.getParameter("sapid");
 
-                // Load MySQL JDBC Driver
-                Class.forName("com.mysql.cj.jdbc.Driver");
-                Connection conn = DriverManager.getConnection(dbURL, dbUser, dbPassword);
-
-                // SQL Query: Search by SAP ID or name
-                String sql = "SELECT sapid, name, semester, program FROM student WHERE " +
-                             (searchType.equals("sapid") ? "sapid LIKE ?" : "name LIKE ?");
-
-                // String sql = "SELECT * FROM student WHERE name = ? AND password = ?";
-                PreparedStatement stmt = conn.prepareStatement(sql);
-                stmt.setString(1, "%" + searchQuery + "%");
-                ResultSet rs = stmt.executeQuery();
-
-                // Store the result in a list
-                while (rs.next()) {
-                    Student student = new Student();
-                    student.setSapid(rs.getString("sapId"));
-                    student.setName(rs.getString("name"));
-                    student.setSemester(rs.getString("semester"));
-                    student.setProgram(rs.getString("program"));
-                    studentList.add(student);
-                }
-
-                conn.close();
-            } catch (Exception e) {
-                e.printStackTrace();
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+            String query = "SELECT * FROM student WHERE sapid = ?";
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setString(1, sapid);
+            ResultSet rs = ps.executeQuery();
+            
+            if(rs.next()){
+                String name = rs.getString("name");
             }
+        }catch(Exception e){
+            e.printStackTrace();
         }
-
-        // // Attach the student list to the request object and forward it to the JSP page
-        request.setAttribute("studentList", studentList);
-        System.out.println(studentList);
-        // RequestDispatcher dispatcher = request.getRequestDispatcher("createTeam.jsp");
-        // dispatcher.forward(request, response);
     }
 }

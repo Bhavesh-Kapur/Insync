@@ -111,12 +111,14 @@
     <div class="main-content">
         <h1>Create Team</h1>
 
-        <!-- SAP ID Input -->
+        <!-- SAP ID 
+        Input -->
+        <form action="searchStudent" method="post">
         <div class="dropdown-container">
-            <input type="text" id="sap-id-input" placeholder="Enter SAP ID">
-            <button onclick="searchStudent()">Search</button>
+            <input type="text" id="sap-id-input" placeholder="Enter SAP ID" name="sapid">
+            <button type="submit">Search</button>
         </div>
-
+    </form>
     </div>
 
     <script>

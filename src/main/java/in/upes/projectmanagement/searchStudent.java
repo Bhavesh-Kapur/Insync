@@ -36,6 +36,18 @@ public class searchStudent extends HttpServlet {
             
             if(rs.next()){
                 String name = rs.getString("name");
+                int sapId = rs.getInt("sapid");
+                int sem = rs.getInt("semester");
+                String program = rs.getString("program");
+
+                HttpSession session = request.getSession();
+                System.out.println(session);       //to check if this is creating a new session everytime or not whenever a search student request is raised 
+                
+                session.setAttribute("name", name);
+                session.setAttribute("program", program);
+                session.setAttribute("sapid", sapId);
+                session.setAttribute("semester", sem);
+                response.sendRedirect("searchStudent.jsp"); 
             }
         }catch(Exception e){
             e.printStackTrace();

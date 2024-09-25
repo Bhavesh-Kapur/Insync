@@ -15,6 +15,9 @@
         <servlet-class>in.upes.projectmanagement.logoutServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
+
+    <!-- uncomment this servlet mapping once searchStudent is complete  -->
+    
     <!-- <servlet>
         <servlet-name>searchStudent</servlet-name>
         <servlet-class>in.upes.projectmanagement </servlet-class>
@@ -25,6 +28,8 @@
         <servlet-name>logoutServlet</servlet-name>
         <url-pattern>/logout</url-pattern>
     </servlet-mapping>
+
+<!-- uncomment this servlet mapping as well to enable searchStudent -->
 
     <!-- <servlet-mapping>
         <servlet-name>searchStudent</servlet-name>

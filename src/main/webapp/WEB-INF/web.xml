@@ -18,11 +18,11 @@
 
     <!-- uncomment this servlet mapping once searchStudent is complete  -->
     
-    <!-- <servlet>
+    <servlet>
         <servlet-name>searchStudent</servlet-name>
-        <servlet-class>in.upes.projectmanagement </servlet-class>
+        <servlet-class>in.upes.projectmanagement.searchStudent</servlet-class>
         <load-on-startup>1</load-on-startup>
-    </servlet> -->
+    </servlet>
 
     <servlet-mapping>
         <servlet-name>logoutServlet</servlet-name>
@@ -31,10 +31,10 @@
 
 <!-- uncomment this servlet mapping as well to enable searchStudent -->
 
-    <!-- <servlet-mapping>
+    <servlet-mapping>
         <servlet-name>searchStudent</servlet-name>
         <url-pattern>/searchStudent</url-pattern>
-    </servlet-mapping> -->
+    </servlet-mapping>
 
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>

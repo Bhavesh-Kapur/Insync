@@ -123,7 +123,7 @@
     <!-- Main content -->
     <div class="content">
         <div class="team-box">
-            <a href="seachstudent.jsp">Team Formation</a>
+            <a href="searchStudent.jsp">Team Formation</a>
         </div>
     </div>
     <div class="content">

@@ -1,56 +1,66 @@
 package in.upes.projectmanagement;
 
+import java.io.IOException;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-
-import java.io.IOException;
-
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
+
 
 public class searchStudent extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-   // Database credentials
-   private static final String DB_URL = "jdbc:mysql://localhost:3306/insync";
-   private static final String DB_USER = "root";     //enter your username 
-   private static final String DB_PASSWORD = "rootbhavesh";   //enter your password 
-
-    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    String sapid = request.getParameter("sapid");
+        String sapId = request.getParameter("sapId");
 
-        try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
-            String query = "SELECT * FROM student WHERE sapid = ?";
-            PreparedStatement ps = conn.prepareStatement(query);
-            ps.setString(1, sapid);
+        try {
+            // Database connection
+            Connection con = databaseConnection.initializeDatabase();
+            
+            // Prepare the SQL query to search for the student by SAP ID
+            String query = "SELECT sapid, name, semester, program FROM student WHERE sapid = ?";
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, sapId);
+            
+            // Execute the query
             ResultSet rs = ps.executeQuery();
             
-            if(rs.next()){
+            if (rs.next()) {
+                // Retrieve the student details
                 String name = rs.getString("name");
-                int sapId = rs.getInt("sapid");
-                int sem = rs.getInt("semester");
                 String program = rs.getString("program");
+                int semester = rs.getInt("semester");
+                int sap = rs.getInt("sapid");
 
-                HttpSession session = request.getSession();
-                System.out.println(session);       //to check if this is creating a new session everytime or not whenever a search student request is raised 
-                
-                session.setAttribute("name", name);
-                session.setAttribute("program", program);
-                session.setAttribute("sapid", sapId);
-                session.setAttribute("semester", sem);
-                response.sendRedirect("searchStudent.jsp"); 
+                // Format the details into an HTML string
+                String studentDetails = 
+                    "<p><strong>Name:</strong> " + name + "</p>" +
+                    "<p><strong>Program:</strong> " + program + "</p>" +
+                    "<p><strong>SAPID:</strong> " + sap + "</p>" +
+                    "<p><strong>Semester:</strong> " + semester + "</p>";
+
+                // Set the student details as an attribute for the JSP to display
+                request.setAttribute("studentDetails", studentDetails);
+            } else {
+                // No student found
+                request.setAttribute("errorMessage", "No student found with SAP ID: " + sapId);
             }
-        }catch(Exception e){
+
+            // Close resources
+            rs.close();
+            ps.close();
+            con.close();
+
+        } catch (Exception e) {
             e.printStackTrace();
+            request.setAttribute("errorMessage", "An error occurred while searching for the student.");
         }
+
+        // Forward the request back to the JSP page to display the results
+        request.getRequestDispatcher("searchStudent.jsp").forward(request, response);
     }
 }

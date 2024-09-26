@@ -121,7 +121,7 @@
     <!-- Sidebar -->
     <div class="sidebar">
         <div class="redirect-icon">
-            <a href="dashboard.html">
+            <a href="dashboard.jsp">
                 <img src="https://img.icons8.com/ios-glyphs/30/000000/home.png" alt="Dashboard Icon" title="Go to Dashboard">
             </a>
         </div>
@@ -132,11 +132,12 @@
         <h1>Create Team</h1>
 
         <!-- Search input for SAP ID -->
-        <form action="searchStudent"></form>
-        <input type="text" id="sap-id-input" placeholder="Enter SAP ID" name="sapid">
-        <button>Search</button>
+        <form action="searchStudent" method="post">
+        <input type="text" id="sap-id-input" placeholder="Enter SAP ID" name="sapId">
+        <button type="submit">Search</button>
+        </form>
 
-        <!-- Table to display selected students -->
+        <%-- <!-- Table to display selected students -->
         <table>
             <caption style="text-align:left; font-weight: bolder; margin-bottom:10px">
                 Group Members
@@ -168,8 +169,22 @@
                 </tr>
                 <!-- Student rows will be dynamically added here -->
             </tbody>
-        </table>
+        </table> --%>
+
+
+    <div id="student-details">
+        <%
+            String studentDetails = (String) request.getAttribute("studentDetails");
+            if (studentDetails != null) {
+                out.println("<h3>Student Details:</h3>");
+                out.println(studentDetails);
+            } else if (request.getAttribute("errorMessage") != null) {
+                out.println("<p style='color:red;'>" + request.getAttribute("errorMessage") + "</p>");
+            }
+        %>
     </div>
+    </div>
+
 
 
 </body>

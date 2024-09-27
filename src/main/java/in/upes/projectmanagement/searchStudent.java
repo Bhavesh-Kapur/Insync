@@ -36,12 +36,28 @@ public class searchStudent extends HttpServlet {
                 int semester = rs.getInt("semester");
                 int sap = rs.getInt("sapid");
 
-                // Format the details into an HTML string
-                String studentDetails = 
-                    "<p><strong>Name:</strong> " + name + "</p>" +
-                    "<p><strong>Program:</strong> " + program + "</p>" +
-                    "<p><strong>SAPID:</strong> " + sap + "</p>" +
-                    "<p><strong>Semester:</strong> " + semester + "</p>";
+                String studentDetails =
+                "<tbody >"+
+                "<tr>"+
+                    "<th>1</th>"+
+                    "<th>"+ name + "</th>"+
+                    "<th>"+ program +"</th>"+
+                    "<th>"+ sap + "</th>"+
+                    "<th>"+ semester+ "</th>"+
+                "</tr>"+
+                // <!-- Student rows will be dynamically added here -->
+            "</tbody>";
+                
+
+
+
+
+                // // Format the details into an HTML string
+                // String studentDetails = 
+                //     "<p><strong>Name:</strong> " + name + "</p>" +
+                //     "<p><strong>Program:</strong> " + program + "</p>" +
+                //     "<p><strong>SAPID:</strong> " + sap + "</p>" +
+                //     "<p><strong>Semester:</strong> " + semester + "</p>";
 
                 // Set the student details as an attribute for the JSP to display
                 request.setAttribute("studentDetails", studentDetails);

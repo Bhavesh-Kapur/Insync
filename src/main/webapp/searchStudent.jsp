@@ -137,6 +137,32 @@
         <button type="submit">Search</button>
         </form>
 
+
+     <table>
+            <caption style="text-align:left; font-weight: bolder; margin-bottom:10px">
+                Group Members
+            </caption>
+            <colgroup>
+                <col style="width:10%">
+                <col style="width:25%">
+                <col style="width:20%">
+                <col style="width:25%">
+                <col style="width:20%">
+            </colgroup>
+
+            <thead>
+                <tr style="background-color: antiquewhite;">
+                    <th>S.No</th>
+                    <th>Name</th>
+                    <th>SAP ID</th>
+                    <th>Program</th>
+                    <th>Semester</th>
+                </tr>
+            </thead>
+            </team>
+
+
+
         <%-- <!-- Table to display selected students -->
         <table>
             <caption style="text-align:left; font-weight: bolder; margin-bottom:10px">

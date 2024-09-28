@@ -1,8 +1,9 @@
 <%
-    // HttpSession session = request.getSession(false);
-    if (session == null ) {
-        response.sendRedirect("index.jsp"); // If not logged in, redirect to login page
+    if (session == null || session.getAttribute("sapid") == null) {
+        response.sendRedirect("index.jsp"); // Redirect to login page if not logged in
+        return; // Ensure the rest of the page is not processed
     }
+    // int sapId = (int) session.getAttribute("sapid");
 %>
 
 <!DOCTYPE html>

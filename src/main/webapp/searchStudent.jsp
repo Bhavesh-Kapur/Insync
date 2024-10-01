@@ -196,6 +196,7 @@
                 </tr>
                 <!-- Student rows will be dynamically added here -->
             </tbody>
+            
         </table> --%>
 
 
@@ -205,6 +206,7 @@
             if (studentDetails != null) {
                 out.println("<h3>Student Details:</h3>");
                 out.println(studentDetails);
+                out.println("<button class='invite-button'>Invite</button>");
             } else if (request.getAttribute("errorMessage") != null) {
                 out.println("<p style='color:red;'>" + request.getAttribute("errorMessage") + "</p>");
             }

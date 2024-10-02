@@ -144,7 +144,6 @@
                 Group Members
             </caption>
             <colgroup>
-                <col style="width:10%">
                 <col style="width:25%">
                 <col style="width:20%">
                 <col style="width:25%">
@@ -153,65 +152,47 @@
 
             <thead>
                 <tr style="background-color: antiquewhite;">
-                    <th>S.No</th>
                     <th>Name</th>
                     <th>SAP ID</th>
                     <th>Program</th>
                     <th>Semester</th>
+                    <th>Action</th> 
                 </tr>
             </thead>
             </team>
-
-
-
-        <%-- <!-- Table to display selected students -->
-        <table>
-            <caption style="text-align:left; font-weight: bolder; margin-bottom:10px">
-                Group Members
-            </caption>
-            <colgroup>
-                <col style="width:10%">
-                <col style="width:25%">
-                <col style="width:20%">
-                <col style="width:25%">
-                <col style="width:20%">
-            </colgroup>
-
-            <thead>
-                <tr style="background-color: antiquewhite;">
-                    <th>S.No</th>
-                    <th>Name</th>
-                    <th>SAP ID</th>
-                    <th>Program</th>
-                    <th>Semester</th>
-                </tr>
-            </thead>
-            <tbody id="student-table-body">
-             <tr style="background-color: antiquewhite;">
-                    <th>S.No</th>
-                    <th>${sessionScope.name}</th>
-                    <th>${sessionScope.sapid}</th>
-                    <th>${sessionScope.program}</th>
-                    <th>${sessionScope.sem}</th>
-                </tr>
-                <!-- Student rows will be dynamically added here -->
-            </tbody>
-            
-        </table> --%>
-
-
-    <div id="student-details">
-        <%
-            String studentDetails = (String) request.getAttribute("studentDetails");
-            if (studentDetails != null) {
-                out.println("<h3>Student Details:</h3>");
-                out.println(studentDetails);
-                out.println("<button class='invite-button'>Invite</button>");
-            } else if (request.getAttribute("errorMessage") != null) {
+            <%-- this if will handle if the user sapid is not found in the database --%>
+                 <%
+                if (request.getAttribute("errorMessage") != null) {
                 out.println("<p style='color:red;'>" + request.getAttribute("errorMessage") + "</p>");
-            }
-        %>
-    </div>
+                 }
+             %>
+
+<%-- servlet mapping requriered for this page to work i.e invite servlet --%>
+        <% 
+                    if (request.getAttribute("name") != null) { 
+                %>
+                <tr>
+                    <td><%= request.getAttribute("name") %></td>
+                    <td><%= request.getAttribute("sapid") %></td>
+                    <td><%= request.getAttribute("program") %></td>
+                    <td><%= request.getAttribute("semester") %></td>
+                    <td>
+                        <form action="" method="POST">     
+                        <input type="hidden" name="sapId" value="<%= request.getAttribute("sapId") %>">
+                        <button type="submit">Invite</button>
+                    </form>
+                </td>
+                </tr>
+                <% 
+                    } else { 
+                %>
+                <tr>
+                    <td colspan="4">Please search.</td>
+                </tr>
+                <% 
+                    } 
+                %>
+
     </div>
 
 

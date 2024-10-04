@@ -177,8 +177,11 @@
                     <td><%= request.getAttribute("program") %></td>
                     <td><%= request.getAttribute("semester") %></td>
                     <td>
-                        <form action="" method="POST">     
-                        <input type="hidden" name="sapId" value="<%= request.getAttribute("sapId") %>">
+                        <form action="inviteServlet" method="POST">     
+                        <input type="hidden" name="sapid" value="<%= request.getAttribute("sapid") %>"> 
+                        <input type="hidden" name="name" value="<%= request.getAttribute("name") %>"> 
+                        <input type="hidden" name="semester" value="<%= request.getAttribute("semester") %>"> 
+                        <input type="hidden" name="program" value="<%= request.getAttribute("program") %>"> 
                         <button type="submit">Invite</button>
                     </form>
                 </td>

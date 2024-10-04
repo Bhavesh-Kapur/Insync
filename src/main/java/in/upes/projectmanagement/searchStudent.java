@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -36,19 +37,24 @@ public class searchStudent extends HttpServlet {
                 int semester = rs.getInt("semester");
                 int sap = rs.getInt("sapid");
 
-                String studentDetails =
-                "<tbody >"+
-                "<tr>"+
-                    "<th>1</th>"+
-                    "<th>"+ name + "</th>"+
-                    "<th>"+ program +"</th>"+
-                    "<th>"+ sap + "</th>"+
-                    "<th>"+ semester+ "</th>"+
-                "</tr>"+
-                // <!-- Student rows will be dynamically added here -->
-            "</tbody>";
+            //     String studentDetails =
+            //     "<tbody >"+
+            //     "<tr>"+
+            //         "<th>1</th>"+
+            //         "<th>"+ name + "</th>"+
+            //         "<th>"+ program +"</th>"+
+            //         "<th>"+ sap + "</th>"+
+            //         "<th>"+ semester+ "</th>"+
+            //     "</tr>"+
+            //     // <!-- Student rows will be dynamically added here -->
+            // "</tbody>";
                 
 
+
+            request.setAttribute("name", name);
+            request.setAttribute("program", program);
+            request.setAttribute("semester", semester);
+            request.setAttribute("sapid", sap);
 
 
 
@@ -60,13 +66,15 @@ public class searchStudent extends HttpServlet {
                 //     "<p><strong>Semester:</strong> " + semester + "</p>";
 
                 // Set the student details as an attribute for the JSP to display
-                request.setAttribute("studentDetails", studentDetails);
+                // request.setAttribute("studentDetails", studentDetails);
+
+
+                RequestDispatcher dispatcher = request.getRequestDispatcher("searchStudent.jsp");
+                dispatcher.forward(request, response);
             } else {
-                // No student found
                 request.setAttribute("errorMessage", "No student found with SAP ID: " + sapId);
             }
 
-            // Close resources
             rs.close();
             ps.close();
             con.close();

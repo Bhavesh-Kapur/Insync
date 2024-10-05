@@ -1,0 +1,1 @@
+invite accepted successfully!!!

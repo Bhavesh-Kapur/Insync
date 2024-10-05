@@ -16,6 +16,12 @@
         <load-on-startup>1</load-on-startup>
     </servlet>
 
+    <servlet>
+        <servlet-name>inviteServlet</servlet-name>
+        <servlet-class>in.upes.projectmanagement.inviteServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
     <!-- uncomment this servlet mapping once searchStudent is complete  -->
     
     <servlet>
@@ -30,6 +36,11 @@
     </servlet-mapping>
 
 <!-- uncomment this servlet mapping as well to enable searchStudent -->
+
+    <servlet-mapping>
+        <servlet-name>inviteServlet</servlet-name>
+        <url-pattern>/inviteServlet</url-pattern>
+    </servlet-mapping>
 
     <servlet-mapping>
         <servlet-name>searchStudent</servlet-name>

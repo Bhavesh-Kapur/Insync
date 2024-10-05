@@ -29,9 +29,11 @@ public class inviteServlet extends HttpServlet {
             throws ServletException, IOException {
 
         // Step 1: Retrieve the student details from the form (sent via POST)
-        int sapid = Integer.parseInt("sapid");
+        String sap = request.getParameter("sapid");
+        int sapid = Integer.parseInt(sap);
         String name = request.getParameter("name");
-        int semester = Integer.parseInt("semester");
+        String sem = request.getParameter("semester");
+        int semester = Integer.parseInt(sem);
         String program = request.getParameter("program");
         HttpSession session = request.getSession(false);
         String invitedBy = "Admin"; 
@@ -42,7 +44,7 @@ public class inviteServlet extends HttpServlet {
         try {
             Connection con = databaseConnection.initializeDatabase(); 
 
-            String query = "INSERT INTO invites (sap_id, name, semester, program, invite_status, invited_by) " +
+            String query = "INSERT INTO invites (sapid, name, semester, program, inviteStatus, invitedBy) " +
                            "VALUES (?, ?, ?, ?, 'pending', ?)";
             PreparedStatement ps = con.prepareStatement(query);
             ps.setInt(1, sapid);
@@ -55,7 +57,7 @@ public class inviteServlet extends HttpServlet {
             if (rowsAffected > 0) {
                 System.out.println("Invitation successfully added to the database.");
                 
-                sendEmailInvite(name, sapid);
+                // sendEmailInvite(name, sapid);
                 
                 //redirect page requried frontend request
                 // response.sendRedirect("output.jsp?invite=success");
@@ -72,46 +74,46 @@ public class inviteServlet extends HttpServlet {
     }
 
     // Step 4: Method to send an email invite using JavaMail API
-    private void sendEmailInvite(String name, int sapid) {
-        // Set up email properties
-        String to = "";  // The email address of the invitee (replace this with actual logic to fetch email)
-        String from = "";  // The sender's email address
-        String host = "";   // Your SMTP server (replace with actual server)
+    // private void sendEmailInvite(String name, int sapid) {
+    //     // Set up email properties
+    //     String to = "";  // The email address of the invitee (replace this with actual logic to fetch email)
+    //     String from = "";  // The sender's email address
+    //     String host = "";   // Your SMTP server (replace with actual server)
         
-        // Set up mail server properties
-        Properties properties = System.getProperties();
-        properties.setProperty("mail.smtp.host", host);
-        properties.setProperty("mail.smtp.port", "587");  // Default SMTP port
-        properties.put("mail.smtp.auth", "true");         // SMTP authentication required
-        properties.put("mail.smtp.starttls.enable", "true");  // Enable TLS
+    //     // Set up mail server properties
+    //     Properties properties = System.getProperties();
+    //     properties.setProperty("mail.smtp.host", host);
+    //     properties.setProperty("mail.smtp.port", "587");  // Default SMTP port
+    //     properties.put("mail.smtp.auth", "true");         // SMTP authentication required
+    //     properties.put("mail.smtp.starttls.enable", "true");  // Enable TLS
 
-        // Step 5: Authenticate the session with the SMTP server
-        Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
-            protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication("", "");
-            }
-        });
+    //     // Step 5: Authenticate the session with the SMTP server
+    //     Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
+    //         protected PasswordAuthentication getPasswordAuthentication() {
+    //             return new PasswordAuthentication("", "");
+    //         }
+    //     });
 
-        try {
-            // Step 6: Create a default MimeMessage object
-            MimeMessage message = new MimeMessage(session);
+    //     try {
+    //         // Step 6: Create a default MimeMessage object
+    //         MimeMessage message = new MimeMessage(session);
 
-            // Set the From, To, and Subject fields
-            message.setFrom(new InternetAddress(from));
-            message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
-            message.setSubject("Invitation to Join");
+    //         // Set the From, To, and Subject fields
+    //         message.setFrom(new InternetAddress(from));
+    //         message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+    //         message.setSubject("Invitation to Join");
 
-            // Set the email body
-            message.setText("Hello " + name + ",\n\nYou have been invited to the program.\n\n" +
-                    "Your SAP ID: " + sapid + "\n" +
-                    "Please visit the portal to accept the invitation.\n\nRegards,\nAdmin Team");
+    //         // Set the email body
+    //         message.setText("Hello " + name + ",\n\nYou have been invited to the program.\n\n" +
+    //                 "Your SAP ID: " + sapid + "\n" +
+    //                 "Please visit the portal to accept the invitation.\n\nRegards,\nAdmin Team");
 
-            // Step 7: Send the email
-            Transport.send(message);
-            System.out.println("Sent invitation email successfully to: " + name);
+    //         // Step 7: Send the email
+    //         Transport.send(message);
+    //         System.out.println("Sent invitation email successfully to: " + name);
 
-        } catch (MessagingException mex) {
-            mex.printStackTrace();
-        }
-    }
+    //     } catch (MessagingException mex) {
+    //         mex.printStackTrace();
+    //     }
+    // }
 }

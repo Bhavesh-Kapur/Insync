@@ -21,8 +21,6 @@
         <servlet-class>in.upes.projectmanagement.inviteServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
-
-    <!-- uncomment this servlet mapping once searchStudent is complete  -->
     
     <servlet>
         <servlet-name>searchStudent</servlet-name>
@@ -35,7 +33,6 @@
         <url-pattern>/logout</url-pattern>
     </servlet-mapping>
 
-<!-- uncomment this servlet mapping as well to enable searchStudent -->
 
     <servlet-mapping>
         <servlet-name>inviteServlet</servlet-name>
@@ -51,7 +48,10 @@
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
+
     
 
-
 </web-app>
+
+<!-- make a servlet mapping for accepting invite and declining invite  --> 
+ <!-- both servlet mapping are waiting for the testing phase once it is done commit the servlet mapping -->

@@ -16,48 +16,48 @@
             --glass-bg: rgba(255, 255, 255, 0.85);
             --glass-border: rgba(255, 255, 255, 0.3);
         }
-
         body {
-            font-family: "Poppins", sans-serif;
-            background: var(--background-gradient);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            padding: 20px;
-            box-sizing: border-box;
-            color: var(--text-color);
-            position: relative; /* Required for the ::before pseudo-element */
-        }
+    font-family: "Poppins", sans-serif;
+    background: var(--background-gradient);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+    color: var(--text-color);
+    position: relative;
+}
 
-        /* Blurred background image using a pseudo-element */
-        body::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('https://smartcampuses.com/wp-content/uploads/revslider/web-agency-home-content/Slide-2-Background.jpg'); /* Replace with your background image */
-            background-size: cover;
-            background-position: center;
-            z-index: -1; /* Push the background behind the content */
-            filter: blur(2px); /* Blurs the background image */
-            opacity: 0.7555; /* Adjusts visibility (optional) */
-        }
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://smartcampuses.com/wp-content/uploads/revslider/web-agency-home-content/Slide-2-Background.jpg');
+    background-size: cover;
+    background-position: center;
+    z-index: -1; /* Background is behind the content */
+    filter: blur(10px); /* Blurred background */
+    opacity: 0.75;
+}
 
-        .container {
-            background: var(--glass-bg);
-            backdrop-filter: blur(10px); /* Optional: Glass effect */
-            border-radius: 20px;
-            border: 1px solid var(--glass-border);
-            padding: 30px;
-            width: 100%;
-            max-width: 400px;
-            box-shadow: 0 10px 30px rgba(31, 38, 135, 0.2);
-            z-index: 1; /* Ensure the container is above the background */
-        }
+.container {
+    background: var(--glass-bg);
+    /* Remove or tweak this if needed */
+    /* backdrop-filter: blur(10px); */
+    border-radius: 20px;
+    border: 1px solid var(--glass-border);
+    padding: 30px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 10px 30px rgba(31, 38, 135, 0.2);
+    z-index: 1; /* Make sure the container is above the blurred background */
+}
+
 
         h2 {
             text-align: center;

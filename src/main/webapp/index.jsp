@@ -174,7 +174,14 @@
         </form>
     </div>
 
+<<<<<<< HEAD
      <% if (request.getParameter("error") != null) { %>
+=======
+    <% if (request.getParameter("error") != null) { %>
+        <div id="errorBox" class="error">
+            Invalid SAP ID or Password. Please try again.
+        </div>
+>>>>>>> 0212a04e128c95b9b01d2c691eb54499e4bc359b
         <style>
             #errorBox {
                 animation: fadeOut 3s forwards;
@@ -198,6 +205,11 @@
     </div>  
 
     <% } %>
+</body>
+</html>
+
+    
+    
 
 
 

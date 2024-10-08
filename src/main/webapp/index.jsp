@@ -174,7 +174,7 @@
         </form>
     </div>
 
-    <div id="errorBox" class=error <%= request.getParameter("error") != null ? "" : "hidden" %>
+    <div id="errorBox" class=error <%= request.getParameter("error") != null ? "" : "hidden" %>">
         Invalid SAP ID or Password. Please try again.
     </div>
 </body>

@@ -174,17 +174,19 @@
         </form>
     </div>
 
-    <div id="errorBox" class=error <%= request.getParameter("error") != null ? "" : "hidden" %>">
-        Invalid SAP ID or Password. Please try again.
-    </div>
-</body>
-</html>
-
     <% if (request.getParameter("error") != null) { %>
+        <div id="errorBox" class="error">
+            Invalid SAP ID or Password. Please try again.
+        </div>
         <style>
             #errorBox {
                 animation: fadeOut 3s forwards;
             }
         </style>
     <% } %>
+</body>
+</html>
+
+    
+    
 

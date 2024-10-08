@@ -11,10 +11,10 @@
             --secondary-color: #d6e9f8;
             --accent-color: #ffffff;
             --background-gradient: linear-gradient(135deg, #d6e9f8, #ffffff);
-            --heading-color: #0a0a0a; /* Darkish blue close to black */
+            --heading-color: #0a0a0a;
             --text-color: #333333;
             --glass-bg: rgba(255, 255, 255, 0.85);
-            --glass-border: rgba(255, 255, 255, 0.4);
+            --glass-border: rgba(255, 255, 255, 0.3);
         }
 
         body {
@@ -28,6 +28,17 @@
             padding: 20px;
             box-sizing: border-box;
             color: var(--text-color);
+            position: relative; /* Required for the ::before pseudo-element */
+        }
+
+        /* Blurred background image using a pseudo-element */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background-image: url('https://smartcampuses.com/wp-content/uploads/revslider/web-agency-home-content/Slide-2-Background.jpg'); /* Replace with your background image */
             background-size: cover;
             background-position: center;
@@ -38,22 +49,22 @@
 
         .container {
             background: var(--glass-bg);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px); /* Optional: Glass effect */
             border-radius: 20px;
             border: 1px solid var(--glass-border);
             padding: 30px;
             width: 100%;
             max-width: 400px;
             box-shadow: 0 10px 30px rgba(31, 38, 135, 0.2);
-            border
+            z-index: 1; /* Ensure the container is above the background */
         }
 
         h2 {
             text-align: center;
-            font-size: 2rem; /* Adjusted font size */
-            font-weight: 700; /* Increased font weight */
-            color: var(--heading-color); /* Darkish blue color */
-            margin: 10px 0 20px; /* Reduced top margin */
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--heading-color);
+            margin: 10px 0 20px;
             letter-spacing: 1px;
         }
 
@@ -70,7 +81,7 @@
         }
 
         input {
-            width: calc(100% - 30px); /* Slight reduction in width */
+            width: calc(100% - 30px);
             padding: 0.75rem;
             border: 2px solid var(--primary-color);
             border-radius: 12px;

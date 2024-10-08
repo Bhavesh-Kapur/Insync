@@ -13,7 +13,7 @@
             --background-gradient: linear-gradient(135deg, #d6e9f8, #ffffff);
             --heading-color: #0a0a0a; /* Darkish blue close to black */
             --text-color: #333333;
-            --glass-bg: rgba(255, 255, 255, 0.95);
+            --glass-bg: rgba(255, 255, 255, 0.85);
             --glass-border: rgba(255, 255, 255, 0.4);
         }
 

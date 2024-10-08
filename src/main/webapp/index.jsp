@@ -16,48 +16,46 @@
             --glass-bg: rgba(255, 255, 255, 0.85);
             --glass-border: rgba(255, 255, 255, 0.3);
         }
+        
         body {
-    font-family: "Poppins", sans-serif;
-    background: var(--background-gradient);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    padding: 20px;
-    box-sizing: border-box;
-    color: var(--text-color);
-    position: relative;
-}
+            font-family: "Poppins", sans-serif;
+            background: var(--background-gradient);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+            color: var(--text-color);
+            position: relative;
+        }
 
-body::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('https://smartcampuses.com/wp-content/uploads/revslider/web-agency-home-content/Slide-2-Background.jpg');
-    background-size: cover;
-    background-position: center;
-    z-index: -1; /* Background is behind the content */
-    filter: blur(2px); /* Blurred background */
-    opacity: 0.7555;
-}
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://smartcampuses.com/wp-content/uploads/revslider/web-agency-home-content/Slide-2-Background.jpg');
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+            filter: blur(2px);
+            opacity: 0.7555;
+        }
 
-.container {
-    background: var(--glass-bg);
-    /* Remove or tweak this if needed */
-    /* backdrop-filter: blur(10px); */
-    border-radius: 20px;
-    border: 1px solid var(--glass-border);
-    padding: 30px;
-    width: 100%;
-    max-width: 400px;
-    box-shadow: 0 10px 30px rgba(31, 38, 135, 0.2);
-    z-index: 1; /* Make sure the container is above the blurred background */
-}
-
+        .container {
+            background: var(--glass-bg);
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            padding: 30px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 10px 30px rgba(31, 38, 135, 0.2);
+            z-index: 1;
+        }
 
         h2 {
             text-align: center;
@@ -122,6 +120,42 @@ body::before {
         button:active {
             transform: translateY(0);
         }
+
+        .error {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #f44336;
+            border: 1px solid #c62828;
+            color: #ffffff;
+            padding: 10px;
+            border-radius: 5px;
+            width: 300px;
+            z-index: 10;
+            transition: opacity 0.5s;
+            opacity: 1;
+            line-height: 1.2;
+            max-height: 60px;
+            overflow: hidden;
+        }
+
+        .error.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        @keyframes fadeOut {
+            0% {
+                opacity: 1;
+            }
+            80% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
     </style>
 </head>
 <body>
@@ -139,8 +173,18 @@ body::before {
             <button type="submit">Login</button>
         </form>
     </div>
+
+    <div id="errorBox" class=error <%= request.getParameter("error") != null ? "" : "hidden" %>
+        Invalid SAP ID or Password. Please try again.
+    </div>
 </body>
 </html>
-<% if (request.getParameter("error") != null) { %>
-    <div class="error">Invalid SAP ID or Password. Please try again.</div>
-<% } %>
+
+    <% if (request.getParameter("error") != null) { %>
+        <style>
+            #errorBox {
+                animation: fadeOut 3s forwards;
+            }
+        </style>
+    <% } %>
+

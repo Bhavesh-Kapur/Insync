@@ -41,8 +41,8 @@ body::before {
     background-size: cover;
     background-position: center;
     z-index: -1; /* Background is behind the content */
-    filter: blur(10px); /* Blurred background */
-    opacity: 0.75;
+    filter: blur(2px); /* Blurred background */
+    opacity: 0.7555;
 }
 
 .container {

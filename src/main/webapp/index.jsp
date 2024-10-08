@@ -28,6 +28,12 @@
             padding: 20px;
             box-sizing: border-box;
             color: var(--text-color);
+            background-image: url('https://smartcampuses.com/wp-content/uploads/revslider/web-agency-home-content/Slide-2-Background.jpg'); /* Replace with your background image */
+            background-size: cover;
+            background-position: center;
+            z-index: -1; /* Push the background behind the content */
+            filter: blur(2px); /* Blurs the background image */
+            opacity: 0.7555; /* Adjusts visibility (optional) */
         }
 
         .container {
@@ -39,6 +45,7 @@
             width: 100%;
             max-width: 400px;
             box-shadow: 0 10px 30px rgba(31, 38, 135, 0.2);
+            border
         }
 
         h2 {

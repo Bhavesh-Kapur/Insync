@@ -7,7 +7,7 @@
         .container {
             border: 2px solid black;
             width: 40%;
-            padding: 10px;
+            padding: 12px;
         }
         body {
             margin: 200px;

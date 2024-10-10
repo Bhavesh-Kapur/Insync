@@ -16,10 +16,6 @@ import jakarta.servlet.http.HttpSession;
 public class LoginServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-    // Database credentials
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/insync";
-    private static final String DB_USER = "root";     //enter your username 
-    private static final String DB_PASSWORD = "rootbhavesh";   //enter your password 
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -27,11 +23,10 @@ public class LoginServlet extends HttpServlet {
         String password = request.getParameter("password");
 
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+            Connection con = databaseConnection.initializeDatabase();
 
             String sql = "SELECT * FROM student WHERE sapid = ? AND password = ?";
-            PreparedStatement stmt = conn.prepareStatement(sql);
+            PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setString(1, sapId);
             stmt.setString(2, password);
 
@@ -57,7 +52,7 @@ public class LoginServlet extends HttpServlet {
 
             rs.close();
             stmt.close();
-            conn.close();
+            con.close();
         } catch (Exception e) {
             e.printStackTrace();
             response.sendRedirect("index.jsp?error=1"); // Redirect back to login with error

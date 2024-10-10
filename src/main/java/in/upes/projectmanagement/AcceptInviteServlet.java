@@ -20,11 +20,10 @@ public class AcceptInviteServlet extends HttpServlet {
 
         Connection connection = null;
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/insync", "root", "rootbhavesh");
+            Connection con = databaseConnection.initializeDatabase();
 
             String query = "UPDATE invites SET inviteStatus = 'Accepted' WHERE sapid = ? AND invitedBy = ?";
-            PreparedStatement stmt = connection.prepareStatement(query);
+            PreparedStatement stmt = con.prepareStatement(query);
             stmt.setInt(1, sapid);
             stmt.setString(2, inviterName);
             stmt.executeUpdate();

@@ -22,11 +22,10 @@ public class fetchInvite extends HttpServlet {
 
         Connection connection = null;
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/insync", "root", "rootbhavesh");
+            Connection con = databaseConnection.initializeDatabase();
 
             String query = "SELECT invitedBy FROM invites WHERE sapid = ? AND status = 'Pending'";
-            PreparedStatement stmt = connection.prepareStatement(query);
+            PreparedStatement stmt = con.prepareStatement(query);
             stmt.setInt(1, sapid);
             ResultSet rs = stmt.executeQuery();
 

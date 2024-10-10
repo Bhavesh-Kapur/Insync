@@ -29,7 +29,7 @@ public class inviteServlet extends HttpServlet {
             throws ServletException, IOException {
 
         // Step 1: Retrieve the student details from the form (sent via POST)
-        String sap = request.getParameter("sapid");
+    String sap = request.getParameter("sapid");
         int sapid = Integer.parseInt(sap);
         String name = request.getParameter("name");
         String sem = request.getParameter("semester");

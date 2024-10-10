@@ -132,6 +132,15 @@
             <a href="awaited.jsp">Team Status</a>
         </div>
     </div>
+    <div class="content">
+        <div class="team-box">
+           <form action="fetchInvite" method="GET">
+            <button type="submit" style="border: none; background: none; cursor: pointer; text-decoration: underline; color: blue;">
+                Inbox
+            </button>
+        </form>
+        </div>
+    </div>
 
 </body>
 </html>

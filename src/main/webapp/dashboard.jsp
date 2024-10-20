@@ -63,19 +63,19 @@
         }
 
         /* Main content */
-        .content {
+        .content , .content2 {
             flex-grow: 1;
             padding: 50px;
         }
 
-        .content h1 {
+        .content,.content2  h1 {
             font-size: 36px;
             font-weight: bold;
             color: var(--heading-color);
             margin-bottom: 20px;
         }
 
-        .content p {
+        .content, .content2 p {
             font-size: 18px;
         }
 
@@ -111,7 +111,7 @@
 
     <!-- Sidebar -->
     <div class="sidebar">
-        <h3>(Student Logo)</h3>
+        <img src="C:\Users\DELL\OneDrive\Desktop\Insync\src\main\webapp\images\stulogo(1)(1).jpg ">
         <ul class="student-details">
             <li><span>Name:</span>  ${sessionScope.name}</li>
             <li><span>SAP ID:</span>  ${sessionScope.sapid}</li>
@@ -134,13 +134,23 @@
     </div>
     <div class="content">
         <div class="team-box">
+            <a >
+        </div>
            <form action="fetchInvite" method="GET">
-            <button type="submit" style="border: none; background: none; cursor: pointer; text-decoration: underline; color: blue;">
+            <button type="submit" >
                 Inbox
             </button>
         </form>
+    </a>
         </div>
     </div>
+    <div class = "content2">
+        <div class="team-box">
+            <a href="details.jsp">Team Details</a>
+        </div>
+        
+    </div>
+        
 
 </body>
 </html>

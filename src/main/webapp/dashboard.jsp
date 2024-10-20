@@ -111,7 +111,7 @@
 
     <!-- Sidebar -->
     <div class="sidebar">
-        <h3>(Student Logo)</h3>
+        <img src="C:\Users\DELL\OneDrive\Desktop\Insync\src\main\webapp\images\stulogo(1)(1).jpg ">
         <ul class="student-details">
             <li><span>Name:</span>  ${sessionScope.name}</li>
             <li><span>SAP ID:</span>  ${sessionScope.sapid}</li>

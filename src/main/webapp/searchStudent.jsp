@@ -134,8 +134,13 @@
 
         <!-- Search input for SAP ID -->
         <form action="searchStudent" method="post">
-        <input type="text" id="sap-id-input" placeholder="Enter SAP ID" name="sapId">
-        <button type="submit">Search</button>
+            <label for="sap-id-input">Enter SAP ID</label>
+            <input type="text" id="sap-id-input" placeholder="Enter SAP ID" name="sapId">
+
+            <label for="name-input">OR Enter Name</label>
+            <input type="text" id="name-input" placeholder="Enter Name" name="name">
+
+            <button type="submit">Search</button>
         </form>
 
 

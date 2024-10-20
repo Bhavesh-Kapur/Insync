@@ -40,7 +40,9 @@
             box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
             height: 100vh;
             box-sizing: border-box;
-            overflow: hidden; /* Ensures content stays inside */
+            display: flex;
+            flex-direction: column; /* Flexbox layout */
+            justify-content: space-between; /* Space between content and bottom */
         }
 
         .sidebar img {
@@ -76,7 +78,6 @@
         /* Logout button */
         .logout-button {
             display: block;
-            margin: 20px auto;
             padding: 10px 20px;
             text-align: center;
             font-size: 16px;
@@ -128,27 +129,29 @@
 
     <!-- Sidebar -->
     <div class="sidebar">
-        <img src="C:\Users\DELL\OneDrive\Desktop\Insync\src\main\webapp\images\stulogo(1)(1).jpg" alt="Student Logo">
-        
-        <!-- Student details in a table -->
-        <table>
-            <tr>
-                <td>Name:</td>
-                <td>${sessionScope.name}</td>
-            </tr>
-            <tr>
-                <td>SAP ID:</td>
-                <td>${sessionScope.sapid}</td>
-            </tr>
-            <tr>
-                <td>Program:</td>
-                <td>${sessionScope.program}</td>
-            </tr>
-            <tr>
-                <td>Semester:</td>
-                <td>${sessionScope.semester}</td>
-            </tr>
-        </table>
+        <div>
+            <img src="C:\Users\DELL\OneDrive\Desktop\Insync\src\main\webapp\images\stulogo(1)(1).jpg" alt="Student Logo">
+            
+            <!-- Student details in a table -->
+            <table>
+                <tr>
+                    <td>Name:</td>
+                    <td>${sessionScope.name}</td>
+                </tr>
+                <tr>
+                    <td>SAP ID:</td>
+                    <td>${sessionScope.sapid}</td>
+                </tr>
+                <tr>
+                    <td>Program:</td>
+                    <td>${sessionScope.program}</td>
+                </tr>
+                <tr>
+                    <td>Semester:</td>
+                    <td>${sessionScope.semester}</td>
+                </tr>
+            </table>
+        </div>
 
         <a href="logout" class="logout-button">Logout</a>
     </div>

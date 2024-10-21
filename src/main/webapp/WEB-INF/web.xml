@@ -29,6 +29,12 @@
     </servlet>
 
     <servlet>
+        <servlet-name>StatusServlet</servlet-name>
+        <servlet-class>in.upes.projectmanagement.StatusServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet>
         <servlet-name>handleInvite</servlet-name>
         <servlet-class>in.upes.projectmanagement.handleInvite</servlet-class>
         <load-on-startup>1</load-on-startup>
@@ -43,6 +49,11 @@
     <servlet-mapping>
         <servlet-name>logoutServlet</servlet-name>
         <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>StatusServlet</servlet-name>
+        <url-pattern>/StatusServlet</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>

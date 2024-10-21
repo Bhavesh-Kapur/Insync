@@ -93,18 +93,39 @@
         }
 
         /* Main content */
-        .content , .content2 {
+        .content {
             flex-grow: 1;
             padding: 50px;
+            display: flex;
+            flex-wrap: wrap; /* Allow content to wrap to the next line */
+            gap: 30px; /* Increased space between boxes */
+            justify-content: space-between; /* Distribute space between boxes */
         }
 
+<<<<<<< HEAD
+        .content h1 {
+            font-size: 36px;
+            font-weight: bold;
+            color: var(--heading-color);
+            margin-bottom: 20px;
+        }
+
+        /* Team Formation box */
+=======
+>>>>>>> 3f98f21f222199976995b8612e45b7130aa769c0
         .team-box {
             background-color: white;
             padding: 20px;
             border: 2px solid var(--primary-color);
             border-radius: 10px;
-            display: inline-block;
             transition: transform 0.3s, box-shadow 0.3s;
+            width: calc(33.33% - 30px); /* Ensure 3 boxes per row */
+            height: 250px; /* Make it square */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            box-sizing: border-box;
         }
 
         .team-box:hover {
@@ -115,20 +136,63 @@
         .team-box a {
             text-decoration: none;
             color: var(--primary-color);
-            font-size: 20px;
+            font-size: 20px; /* Increased font size */
             font-weight: bold;
+            display: block;
         }
 
         .team-box a:hover {
             text-decoration: underline;
         }
 
+        /* Adjust inbox form button */
+        form {
+            margin-top: 10px;
+        }
+
+        form button {
+            padding: 10px 20px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        form button:hover {
+            background-color: #357abd;
+        }
+
     </style>
 </head>
 <body>
-
+    <script>
+        function fetchInvite() {
+            const url = "fetchInvite";   
+            window.location.href = url;
+        }
+    
+        function Status() {
+            const url = "StatusServlet";
+            window.location.href = url;
+        }
+        
+    </script>
+    <a href="javascript:void(0);" onclick="fetchInvite();">Inbox</a>
+    <a href="javascript:void(0);" onclick="Status();">Team Status</a>d 
     <!-- Sidebar -->
     <div class="sidebar">
+<<<<<<< HEAD
+        <img src="src\main\webapp\WEB-INF\images\stulogo(1)(1).jpg">
+        <ul class="student-details">
+            <li><span>Name:</span>  ${sessionScope.name}</li>
+            <li><span>SAP ID:</span>  ${sessionScope.sapid}</li>
+            <li><span>Program:</span>  ${sessionScope.program}</li>
+            <li><span>Semester:</span>  ${sessionScope.semester}</li>
+        </ul>
+=======
         <div>
             <img src="C:\Users\DELL\OneDrive\Desktop\Insync\src\main\webapp\images\stulogo(1)(1).jpg" alt="Student Logo">
             
@@ -153,6 +217,7 @@
             </table>
         </div>
 
+>>>>>>> 3f98f21f222199976995b8612e45b7130aa769c0
         <a href="logout" class="logout-button">Logout</a>
     </div>
 
@@ -161,6 +226,29 @@
         <div class="team-box">
             <a href="searchStudent.jsp">Team Formation</a>
         </div>
+<<<<<<< HEAD
+        <div class="team-box">
+            <a href="awaited.jsp">Team Status</a>
+        </div>
+        
+        
+        <div class="team-box">
+            <a href="details.jsp">Team Details</a>
+        </div>
+        <div class="team-box">
+            <a href="details.jsp">Inbox</a>
+        </div>
+        
+
+        <div class="team-box">
+            <a href="details.jsp">Team Discussion</a>
+        </div>
+        <div class="team-box">
+            <a href="details.jsp">Mentor Request</a>
+        </div>
+    </div>
+
+=======
     </div>
 
     <div class="content">
@@ -183,5 +271,6 @@
         </div>
     </div>
     
+>>>>>>> 3f98f21f222199976995b8612e45b7130aa769c0
 </body>
 </html>

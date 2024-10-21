@@ -117,7 +117,7 @@
             justify-content: center;
             border-radius: 12px;
             height: 50%; /* Reduced height */
-            margin-top: 40px; /* Adjust this value to start the image lower */
+            margin-top: 60px; /* Adjust this value to start the image lower */
             margin-left: auto; /* Align to the right */
             margin-right: 20px; /* Space from the right edge of the page */
         }
@@ -218,4 +218,3 @@
 
 </body>
 </html>
-

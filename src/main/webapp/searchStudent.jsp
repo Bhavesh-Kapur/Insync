@@ -32,29 +32,21 @@
             box-sizing: border-box;
         }
 
-        .sidebar {
-            width: 250px;
-            position: fixed;
-            height: 100%;
-            background-color: var(--accent-color);
-            padding-top: 30px;
-            border-right: 1px solid #ddd;
-        }
-
-        .sidebar .redirect-icon {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .sidebar .redirect-icon img {
-            width: 40px;
-            cursor: pointer;
-        }
-
         .main-content {
-            margin-left: 250px;
+            width: 65%;
             padding: 50px;
             flex-grow: 1;
+        }
+
+        .home-icon {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+        }
+
+        .home-icon img {
+            width: 40px;
+            cursor: pointer;
         }
 
         h1 {
@@ -64,26 +56,16 @@
             text-align: left;
         }
 
-        form {
-            display: block;
-            width: 50%;
-        }
-
-        label {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            display: block;
-        }
-
         input {
-            width: 80%;
+            width: 50%;
             padding: 10px;
             font-size: 1rem;
             border: 2px solid var(--primary-color);
             border-radius: 12px;
             background: var(--accent-color);
             color: var(--text-color);
-            display: inline-block;
+            cursor: text;
+            margin-top: 10px;
         }
 
         button {
@@ -95,7 +77,6 @@
             cursor: pointer;
             margin-left: 10px;
             transition: all 0.3s ease;
-            display: inline-block;
         }
 
         button:hover {
@@ -126,26 +107,39 @@
         tfoot {
             font-weight: bold;
         }
+
+        /* Placeholder for the photograph */
+        .photo-placeholder {
+            width: 30%;
+            background-color: white; /* Ensure it's plain white */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            height: 50%; /* Reduced height */
+            margin-top: 40px; /* Adjust this value to start the image lower */
+            margin-left: auto; /* Align to the right */
+            margin-right: 20px; /* Space from the right edge of the page */
+        }
+
+        .photo-placeholder img {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 12px;
+            border: none; /* Remove any borders */
+        }
+
     </style>
 </head>
 <body>
-
-    <!-- Sidebar -->
-    <div class="sidebar">
-        <div class="redirect-icon">
-            <a href="dashboard.jsp">
-                <img src="https://img.icons8.com/ios-glyphs/30/000000/home.png" alt="Dashboard Icon" title="Go to Dashboard">
-            </a>
-        </div>
-    </div>
 
     <!-- Main Content -->
     <div class="main-content">
         <h1>Create Team</h1>
 
-        <!-- Search input for SAP ID and button beside it -->
+        <!-- Search input for SAP ID -->
         <form action="searchStudent" method="post">
-            <label for="sap-id-input">Enter SAP ID</label>
+            <label for="sap-id-input">Enter SAP ID</label><br>
             <input type="text" id="sap-id-input" placeholder="Enter SAP ID" name="sapId">
             <button type="submit">Search</button>
         </form>
@@ -170,18 +164,18 @@
                     <th>Action</th> 
                 </tr>
             </thead>
-
-            <%-- this if will handle if the user sapid is not found in the database --%>
-            <%
+            <tbody>
+                <%-- this if will handle if the user sapid is not found in the database --%>
+                <%
                 if (request.getAttribute("errorMessage") != null) {
-                out.println("<p style='color:red;'>" + request.getAttribute("errorMessage") + "</p>");
+                    out.println("<p style='color:red;'>" + request.getAttribute("errorMessage") + "</p>");
                 }
-            %>
+                %>
 
-            <%-- servlet mapping required for this page to work i.e invite servlet --%>
-            <% 
+                <%-- servlet mapping required for this page to work i.e invite servlet --%>
+                <% 
                 if (request.getAttribute("name") != null) { 
-            %>
+                %>
                 <tr>
                     <td><%= request.getAttribute("name") %></td>
                     <td><%= request.getAttribute("sapid") %></td>
@@ -197,18 +191,31 @@
                         </form>
                     </td>
                 </tr>
-            <% 
+                <% 
                 } else { 
-            %>
+                %>
                 <tr>
-                    <td colspan="5">Please search.</td>
+                    <td colspan="4">Please search.</td>
                 </tr>
-            <% 
+                <% 
                 } 
-            %>
+                %>
+            </tbody>
         </table>
+    </div>
 
+    <!-- Home Icon in the right top corner -->
+    <div class="home-icon">
+        <a href="dashboard.jsp">
+            <img src="https://img.icons8.com/ios-glyphs/30/000000/home.png" alt="Dashboard Icon" title="Go to Dashboard">
+        </a>
+    </div>
+
+    <!-- Placeholder for the photograph -->
+    <div class="photo-placeholder">
+        <img src="https://via.placeholder.com/400x400" alt="Placeholder Photo">
     </div>
 
 </body>
 </html>
+

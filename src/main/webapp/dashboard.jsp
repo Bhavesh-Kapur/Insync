@@ -40,26 +40,56 @@
             box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
             height: 100vh;
             box-sizing: border-box;
+            display: flex;
+            flex-direction: column; /* Flexbox layout */
+            justify-content: space-between; /* Space between content and bottom */
         }
 
-        .sidebar h3 {
-            font-size: 24px;
-            margin-bottom: 20px;
-            text-align: center;
+        .sidebar img {
+            width: 80%;
+            display: block;
+            margin: 0 auto 20px auto;
         }
 
-        .student-details {
-            list-style: none;
-            padding: 0;
+        /* Table for student details */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed; /* Ensures table respects sidebar width */
         }
 
-        .student-details li {
-            margin-bottom: 20px;
-            font-size: 18px;
+        table td {
+            padding: 10px;
+            font-size: 16px;
+            word-wrap: break-word; /* Prevents long text from overflowing */
         }
 
-        .student-details li span {
+        table td:first-child {
             font-weight: bold;
+            width: 40%;
+            text-align: left;
+        }
+
+        table td:last-child {
+            text-align: right;
+            width: 60%;
+        }
+
+        /* Logout button */
+        .logout-button {
+            display: block;
+            padding: 10px 20px;
+            text-align: center;
+            font-size: 16px;
+            color: white;
+            background-color: var(--primary-color);
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .logout-button:hover {
+            background-color: #357ab8;
         }
 
         /* Main content */
@@ -72,6 +102,7 @@
             justify-content: space-between; /* Distribute space between boxes */
         }
 
+<<<<<<< HEAD
         .content h1 {
             font-size: 36px;
             font-weight: bold;
@@ -80,6 +111,8 @@
         }
 
         /* Team Formation box */
+=======
+>>>>>>> 3f98f21f222199976995b8612e45b7130aa769c0
         .team-box {
             background-color: white;
             padding: 20px;
@@ -151,6 +184,7 @@
     <a href="javascript:void(0);" onclick="Status();">Team Status</a>d 
     <!-- Sidebar -->
     <div class="sidebar">
+<<<<<<< HEAD
         <img src="src\main\webapp\WEB-INF\images\stulogo(1)(1).jpg">
         <ul class="student-details">
             <li><span>Name:</span>  ${sessionScope.name}</li>
@@ -158,6 +192,32 @@
             <li><span>Program:</span>  ${sessionScope.program}</li>
             <li><span>Semester:</span>  ${sessionScope.semester}</li>
         </ul>
+=======
+        <div>
+            <img src="C:\Users\DELL\OneDrive\Desktop\Insync\src\main\webapp\images\stulogo(1)(1).jpg" alt="Student Logo">
+            
+            <!-- Student details in a table -->
+            <table>
+                <tr>
+                    <td>Name:</td>
+                    <td>${sessionScope.name}</td>
+                </tr>
+                <tr>
+                    <td>SAP ID:</td>
+                    <td>${sessionScope.sapid}</td>
+                </tr>
+                <tr>
+                    <td>Program:</td>
+                    <td>${sessionScope.program}</td>
+                </tr>
+                <tr>
+                    <td>Semester:</td>
+                    <td>${sessionScope.semester}</td>
+                </tr>
+            </table>
+        </div>
+
+>>>>>>> 3f98f21f222199976995b8612e45b7130aa769c0
         <a href="logout" class="logout-button">Logout</a>
     </div>
 
@@ -166,6 +226,7 @@
         <div class="team-box">
             <a href="searchStudent.jsp">Team Formation</a>
         </div>
+<<<<<<< HEAD
         <div class="team-box">
             <a href="awaited.jsp">Team Status</a>
         </div>
@@ -187,5 +248,29 @@
         </div>
     </div>
 
+=======
+    </div>
+
+    <div class="content">
+        <div class="team-box">
+            <a href="awaited.jsp">Team Status</a>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="team-box">
+            <form action="fetchInvite" method="GET">
+                <button type="submit">Inbox</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="content2">
+        <div class="team-box">
+            <a href="details.jsp">Team Details</a>
+        </div>
+    </div>
+    
+>>>>>>> 3f98f21f222199976995b8612e45b7130aa769c0
 </body>
 </html>

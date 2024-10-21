@@ -64,16 +64,26 @@
             text-align: left;
         }
 
-        input {
+        form {
+            display: block;
             width: 50%;
+        }
+
+        label {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        input {
+            width: 80%;
             padding: 10px;
             font-size: 1rem;
             border: 2px solid var(--primary-color);
             border-radius: 12px;
             background: var(--accent-color);
             color: var(--text-color);
-            cursor: text;
-            margin-top: 10px;
+            display: inline-block;
         }
 
         button {
@@ -85,6 +95,7 @@
             cursor: pointer;
             margin-left: 10px;
             transition: all 0.3s ease;
+            display: inline-block;
         }
 
         button:hover {
@@ -132,19 +143,14 @@
     <div class="main-content">
         <h1>Create Team</h1>
 
-        <!-- Search input for SAP ID -->
+        <!-- Search input for SAP ID and button beside it -->
         <form action="searchStudent" method="post">
             <label for="sap-id-input">Enter SAP ID</label>
             <input type="text" id="sap-id-input" placeholder="Enter SAP ID" name="sapId">
-
-            <label for="name-input">OR Enter Name</label>
-            <input type="text" id="name-input" placeholder="Enter Name" name="name">
-
             <button type="submit">Search</button>
         </form>
 
-
-     <table>
+        <table>
             <caption style="text-align:left; font-weight: bolder; margin-bottom:10px">
                 Group Members
             </caption>
@@ -164,18 +170,18 @@
                     <th>Action</th> 
                 </tr>
             </thead>
-            </team>
+
             <%-- this if will handle if the user sapid is not found in the database --%>
-                 <%
+            <%
                 if (request.getAttribute("errorMessage") != null) {
                 out.println("<p style='color:red;'>" + request.getAttribute("errorMessage") + "</p>");
-                 }
-             %>
+                }
+            %>
 
-<%-- servlet mapping requriered for this page to work i.e invite servlet --%>
-        <% 
-                    if (request.getAttribute("name") != null) { 
-                %>
+            <%-- servlet mapping required for this page to work i.e invite servlet --%>
+            <% 
+                if (request.getAttribute("name") != null) { 
+            %>
                 <tr>
                     <td><%= request.getAttribute("name") %></td>
                     <td><%= request.getAttribute("sapid") %></td>
@@ -183,27 +189,26 @@
                     <td><%= request.getAttribute("semester") %></td>
                     <td>
                         <form action="inviteServlet" method="POST">     
-                        <input type="hidden" name="sapid" value="<%= request.getAttribute("sapid") %>"> 
-                        <input type="hidden" name="name" value="<%= request.getAttribute("name") %>"> 
-                        <input type="hidden" name="semester" value="<%= request.getAttribute("semester") %>"> 
-                        <input type="hidden" name="program" value="<%= request.getAttribute("program") %>"> 
-                        <button type="submit">Invite</button>
-                    </form>
-                </td>
+                            <input type="hidden" name="sapid" value="<%= request.getAttribute("sapid") %>"> 
+                            <input type="hidden" name="name" value="<%= request.getAttribute("name") %>"> 
+                            <input type="hidden" name="semester" value="<%= request.getAttribute("semester") %>"> 
+                            <input type="hidden" name="program" value="<%= request.getAttribute("program") %>"> 
+                            <button type="submit">Invite</button>
+                        </form>
+                    </td>
                 </tr>
-                <% 
-                    } else { 
-                %>
+            <% 
+                } else { 
+            %>
                 <tr>
-                    <td colspan="4">Please search.</td>
+                    <td colspan="5">Please search.</td>
                 </tr>
-                <% 
-                    } 
-                %>
+            <% 
+                } 
+            %>
+        </table>
 
     </div>
-
-
 
 </body>
 </html>

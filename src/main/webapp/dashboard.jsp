@@ -131,6 +131,18 @@
         form button:hover {
             background-color: #357abd;
         }
+        .logout-button {
+            display: block;
+            padding: 10px 20px;
+            text-align: center;
+            font-size: 16px;
+            color: white;
+            background-color: var(--primary-color);
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
 
     </style>
 </head>
@@ -154,7 +166,7 @@
             <a href="searchStudent.jsp">Team Formation</a>
         </div>
         <div class="team-box">
-            <a href="awaited.jsp">Team Status</a>
+        <a href="javascript:void(0);" onclick="Status();">Team Status</a>
         </div>
         
         
@@ -162,7 +174,7 @@
             <a href="details.jsp">Team Details</a>
         </div>
         <div class="team-box">
-            <a href="details.jsp">Inbox</a>
+    <a href="javascript:void(0);" onclick="fetchInvite();">Inbox</a>
         </div>
         
 
@@ -175,4 +187,15 @@
     </div>
 
 </body>
+<script>
+    function fetchInvite() {
+        const url = "fetchInvite";   
+        window.location.href = url;
+    }
+
+    function Status() {
+        const url = "StatusServlet";
+        window.location.href = url;
+    }
+</script>
 </html>

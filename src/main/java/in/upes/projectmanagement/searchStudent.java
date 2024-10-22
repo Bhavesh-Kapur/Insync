@@ -16,16 +16,26 @@ public class searchStudent extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String sapId = request.getParameter("sapId");
+        String searchPrms = request.getParameter("searchPrms");
 
         try {
             // Database connection
             Connection con = databaseConnection.initializeDatabase();
-            
+            PreparedStatement ps = null;
+            System.out.println(searchPrms);
             // Prepare the SQL query to search for the student by SAP ID
-            String query = "SELECT sapid, name, semester, program FROM student WHERE sapid = ?";
-            PreparedStatement ps = con.prepareStatement(query);
-            ps.setString(1, sapId);
+            if (searchPrms.trim().matches("\\d+"))  {
+                String sapId = searchPrms; 
+                String query = "SELECT sapid, name, semester, program FROM student WHERE sapid = ?";
+                ps = con.prepareStatement(query);
+                ps.setString(1, sapId);
+            }else{
+                System.out.println(searchPrms);
+                String name = searchPrms;
+                String query = "SELECT sapid, name, semester, program FROM student WHERE name = ?";
+                ps = con.prepareStatement(query);   
+                ps.setString(1, name);
+            }
             
             // Execute the query
             ResultSet rs = ps.executeQuery();
@@ -72,7 +82,7 @@ public class searchStudent extends HttpServlet {
                 RequestDispatcher dispatcher = request.getRequestDispatcher("searchStudent.jsp");
                 dispatcher.forward(request, response);
             } else {
-                request.setAttribute("errorMessage", "No student found with SAP ID: " + sapId);
+                request.setAttribute("errorMessage", "No student found with SAP ID: " + searchPrms);
             }
 
             rs.close();

@@ -126,12 +126,12 @@
         
         <form action="searchStudent" method="post">
             <label for="sap-id-input">Enter SAP ID</label><br>
-            <input type="text" id="sap-id-input" placeholder="Enter SAP ID" name="sapId">
+            <input type="text" id="sap-id-input" placeholder="Enter SAP ID" name="searchPrms">
             <button type="submit">Search by SAP ID</button>
         </form>
-        <form action="searchStudentByName" method="post">
+        <form action="searchStudent" method="post">
             <label for="name-input">Enter Student Name</label><br>
-            <input type="text" id="name-input" placeholder="Enter Student Name" name="studentName">
+            <input type="text" id="name-input" placeholder="Enter Student Name" name="searchPrms">
             <button type="submit">Search by Name</button>
         </form>
 

@@ -36,30 +36,61 @@
         .sidebar {
             background-color: var(--sidebar-bg);
             width: 300px;
-            padding: 40px 20px;
+            padding: 20px 20px; /* Reduced padding to bring content upwards */
             box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
             height: 100vh;
             box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
         }
 
-        .sidebar h3 {
-            font-size: 24px;
-            margin-bottom: 20px;
-            text-align: center;
+        .sidebar img {
+            width: 80%;
+            display: block;
+            margin: 0 auto 10px auto; /* Reduced margin-bottom */
         }
 
         .student-details {
-            list-style: none;
             padding: 0;
+            margin: 0;
+            list-style: none;
         }
 
+        /* Aligning name and output on the same line */
         .student-details li {
-            margin-bottom: 20px;
-            font-size: 18px;
+            margin-bottom: 15px; /* Slightly reduced margin to compact items */
+            font-size: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: nowrap; /* Preventing wrapping */
         }
 
-        .student-details li span {
+        .student-details span:first-child {
             font-weight: bold;
+            width: 100px; /* Fixed width for labels */
+        }
+
+        .student-details span:last-child {
+            flex-grow: 1; /* Let the output take remaining space */
+            text-align: right; /* Align outputs to the right */
+        }
+
+        .logout-button {
+            display: block;
+            padding: 10px 20px;
+            text-align: center;
+            font-size: 16px;
+            color: white;
+            background-color: var(--primary-color);
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            margin-top: auto;
+        }
+
+        .logout-button:hover {
+            background-color: #357ab8;
         }
 
         /* Main content */
@@ -67,27 +98,19 @@
             flex-grow: 1;
             padding: 50px;
             display: flex;
-            flex-wrap: wrap; /* Allow content to wrap to the next line */
-            gap: 30px; /* Increased space between boxes */
-            justify-content: space-between; /* Distribute space between boxes */
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: space-between;
         }
 
-        .content h1 {
-            font-size: 36px;
-            font-weight: bold;
-            color: var(--heading-color);
-            margin-bottom: 20px;
-        }
-
-        /* Team Formation box */
         .team-box {
             background-color: white;
             padding: 20px;
             border: 2px solid var(--primary-color);
             border-radius: 10px;
             transition: transform 0.3s, box-shadow 0.3s;
-            width: calc(33.33% - 30px); /* Ensure 3 boxes per row */
-            height: 250px; /* Make it square */
+            width: calc(33.33% - 30px);
+            height: 250px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -103,16 +126,14 @@
         .team-box a {
             text-decoration: none;
             color: var(--primary-color);
-            font-size: 20px; /* Increased font size */
+            font-size: 20px;
             font-weight: bold;
-            display: block;
         }
 
         .team-box a:hover {
             text-decoration: underline;
         }
 
-        /* Adjust inbox form button */
         form {
             margin-top: 10px;
         }
@@ -131,53 +152,34 @@
         form button:hover {
             background-color: #357abd;
         }
-        .logout-button {
-            display: block;
-            padding: 10px 20px;
-            text-align: center;
-            font-size: 16px;
-            color: white;
-            background-color: var(--primary-color);
-            border-radius: 8px;
-            text-decoration: none;
-            transition: background-color 0.3s ease;
-        }
-
-
     </style>
 </head>
 <body>
 
-    <!-- Sidebar -->
     <div class="sidebar">
         <img src="src\main\webapp\WEB-INF\images\stulogo(1)(1).jpg">
         <ul class="student-details">
-            <li><span>Name:</span>  ${sessionScope.name}</li>
-            <li><span>SAP ID:</span>  ${sessionScope.sapid}</li>
-            <li><span>Program:</span>  ${sessionScope.program}</li>
-            <li><span>Semester:</span>  ${sessionScope.semester}</li>
+            <li><span>Name:</span> <span>${sessionScope.name}</span></li>
+            <li><span>SAP ID:</span> <span>${sessionScope.sapid}</span></li>
+            <li><span>Program:</span> <span>${sessionScope.program}</span></li>
+            <li><span>Semester:</span> <span>${sessionScope.semester}</span></li>
         </ul>
         <a href="logout" class="logout-button">Logout</a>
     </div>
 
-    <!-- Main content -->
     <div class="content">
         <div class="team-box team-formation">
             <a href="searchStudent.jsp">Team Formation</a>
         </div>
         <div class="team-box">
-        <a href="javascript:void(0);" onclick="Status();">Team Status</a>
+            <a href="javascript:void(0);" onclick="Status();">Team Status</a>
         </div>
-        
-        
         <div class="team-box">
             <a href="details.jsp">Team Details</a>
         </div>
         <div class="team-box">
-    <a href="javascript:void(0);" onclick="fetchInvite();">Inbox</a>
+            <a href="javascript:void(0);" onclick="fetchInvite();">Inbox</a>
         </div>
-        
-
         <div class="team-box">
             <a href="details.jsp">Team Discussion</a>
         </div>

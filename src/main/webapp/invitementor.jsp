@@ -18,7 +18,7 @@
 
         body {
             font-family: "Poppins", sans-serif;
-            background: var(--background-gradient);
+            background: var(--secondary-color);
             display: flex;
             height: 100vh;
             margin: 0;

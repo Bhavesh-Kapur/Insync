@@ -195,7 +195,7 @@
             <a href="javascript:void(0);" onclick="Status();">Team Status</a>
         </div>
         <div class="team-box">
-            <a href="details.jsp">Team Details</a>
+            <a href="details.jsp">Project Details</a>
         </div>
         <div class="team-box">
             <a href="javascript:void(0);" onclick="fetchInvite();">Inbox</a>

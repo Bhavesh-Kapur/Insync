@@ -17,14 +17,13 @@
             --primary-color: #4a90e2;
             --secondary-color: #d6e9f8;
             --accent-color: #ffffff;
-            --background-gradient: linear-gradient(135deg, #d6e9f8, #ffffff);
             --heading-color: #0a0a0a;
             --text-color: #333333;
         }
 
         body {
             font-family: "Poppins", sans-serif;
-            background: var(--background-gradient);
+            background: linear-gradient(135deg, #d6e9f8, #ffffff);
             display: flex;
             height: 100vh;
             margin: 0;
@@ -33,7 +32,7 @@
         }
 
         .main-content {
-            width: 100%; /* Change to 100% to fill the available space */
+            width: 100%;
             padding: 50px;
             flex-grow: 1;
         }
@@ -56,6 +55,16 @@
             text-align: left;
         }
 
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--heading-color);
+        }
+
         input {
             width: 50%;
             padding: 10px;
@@ -64,7 +73,6 @@
             border-radius: 12px;
             background: var(--accent-color);
             color: var(--text-color);
-            cursor: text;
             margin-top: 10px;
         }
 
@@ -111,15 +119,20 @@
 </head>
 <body>
 
-    <!-- Main Content -->
+    
     <div class="main-content">
         <h1>Create Team</h1>
 
-        <!-- Search input for SAP ID -->
-        <form action="searchStudent" method="post">
+        
+        <form action="searchStudentBySap" method="post">
             <label for="sap-id-input">Enter SAP ID</label><br>
             <input type="text" id="sap-id-input" placeholder="Enter SAP ID" name="sapId">
-            <button type="submit">Search</button>
+            <button type="submit">Search by SAP ID</button>
+        </form>
+        <form action="searchStudentByName" method="post">
+            <label for="name-input">Enter Student Name</label><br>
+            <input type="text" id="name-input" placeholder="Enter Student Name" name="studentName">
+            <button type="submit">Search by Name</button>
         </form>
 
         <table>
@@ -131,7 +144,7 @@
                 <col style="width:20%">
                 <col style="width:25%">
                 <col style="width:20%">
-                <col style="width:10%"> <!-- Adjusted width for the Action column -->
+                <col style="width:10%"> 
             </colgroup>
 
             <thead>
@@ -174,7 +187,7 @@
                 } else { 
                 %>
                 <tr>
-                    <td colspan="5">Please search.</td> <!-- Adjusted colspan to match the number of columns -->
+                    <td colspan="5">Please search.</td>
                 </tr>
                 <% 
                 } 
@@ -183,7 +196,6 @@
         </table>
     </div>
 
-    <!-- Home Icon in the right top corner -->
     <div class="home-icon">
         <a href="dashboard.jsp">
             <img src="https://img.icons8.com/ios-glyphs/30/000000/home.png" alt="Dashboard Icon" title="Go to Dashboard">

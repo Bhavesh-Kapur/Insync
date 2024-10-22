@@ -179,10 +179,10 @@
         
 
         <div class="team-box">
-            <a href="details.jsp">Team Discussion</a>
+            <a href="">Team Discussion</a>
         </div>
         <div class="team-box">
-            <a href="details.jsp">Mentor Request</a>
+            <a href="invitementor.jsp">Mentor Request</a>
         </div>
     </div>
 

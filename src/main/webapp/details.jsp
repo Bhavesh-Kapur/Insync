@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Team</title>
+    <title>Project Details</title>
     <style>
         :root {
             --primary-color: #4a90e2;
@@ -17,67 +17,60 @@
         body {
             font-family: "Poppins", sans-serif;
             background: var(--background-gradient);
-            display: flex;
-            height: 100vh;
             margin: 0;
-            padding: 0;
+            padding: 20px;
             box-sizing: border-box;
         }
 
-        .sidebar {
-            width: 250px;
-            position: fixed;
-            height: 100%;
-            background-color: var(--accent-color);
-            padding-top: 30px;
-            border-right: 1px solid #ddd;
+        .container {
+            max-width: 70%;
+            margin: 0 auto;
         }
 
-        .sidebar .redirect-icon {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .sidebar .redirect-icon img {
+        .dashboard-icon {
+            position: absolute;
+            top: 20px;
+            right: 30px;
             width: 40px;
             cursor: pointer;
         }
 
-        .main-content {
-            margin-left: 280px;
-            padding-top: 10px;
-        }
-
-        .heading {
-            padding-bottom: 20px;
-        }
-
-        .status-section {
+        h1 {
+            font-size: 2.8rem;
+            color: var(--heading-color);
+            text-align: center;
             margin-bottom: 30px;
+            font-weight: 600;
         }
 
-        .status-section h2 {
-            margin-bottom: 10px;
-        }
-
-        .status-section div {
-            margin-top: 20px;
+        .project-details p {
+            font-size: 1.4rem;
+            line-height: 1.6;
+            margin: 15px 0;
+            font-weight: 500;
+            color: var(--text-color);
+            text-align: left;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 10px;
+            margin-top: 20px;
+            background-color: var(--accent-color);
+            box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
         }
 
         table, th, td {
             border: 1px solid #ddd;
-            padding: 8px;
+            padding: 15px;
+            font-size: 1.1rem;
         }
 
         th {
             background-color: var(--secondary-color);
-            color: var(--heading-color);
+            font-weight: bold;
+            text-align: left;
         }
 
         td {
@@ -89,66 +82,57 @@
 </head>
 <body>
 
-    <!-- Sidebar with redirect icon -->
-    <div class="sidebar">
-        <div class="redirect-icon">
-            <a href="dashboard.jsp">
-                <img src="https://img.icons8.com/ios-glyphs/30/000000/home.png" alt="Dashboard Icon" title="Go to Dashboard">
-            </a>
-        </div>
-    </div>
-   
-    <div class="main-content">
-        <div class="status-section">
-            <h2>Team Details:</h2>
+    <a href="dashboard.jsp">
+        <img src="https://img.icons8.com/ios-glyphs/30/000000/home.png" alt="Dashboard Icon" class="dashboard-icon" title="Go to Dashboard">
+    </a>
+
+    <div class="container">
+        <h1>Project Details</h1>
+
+        <div class="project-details">
+            <p><strong>Project Type:</strong> Minor</p>
+            <p><strong>Semester:</strong> 5</p>
+            <p><strong>Team Title:</strong> Insync</p>
+            <p><strong>Mentor Allocated:</strong> Sachi Chaudhary</p>
+            <p><strong>Team ID:</strong> 12</p>
         </div>
 
-        <!-- Invites Pending Section -->
-        <div class="status-section">
-            <div>Mentor Allocated : Dr. Sachi Chaudhary</div>
-        </div>
-
-        <div class="status-section">
-            <div>Project Title: Insync</div>
-            <div>Project I'd: Dev_12</div>
-        </div>
-
-        <!-- Team Members Section -->
-        <div class="status-section">
-            <h2>Team Members:</h2>
-
-            <table>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>SAP ID</th>
-                        <th>Semester</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Kashish</td>
-                        <td>500107137</td>
-                        <td>5th</td>
-                    </tr>
-                    <tr>
-                        <td>Vibhav</td>
-                        <td>50005678</td>
-                        <td>5th</td>
-                    </tr>
-                    <tr>
-                        <td>Aryan</td>
-                        <td>50009876</td>
-                        <td>5th</td>
-                    </tr>
-                    <tr>
-                        <td>Bhavesh</td>
-                        <td>50004321</td>
-                        <td>5th</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>SAP ID</th>
+                    <th>Semester</th>
+                    <th>Program</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Kashish</td>
+                    <td>500107137</td>
+                    <td>5</td>
+                    <td>B.Tech CSE DevOps</td>
+                </tr>
+                <tr>
+                    <td>Bhavesh Kapur</td>
+                    <td>500105635</td>
+                    <td>5</td>
+                    <td>B.Tech CSE DevOps</td>
+                </tr>
+                <tr>
+                    <td>Vibhav Khaneja</td>
+                    <td>500105662</td>
+                    <td>5</td>
+                    <td>B.Tech CSE DevOps</td>
+                </tr>
+                <tr>
+                    <td>Aryan Bansal</td>
+                    <td>500101700</td>
+                    <td>5</td>
+                    <td>B.Tech CSE DevOps</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
 </body>

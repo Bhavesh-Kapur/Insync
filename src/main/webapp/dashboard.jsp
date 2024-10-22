@@ -177,8 +177,9 @@
             
         
                 }
+
              .inbox{
-            background-image: url('https://static.vecteezy.com/ti/vecteur-libre/p3/5307750-icone-de-notification-par-e-mail-gratuit-vectoriel.jpg'); 
+            background-image: url('https://icon-library.com/images/inbox-icon-png/inbox-icon-png-15.jpg'); 
             background-size: cover; 
             background-position: center;
             background-repeat: no-repeat; 
@@ -193,14 +194,32 @@
             color: white;
 
                 }
-                
+                .mentor{
+            background-image: url('https://pluspng.com/img-png/png-mentor-open-2000.png'); 
+            background-size: cover; 
+            background-position: center;
+            background-repeat: no-repeat; 
+            color: white;
+                }
+                .details{
+                   
+            background-image: url('https://static.vecteezy.com/system/resources/previews/008/461/358/non_2x/team-project-filled-line-icon-linear-style-sign-for-mobile-concept-and-web-design-outline-icon-symbol-logo-illustration-graphic-free-vector.jpg'); 
+            background-size: cover; 
+            background-position: center;
+            background-repeat: no-repeat; 
+            color: white;
 
+                }
+                
+                
+                
     </style>
 </head>
 <body>
 
     <div class="sidebar">
-        <img src="src\main\webapp\WEB-INF\images\stulogo(1)(1).jpg">
+        <img src="https://seecs.nust.edu.pk/wp-content/uploads/2020/06/studentconcern-icon.png">
+        <br>
         <ul class="student-details">
             <li><span>Name:</span> <span>${sessionScope.name}</span></li>
             <li><span>SAP ID:</span> <span>${sessionScope.sapid}</span></li>
@@ -226,10 +245,10 @@
                 <a href="javascript:void(0);" onclick="Status();">Team Status</a>
             </div>
         </div>
-        <div class="team-box">
-            <a href="details.jsp"></a>
+        <div class="team-box details">
+            <a href="project_details.jsp"></a>
             <div class="a">
-                <a href="details.jsp">Project Details</a>
+                <a href="project_details.jsp">Project Details</a>
             </div>
         </div>
         <div class="team-box inbox">
@@ -244,7 +263,7 @@
                <a href="">Team Discussion</a>
             </div>
         </div>
-        <div class="team-box">
+        <div class="team-box mentor">
             <a href="invitementor.jsp"></a>
             <div class="a">
                 <a href="invitementor.jsp">Mentor Request</a>

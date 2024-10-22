@@ -33,7 +33,7 @@
         }
 
         .main-content {
-            width: 65%;
+            width: 100%; /* Change to 100% to fill the available space */
             padding: 50px;
             flex-grow: 1;
         }
@@ -107,28 +107,6 @@
         tfoot {
             font-weight: bold;
         }
-
-        /* Placeholder for the photograph */
-        .photo-placeholder {
-            width: 30%;
-            background-color: white; /* Ensure it's plain white */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 12px;
-            height: 50%; /* Reduced height */
-            margin-top: 60px; /* Adjust this value to start the image lower */
-            margin-left: auto; /* Align to the right */
-            margin-right: 20px; /* Space from the right edge of the page */
-        }
-
-        .photo-placeholder img {
-            max-width: 100%;
-            max-height: 100%;
-            border-radius: 12px;
-            border: none; /* Remove any borders */
-        }
-
     </style>
 </head>
 <body>
@@ -153,6 +131,7 @@
                 <col style="width:20%">
                 <col style="width:25%">
                 <col style="width:20%">
+                <col style="width:10%"> <!-- Adjusted width for the Action column -->
             </colgroup>
 
             <thead>
@@ -195,7 +174,7 @@
                 } else { 
                 %>
                 <tr>
-                    <td colspan="4">Please search.</td>
+                    <td colspan="5">Please search.</td> <!-- Adjusted colspan to match the number of columns -->
                 </tr>
                 <% 
                 } 
@@ -209,11 +188,6 @@
         <a href="dashboard.jsp">
             <img src="https://img.icons8.com/ios-glyphs/30/000000/home.png" alt="Dashboard Icon" title="Go to Dashboard">
         </a>
-    </div>
-
-    <!-- Placeholder for the photograph -->
-    <div class="photo-placeholder">
-        <img src="https://via.placeholder.com/400x400" alt="Placeholder Photo">
     </div>
 
 </body>

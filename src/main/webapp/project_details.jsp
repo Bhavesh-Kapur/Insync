@@ -22,17 +22,15 @@
             box-sizing: border-box;
         }
 
-        /* Container for centering content */
         .container {
-            max-width: 70%; /* 60-70% width */
-            margin: 0 auto;  /* Center content horizontally */
+            max-width: 70%;
+            margin: 0 auto;
         }
 
-        /* Dashboard Icon CSS */
         .dashboard-icon {
             position: absolute;
             top: 20px;
-            right: 20px;
+            right: 30px;
             width: 40px;
             cursor: pointer;
         }
@@ -45,7 +43,6 @@
             font-weight: 600;
         }
 
-        /* Style for Project Details without white box */
         .project-details p {
             font-size: 1.4rem;
             line-height: 1.6;
@@ -81,7 +78,6 @@
             color: var(--text-color);
         }
 
-        /* Add extra space between sections */
         .status-section {
             margin-bottom: 30px;
         }
@@ -90,20 +86,16 @@
 </head>
 <body>
 
-    <!-- Dashboard redirect icon at the top-right corner -->
     <a href="dashboard.jsp">
         <img src="https://img.icons8.com/ios-glyphs/30/000000/home.png" alt="Dashboard Icon" class="dashboard-icon" title="Go to Dashboard">
     </a>
 
     <div class="container">
-        <!-- Centered Title -->
         <h1>Project Details</h1>
 
-        <!-- Display Project Information (without the white div) -->
         <div class="project-details">
             <p><strong>Project Type:</strong> 
-                <% 
-                // Logic for Project Type based on semester
+                <%
                 int semester = Integer.parseInt(request.getAttribute("semester").toString());
                 String projectType = (semester == 5 || semester == 6) ? "Minor" : "Major";
                 out.print(projectType); 
@@ -115,7 +107,6 @@
             <p><strong>Team ID:</strong> <%= request.getAttribute("teamID") %></p>
         </div>
 
-        <!-- Team Members Table -->
         <table>
             <thead>
                 <tr>
@@ -127,8 +118,7 @@
                 </tr>
             </thead>
             <tbody>
-                <%-- Loop through student list dynamically --%>
-                <% 
+                <%
                 List<Student> students = (List<Student>) request.getAttribute("students");
                 for (Student student : students) {
                 %>
@@ -139,8 +129,8 @@
                     <td><%= student.getProgram() %></td>
                     <td><%= student.getSpecialization() %></td>
                 </tr>
-                <% 
-                } 
+                <%
+                }
                 %>
             </tbody>
         </table>

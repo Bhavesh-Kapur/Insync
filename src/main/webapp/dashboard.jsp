@@ -223,7 +223,7 @@
         <div class="team-box status">
             <a href="javascript:void(0);" onclick="Status();"></a>
             <div class="a">
-                <a href="">Team Status</a>
+                <a href="javascript:void(0);" onclick="Status();">Team Status</a>
             </div>
         </div>
         <div class="team-box">
@@ -235,7 +235,7 @@
         <div class="team-box inbox">
             <a href="javascript:void(0);" onclick="fetchInvite();"></a>
             <div class="a">
-                <a href="">Inbox</a>
+                <a href="javascript:void(0);" onclick="fetchInvite();">Inbox</a>
             </div>
         </div>
         <div class="team-box discussion">

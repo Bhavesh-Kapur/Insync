@@ -45,21 +45,14 @@
             font-weight: 600;
         }
 
-        .project-details {
+        /* Style for Project Details without white box */
+        .project-details p {
             font-size: 1.4rem;
             line-height: 1.6;
-            margin-bottom: 40px;
-            text-align: left;
-            padding: 10px 20px;
-            background-color: var(--accent-color);
-            box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-        }
-
-        .project-details p {
             margin: 15px 0;
             font-weight: 500;
             color: var(--text-color);
+            text-align: left;
         }
 
         table {
@@ -106,7 +99,7 @@
         <!-- Centered Title -->
         <h1>Project Details</h1>
 
-        <!-- Display Project Information -->
+        <!-- Display Project Information (without the white div) -->
         <div class="project-details">
             <p><strong>Project Type:</strong> 
                 <% 

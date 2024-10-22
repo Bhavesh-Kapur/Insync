@@ -7,6 +7,7 @@
     // int sapId = (int) session.getAttribute("sapid");
 %>
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -165,6 +166,35 @@
             margin-top: 300px;
             color: #0a0a0a;
         }
+        .status{
+            
+            background-image: url('https://cdn-icons-png.flaticon.com/512/8767/8767583.png '); 
+            background-size: cover; 
+            background-position: center;
+            background-repeat: no-repeat; 
+            color: white; 
+            background-size: 260px 220px;
+            
+        
+                }
+             .inbox{
+            background-image: url('https://static.vecteezy.com/ti/vecteur-libre/p3/5307750-icone-de-notification-par-e-mail-gratuit-vectoriel.jpg'); 
+            background-size: cover; 
+            background-position: center;
+            background-repeat: no-repeat; 
+            color: white;
+
+                }
+                .discussion{
+            background-image: url('https://static.vecteezy.com/system/resources/previews/004/413/153/large_2x/outlined-icon-of-group-of-people-doing-discussion-suitable-for-design-element-of-teamwork-discussion-social-networking-and-business-forum-free-vector.jpg'); 
+            background-size: cover; 
+            background-position: center;
+            background-repeat: no-repeat; 
+            color: white;
+
+                }
+                
+
     </style>
 </head>
 <body>
@@ -185,26 +215,40 @@
             <div>
             <a href="searchStudent.jsp"></a>
             <div class="a">
-                
-                <a href="searchStudent.jsp">Team Formation</a>
+                 <a href="searchStudent.jsp">Team Formation</a>
             </div>
             </div>
         </div>
         
-        <div class="team-box">
-            <a href="javascript:void(0);" onclick="Status();">Team Status</a>
+        <div class="team-box status">
+            <a href="javascript:void(0);" onclick="Status();"></a>
+            <div class="a">
+                <a href="">Team Status</a>
+            </div>
         </div>
         <div class="team-box">
-            <a href="details.jsp">Project Details</a>
+            <a href="details.jsp"></a>
+            <div class="a">
+                <a href="details.jsp">Project Details</a>
+            </div>
+        </div>
+        <div class="team-box inbox">
+            <a href="javascript:void(0);" onclick="fetchInvite();"></a>
+            <div class="a">
+                <a href="">Inbox</a>
+            </div>
+        </div>
+        <div class="team-box discussion">
+            <a href=""></a>
+            <div class="a">
+               <a href="">Team Discussion</a>
+            </div>
         </div>
         <div class="team-box">
-            <a href="javascript:void(0);" onclick="fetchInvite();">Inbox</a>
-        </div>
-        <div class="team-box">
-            <a href="">Team Discussion</a>
-        </div>
-        <div class="team-box">
-            <a href="invitementor.jsp">Mentor Request</a>
+            <a href="invitementor.jsp"></a>
+            <div class="a">
+                <a href="invitementor.jsp">Mentor Request</a>
+            </div>
         </div>
     </div>
 

@@ -195,7 +195,7 @@
 
                 }
                 .mentor{
-            background-image: url('https://pluspng.com/img-png/png-mentor-open-2000.png'); 
+            background-image: url('src\main\webapp\mentor.jpg'); 
             background-size: cover; 
             background-position: center;
             background-repeat: no-repeat; 

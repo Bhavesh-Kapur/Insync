@@ -124,7 +124,7 @@
         <h1>Create Team</h1>
 
         
-        <form action="searchStudentBySap" method="post">
+        <form action="searchStudent" method="post">
             <label for="sap-id-input">Enter SAP ID</label><br>
             <input type="text" id="sap-id-input" placeholder="Enter SAP ID" name="sapId">
             <button type="submit">Search by SAP ID</button>

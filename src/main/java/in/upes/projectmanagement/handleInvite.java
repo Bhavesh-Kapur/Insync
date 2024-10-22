@@ -135,6 +135,8 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -170,16 +172,28 @@ public class handleInvite extends HttpServlet {
                 System.out.println(sapId);
                 System.out.println(invitedBy);
 
+                query = "SELECT sapid from student where name = ?";
+                PreparedStatement stmt1 = con.prepareStatement(query);
+                stmt1.setString(1, invitedBy);
+                ResultSet rs1 = stmt1.executeQuery();
+            int sapBy = 0;
+                if (rs1.next()) { // Check if there is a result
+                    sapBy = rs1.getInt("sapid");
+                    System.out.println(sapBy);
+                } else {
+                    System.out.println("No student found with the name: " + invitedBy);
+                }
+                System.out.println(sapBy);
                 // Ensure the update was successful before proceeding
                 if (rowsUpdated > 0) {
                     // First, get the team_id associated with the invitedBy user
                     String getTeamQuery = "SELECT team_id FROM team WHERE sapid1 = ? OR sapid2 = ? OR sapid3 = ? OR sapid4 = ?";
                     
                     PreparedStatement teamStmt = con.prepareStatement(getTeamQuery);
-                    teamStmt.setString(1, invitedBy);
-                    teamStmt.setString(2, invitedBy);
-                    teamStmt.setString(3, invitedBy);
-                    teamStmt.setString(4, invitedBy);
+                    teamStmt.setInt(1, sapBy);
+                    teamStmt.setInt(2, sapBy);
+                    teamStmt.setInt(3, sapBy);
+                    teamStmt.setInt(4, sapBy);
                     
                     ResultSet rs = teamStmt.executeQuery();
                 
@@ -220,6 +234,25 @@ public class handleInvite extends HttpServlet {
                                 }
                         }
                         }
+                        createProject(con, teamId, 5, sapBy);
+                    }else {
+                        // No team exists, create a new team
+                        int teamId;
+                        String createTeamQuery = "INSERT INTO team (sapid1, sapid2) VALUES (?, ?)";
+                        try (PreparedStatement createTeamStmt = con.prepareStatement(createTeamQuery, Statement.RETURN_GENERATED_KEYS)) {
+                            createTeamStmt.setInt(1, sapBy); // SAP ID of the inviter
+                            createTeamStmt.setInt(2, sapId); // SAP ID of the invited person
+                            createTeamStmt.executeUpdate();
+                
+                            // Optionally, retrieve the generated team ID if needed
+                            ResultSet generatedKeys = createTeamStmt.getGeneratedKeys();
+                            if (generatedKeys.next()) {
+                                 teamId  = generatedKeys.getInt(1);
+                                System.out.println("New team created with ID: " + teamId);
+                                createProject(con, teamId, 5, sapBy);
+                            }
+                            System.out.println("Invited person added to the newly created team.");
+                        }
                     }
                 }
             } else {
@@ -244,4 +277,22 @@ public class handleInvite extends HttpServlet {
             }
         }
     }
+    private void createProject(Connection con, int teamId, int semester, int professorId) throws Exception {
+        String createProjectQuery = "INSERT INTO project (team_id, project_details, semester, profid) VALUES (?, ?, ?, ?)";
+        try (PreparedStatement projectStmt = con.prepareStatement(createProjectQuery)) {
+            projectStmt.setInt(1, teamId); // team_id
+            projectStmt.setString(2, "Project Title"); // Replace with actual project details
+            projectStmt.setInt(3, semester); // Semester
+            projectStmt.setInt(4, professorId); // Professor ID
+            
+            projectStmt.executeUpdate(); // Execute the project insertion
+            System.out.println("Project created for team ID: " + teamId);
+        }
 }
+}
+
+
+
+
+
+

@@ -6,6 +6,7 @@
     }
     // int sapId = (int) session.getAttribute("sapid");
 %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -133,7 +134,15 @@
         .team-box a:hover {
             text-decoration: underline;
         }
+        .team-formation{
+            
+    background-image: url('https://www.shutterstock.com/image-vector/hand-charity-foundation-logo-260nw-774421195.jpg'); /* Add the image path */
+    background-size: cover; /* Scale the background to cover the entire box */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    color: white; /* Optional: Change text color for better contrast */
 
+        }
         form {
             margin-top: 10px;
         }
@@ -152,6 +161,10 @@
         form button:hover {
             background-color: #357abd;
         }
+        .a{
+            margin-top: 300px;
+            color: #0a0a0a;
+        }
     </style>
 </head>
 <body>
@@ -169,8 +182,15 @@
 
     <div class="content">
         <div class="team-box team-formation">
-            <a href="searchStudent.jsp">Team Formation</a>
+            <div>
+            <a href="searchStudent.jsp"></a>
+            <div class="a">
+                
+                <a href="searchStudent.jsp">Team Formation</a>
+            </div>
+            </div>
         </div>
+        
         <div class="team-box">
             <a href="javascript:void(0);" onclick="Status();">Team Status</a>
         </div>

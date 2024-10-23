@@ -60,7 +60,7 @@ public class inviteServlet extends HttpServlet {
                 // sendEmailInvite(name, sapid);
                 
                 //redirect page requried frontend request
-                // response.sendRedirect("output.jsp?invite=success");
+                response.sendRedirect("searchStudent.jsp?invite=success=1");
             } else {
                 System.out.println("Failed to add invitation.");
                 response.sendRedirect("output.jsp?invite=failure");

@@ -164,6 +164,20 @@
                 }
                 %>
 
+                <% if (request.getParameter("success") != null) { %>
+         <div id="errorBox" class="error">
+            invite sent successfully.
+        </div>
+        <style>
+            #errorBox {
+                animation: fadeOut 3s forwards;
+            }
+        </style>
+        <div id="errorBox" class=error <%= request.getParameter("success") != null ? "" : "hidden" %>">
+        Invite sent successfully.
+    </div>  
+    <% } %>
+
                 <%-- servlet mapping required for this page to work i.e invite servlet --%>
                 <% 
                 if (request.getAttribute("name") != null) { 

@@ -1,3 +1,5 @@
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="in.upes.projectmanagement.TeamMember" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -81,7 +83,6 @@
         .status-section {
             margin-bottom: 30px;
         }
-
     </style>
 </head>
 <body>
@@ -96,15 +97,19 @@
         <div class="project-details">
             <p><strong>Project Type:</strong> 
                 <%
-                int semester = Integer.parseInt(request.getAttribute("semester").toString());
-                String projectType = (semester == 5 || semester == 6) ? "Minor" : "Major";
-                out.print(projectType); 
+                ArrayList<TeamMember> teamMembers = (ArrayList<TeamMember>) request.getAttribute("teamMembers");
+                String projectType = "N/A";
+                if (teamMembers != null && !teamMembers.isEmpty()) {
+                    int semester = teamMembers.get(0).getSemester();
+                    projectType = (semester == 5 || semester == 6) ? "Minor" : "Major";
+                }
+                out.print(projectType);
                 %>
             </p>
-            <p><strong>Semester:</strong> <%= request.getAttribute("semester") %></p>
-            <p><strong>Team Title:</strong> <%= request.getAttribute("teamTitle") %></p>
-            <p><strong>Mentor Allocated:</strong> <%= request.getAttribute("mentor") %></p>
-            <p><strong>Team ID:</strong> <%= request.getAttribute("teamID") %></p>
+            <p><strong>Semester:</strong> <%= teamMembers != null && !teamMembers.isEmpty() ? teamMembers.get(0).getSemester() : "N/A" %></p>
+            <p><strong>Team Title:</strong> <%= request.getAttribute("teamName") %></p>
+            <p><strong>Mentor Allocated:</strong> Dr. Sachi Chaudhary</p>
+            <p><strong>Team ID:</strong> <%= request.getAttribute("teamId") %></p>
         </div>
 
         <table>
@@ -114,22 +119,21 @@
                     <th>SAP ID</th>
                     <th>Semester</th>
                     <th>Program</th>
-                    <th>Specialization</th>
                 </tr>
             </thead>
             <tbody>
                 <%
-                List<Student> students = (List<Student>) request.getAttribute("students");
-                for (Student student : students) {
+                if (teamMembers != null && !teamMembers.isEmpty()) {
+                    for (TeamMember member : teamMembers) {
                 %>
                 <tr>
-                    <td><%= student.getName() %></td>
-                    <td><%= student.getSapId() %></td>
-                    <td><%= student.getSemester() %></td>
-                    <td><%= student.getProgram() %></td>
-                    <td><%= student.getSpecialization() %></td>
+                    <td><%= member.getName() %></td>
+                    <td><%= member.getSapId() %></td> <!-- Use getSapId() here -->
+                    <td><%= member.getSemester() %></td>
+                    <td><%= member.getProgram() %></td>
                 </tr>
                 <%
+                    }
                 }
                 %>
             </tbody>

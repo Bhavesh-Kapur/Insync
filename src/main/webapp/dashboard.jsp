@@ -248,7 +248,7 @@
         <div class="team-box details">
             <a href="project_details.jsp"></a>
             <div class="a">
-                <a href="project_details.jsp">Project Details</a>
+            <a href="javascript:void(0);" onclick="projDetails();">Project Details</a>
             </div>
         </div>
         <div class="team-box inbox">
@@ -278,6 +278,10 @@
         window.location.href = url;
     }
 
+    function projDetails() {
+        const url = "ProjDetails";   
+        window.location.href = url;
+    }
     function Status() {
         const url = "StatusServlet";
         window.location.href = url;

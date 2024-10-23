@@ -40,6 +40,7 @@ CREATE TABLE `faculty` (
 
 LOCK TABLES `faculty` WRITE;
 /*!40000 ALTER TABLE `faculty` DISABLE KEYS */;
+INSERT INTO `faculty` VALUES (101,'Dr. John Doe',1,0,1,0,1),(102,'Prof. Jane Smith',0,1,0,1,0),(103,'Dr. Emily Carter',1,1,0,0,0),(104,'Prof. Michael Brown',0,0,1,1,1),(105,'Dr. Susan Green',1,0,0,0,1);
 /*!40000 ALTER TABLE `faculty` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -60,7 +61,7 @@ CREATE TABLE `invites` (
   `invitedBy` varchar(100) DEFAULT NULL,
   `inviteDate` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`inviteId`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -69,7 +70,7 @@ CREATE TABLE `invites` (
 
 LOCK TABLES `invites` WRITE;
 /*!40000 ALTER TABLE `invites` DISABLE KEYS */;
-INSERT INTO `invites` VALUES (1,12345,'Bhavesh',5,'Computer Science DevOps','Accepted','John Doe','2024-10-05 02:47:46'),(2,123456,'John Doe',5,'Computer Science','Rejected','Bhavesh','2024-10-05 08:22:58');
+INSERT INTO `invites` VALUES (27,123456,'John Doe',5,'Computer Science','Accepted','Bhavesh','2024-10-22 18:36:38'),(28,123456,'John Doe',5,'Computer Science','Accepted','Bhavesh','2024-10-22 18:43:21'),(29,123456,'John Doe',5,'Computer Science','Accepted','Bhavesh','2024-10-22 18:47:24'),(30,123456,'John Doe',5,'Computer Science','Accepted','Bhavesh','2024-10-22 19:04:22'),(31,12345,'Bhavesh',5,'Computer Science DevOps','Accepted','John Doe','2024-10-22 19:08:25'),(32,123456,'John Doe',5,'Computer Science','Accepted','Bhavesh','2024-10-23 02:22:43'),(33,123456,'John Doe',5,'Computer Science','Accepted','Bhavesh','2024-10-23 02:32:24'),(34,500061772,'AMAN GUPTA',5,'Devops','Accepted','ANUKRUTI MATHUR','2024-10-23 03:18:19'),(35,500061736,'ANKUR SAINI',5,'Devops','Accepted','AMAN GUPTA','2024-10-23 03:22:34');
 /*!40000 ALTER TABLE `invites` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -81,17 +82,17 @@ DROP TABLE IF EXISTS `project`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `project` (
-  `project_id` int NOT NULL,
+  `project_id` int NOT NULL AUTO_INCREMENT,
   `team_id` int DEFAULT NULL,
   `project_details` varchar(255) DEFAULT NULL,
   `semester` int DEFAULT NULL,
   `profid` int DEFAULT NULL,
   PRIMARY KEY (`project_id`),
-  KEY `team_id` (`team_id`),
   KEY `profid` (`profid`),
+  KEY `project_ibfk_1` (`team_id`),
   CONSTRAINT `project_ibfk_1` FOREIGN KEY (`team_id`) REFERENCES `team` (`team_id`),
   CONSTRAINT `project_ibfk_2` FOREIGN KEY (`profid`) REFERENCES `faculty` (`profid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -100,6 +101,7 @@ CREATE TABLE `project` (
 
 LOCK TABLES `project` WRITE;
 /*!40000 ALTER TABLE `project` DISABLE KEYS */;
+INSERT INTO `project` VALUES (2,6,'Project Title',5,101),(3,7,'Project Title',5,101),(4,7,'Project Title',5,101);
 /*!40000 ALTER TABLE `project` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -138,7 +140,7 @@ DROP TABLE IF EXISTS `team`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `team` (
-  `team_id` int NOT NULL,
+  `team_id` int NOT NULL AUTO_INCREMENT,
   `team_name` varchar(50) DEFAULT NULL,
   `sapid1` int DEFAULT NULL,
   `sapid2` int DEFAULT NULL,
@@ -153,7 +155,7 @@ CREATE TABLE `team` (
   CONSTRAINT `team_ibfk_2` FOREIGN KEY (`sapid2`) REFERENCES `student` (`sapid`),
   CONSTRAINT `team_ibfk_3` FOREIGN KEY (`sapid3`) REFERENCES `student` (`sapid`),
   CONSTRAINT `team_ibfk_4` FOREIGN KEY (`sapid4`) REFERENCES `student` (`sapid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -162,8 +164,27 @@ CREATE TABLE `team` (
 
 LOCK TABLES `team` WRITE;
 /*!40000 ALTER TABLE `team` DISABLE KEYS */;
+INSERT INTO `team` VALUES (6,NULL,12345,123456,NULL,NULL),(7,'Team 0',500063008,500061772,500061736,NULL);
 /*!40000 ALTER TABLE `team` ENABLE KEYS */;
 UNLOCK TABLES;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb3 */ ;
+/*!50003 SET character_set_results = utf8mb3 */ ;
+/*!50003 SET collation_connection  = utf8mb3_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `before_insert_team` BEFORE INSERT ON `team` FOR EACH ROW BEGIN
+    
+    SET NEW.team_name = CONCAT('Team ', NEW.team_id);
+END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -174,4 +195,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-10-20 22:05:18
+-- Dump completed on 2024-10-23  8:53:48

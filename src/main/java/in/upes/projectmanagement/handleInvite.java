@@ -234,7 +234,7 @@ public class handleInvite extends HttpServlet {
                                 }
                         }
                         }
-                        createProject(con, teamId, 5, sapBy);
+                        createProject(con, teamId, 5, 101);
                     }else {
                         // No team exists, create a new team
                         int teamId;
@@ -249,7 +249,7 @@ public class handleInvite extends HttpServlet {
                             if (generatedKeys.next()) {
                                  teamId  = generatedKeys.getInt(1);
                                 System.out.println("New team created with ID: " + teamId);
-                                createProject(con, teamId, 5, sapBy);
+                                createProject(con, teamId, 5, 101);
                             }
                             System.out.println("Invited person added to the newly created team.");
                         }

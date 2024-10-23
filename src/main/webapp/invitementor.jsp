@@ -13,7 +13,7 @@
             --heading-color: #0a0a0a;
             --text-color: #333333;
             --box-shadow: rgba(31, 38, 135, 0.2);
-            --close-color: #f44336; /* Red color for close button */
+            --close-color: #f44336;
         }
 
         body {
@@ -53,7 +53,7 @@
         h1 {
             font-size: 3rem;
             color: var(--heading-color);
-            margin-bottom: 30px; /* Increased bottom margin for spacing */
+            margin-bottom: 30px; 
         }
 
         input {
@@ -69,7 +69,7 @@
         }
 
         button {
-            padding: 12px 20px; /* Increased padding for better visibility */
+            padding: 12px 20px; 
             border: none;
             border-radius: 12px;
             background: var(--primary-color);
@@ -77,14 +77,12 @@
             cursor: pointer;
             margin-left: 10px;
             transition: all 0.3s ease;
-            font-size: 1rem; /* Increased font size */
+            font-size: 1rem; 
         }
 
         button:hover {
             background: #3b7cd3;
         }
-
-        /* Dialog Box Styling */
         .dialog-box {
             position: fixed;
             top: 50%;
@@ -97,7 +95,7 @@
             border-radius: 20px;
             padding: 20px;
             display: none;
-            text-align: center; /* Center text in the dialog box */
+            text-align: center; 
         }
 
         .dialog-box.active {
@@ -105,35 +103,35 @@
         }
 
         .dialog-box h2 {
-            font-size: 2.5rem; /* Increased heading size */
-            margin: 10px 0; /* Adjusted margin for spacing */
+            font-size: 2.5rem; 
+            margin: 10px 0; 
         }
 
         .dialog-box table {
-            width: 100%; /* Full width for table */
-            margin: 20px 0; /* Margin around the table */
-            border-collapse: collapse; /* Remove space between cells */
+            width: 100%;
+            margin: 20px 0; 
+            border-collapse: collapse; 
         }
 
         .dialog-box th, .dialog-box td {
-            padding: 10px; /* Padding inside cells */
-            text-align: left; /* Align text to the left */
-            font-size: 1.2rem; /* Font size for table */
+            padding: 10px; 
+            text-align: left;
+            font-size: 1.2rem; 
         }
 
         .dialog-box th {
-            font-weight: bold; /* Bold header text */
+            font-weight: bold; 
         }
 
         .dialog-buttons {
             display: flex;
-            justify-content: center; /* Center buttons */
-            margin-top: 20px; /* Add space above buttons */
+            justify-content: center; 
+            margin-top: 20px;
         }
 
         .close-btn {
-            background: var(--close-color); /* Set color for close button */
-            margin-left: 10px; /* Add space between buttons */
+            background: var(--close-color); 
+            margin-left: 10px; 
         }
     </style>
 </head>
@@ -190,7 +188,6 @@
 
     <script>
         function searchMentor() {
-            // Simulate a search and show the dialog if a mentor is found
             document.getElementById('mentorDialog').classList.add('active');
         }
 
@@ -200,7 +197,7 @@
 
         function inviteMentor() {
             alert("Mentor Invited!");
-            closeDialog(); // Close dialog after inviting
+            closeDialog(); 
         }
     </script>
 

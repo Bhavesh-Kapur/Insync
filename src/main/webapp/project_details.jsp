@@ -128,7 +128,7 @@
                 %>
                 <tr>
                     <td><%= member.getName() %></td>
-                    <td><%= member.getSapId() %></td> <!-- Use getSapId() here -->
+                    <td><%= member.getSapId() %></td>
                     <td><%= member.getSemester() %></td>
                     <td><%= member.getProgram() %></td>
                 </tr>

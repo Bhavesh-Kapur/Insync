@@ -178,7 +178,7 @@
                 }
 
              .inbox{
-            background-image: url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fpngtree.com%2Fso%2Finbox&psig=AOvVaw3Ib3ZwdUBvp_1F81D9d8s-&ust=1729743466922000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCKiW4N3So4kDFQAAAAAdAAAAABAL'); 
+            background-image: url('https://img.freepik.com/free-psd/phone-icon-design_23-2151311652.jpg?semt=ais_hybrid'); 
             background-size: cover; 
             background-position: center;
             background-repeat: no-repeat; 

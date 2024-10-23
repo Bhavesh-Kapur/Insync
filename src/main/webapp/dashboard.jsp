@@ -195,7 +195,7 @@
 
                 }
                 .mentor{
-            background-image: url('src\main\webapp\mentor.jpg'); 
+            background-image: url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fstock.adobe.com%2Fsearch%3Fk%3Dmentoring%2Blogo&psig=AOvVaw2REyhV3UGJZCTeC1vY4b28&ust=1729742539560000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCIjCpZ7Po4kDFQAAAAAdAAAAABAE'); 
             background-size: cover; 
             background-position: center;
             background-repeat: no-repeat; 

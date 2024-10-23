@@ -38,7 +38,7 @@
         .sidebar {
             background-color: var(--sidebar-bg);
             width: 300px;
-            padding: 20px 20px; /* Reduced padding to bring content upwards */
+            padding: 20px 20px;
             box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
             height: 100vh;
             box-sizing: border-box;
@@ -49,7 +49,7 @@
         .sidebar img {
             width: 80%;
             display: block;
-            margin: 0 auto 10px auto; /* Reduced margin-bottom */
+            margin: 0 auto 10px auto;
         }
 
         .student-details {
@@ -58,24 +58,23 @@
             list-style: none;
         }
 
-        /* Aligning name and output on the same line */
         .student-details li {
-            margin-bottom: 15px; /* Slightly reduced margin to compact items */
+            margin-bottom: 15px;
             font-size: 16px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: nowrap; /* Preventing wrapping */
+            flex-wrap: nowrap;
         }
 
         .student-details span:first-child {
             font-weight: bold;
-            width: 100px; /* Fixed width for labels */
+            width: 100px;
         }
 
         .student-details span:last-child {
-            flex-grow: 1; /* Let the output take remaining space */
-            text-align: right; /* Align outputs to the right */
+            flex-grow: 1;
+            text-align: right;
         }
 
         .logout-button {
@@ -137,11 +136,11 @@
         }
         .team-formation{
             
-    background-image: url('https://www.shutterstock.com/image-vector/hand-charity-foundation-logo-260nw-774421195.jpg'); /* Add the image path */
-    background-size: cover; /* Scale the background to cover the entire box */
-    background-position: center; /* Center the background image */
-    background-repeat: no-repeat; /* Prevent the image from repeating */
-    color: white; /* Optional: Change text color for better contrast */
+    background-image: url('https://www.shutterstock.com/image-vector/hand-charity-foundation-logo-260nw-774421195.jpg'); 
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    color: white; 
 
         }
         form {

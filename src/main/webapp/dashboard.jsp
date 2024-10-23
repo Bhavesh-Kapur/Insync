@@ -179,7 +179,7 @@
                 }
 
              .inbox{
-            background-image: url('https://icon-library.com/images/inbox-icon-png/inbox-icon-png-15.jpg'); 
+            background-image: url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fpngtree.com%2Fso%2Finbox&psig=AOvVaw3Ib3ZwdUBvp_1F81D9d8s-&ust=1729743466922000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCKiW4N3So4kDFQAAAAAdAAAAABAL'); 
             background-size: cover; 
             background-position: center;
             background-repeat: no-repeat; 
@@ -194,8 +194,8 @@
             color: white;
 
                 }
-                .mentor{
-            background-image: url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fstock.adobe.com%2Fsearch%3Fk%3Dmentoring%2Blogo&psig=AOvVaw2REyhV3UGJZCTeC1vY4b28&ust=1729742539560000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCIjCpZ7Po4kDFQAAAAAdAAAAABAE'); 
+            .mentor{
+            background-image: url('https://t4.ftcdn.net/jpg/02/32/04/07/360_F_232040778_iqG7xFEPDQ9c3yhhgviSIX8jBHNXMgau.jpg'); 
             background-size: cover; 
             background-position: center;
             background-repeat: no-repeat; 

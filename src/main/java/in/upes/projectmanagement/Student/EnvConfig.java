@@ -1,10 +1,10 @@
-package in.upes.projectmanagement;
+package in.upes.projectmanagement.Student;
 
 import io.github.cdimascio.dotenv.Dotenv;
 
 public class EnvConfig {
     private static final Dotenv dotenv = Dotenv.configure()
-                                   .directory("C:\\Users\\DELL\\OneDrive\\Desktop\\Insync\\.env") // Specify the correct path
+                                   .directory("/Users/bhavesh/Documents/GitHub/Insync") // Specify the correct path
                                    .load();
 
     public static String get(String key) {

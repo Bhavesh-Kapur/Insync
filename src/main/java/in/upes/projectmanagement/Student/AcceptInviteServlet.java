@@ -1,4 +1,4 @@
-package in.upes.projectmanagement;
+package in.upes.projectmanagement.Student;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -11,23 +11,23 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-
-public class DeclineInviteServlet extends HttpServlet {
+public class AcceptInviteServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         String inviteeSapid = (String) session.getAttribute("sapid"); // logged in user 
         int sapid = Integer.parseInt(inviteeSapid);
-        String inviterName = request.getParameter("inviter_name"); // Inviter// Inviter's name
+        String inviterName = request.getParameter("inviter_name"); // Inviter
 
         Connection connection = null;
         try {
             Connection con = databaseConnection.initializeDatabase();
-            String query = "UPDATE invites SET inviteStatus = 'Declined' WHERE sapid = ? AND invitedBy = ?";
+
+            String query = "UPDATE invites SET inviteStatus = 'Accepted' WHERE sapid = ? AND invitedBy = ?";
             PreparedStatement stmt = con.prepareStatement(query);
             stmt.setInt(1, sapid);
             stmt.setString(2, inviterName);
             stmt.executeUpdate();
-            response.sendRedirect("");    //figure out the redirection for the page when the invite is declined 
+            response.sendRedirect("confirmation.jsp");
 
         } catch (Exception e) {
             e.printStackTrace();

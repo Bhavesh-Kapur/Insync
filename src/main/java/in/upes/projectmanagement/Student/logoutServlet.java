@@ -1,4 +1,4 @@
-package in.upes.projectmanagement;
+package in.upes.projectmanagement.Student;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;

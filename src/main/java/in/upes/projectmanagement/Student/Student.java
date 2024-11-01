@@ -1,4 +1,4 @@
-package in.upes.projectmanagement;
+package in.upes.projectmanagement.Student;
 
 public class Student {
     private String sapid;

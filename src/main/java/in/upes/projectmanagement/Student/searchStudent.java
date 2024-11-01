@@ -1,4 +1,4 @@
-package in.upes.projectmanagement;
+package in.upes.projectmanagement.Student;
 
 import java.io.IOException;
 import java.sql.Connection;

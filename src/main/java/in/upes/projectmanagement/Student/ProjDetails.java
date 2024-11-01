@@ -1,11 +1,12 @@
-package in.upes.projectmanagement;
+package in.upes.projectmanagement.Student;
 
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import in.upes.projectmanagement.TeamMember;
+
+import in.upes.projectmanagement.Student.TeamMember;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;

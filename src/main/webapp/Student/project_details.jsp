@@ -1,5 +1,5 @@
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="in.upes.projectmanagement.TeamMember" %>
+<%@ page import="in.upes.projectmanagement.Student.TeamMember" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>

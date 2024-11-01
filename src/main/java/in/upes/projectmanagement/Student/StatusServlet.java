@@ -95,7 +95,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
     
     // Check if the user is logged in
     if (session == null || session.getAttribute("sapid") == null) {
-        response.sendRedirect("login.jsp");
+        response.sendRedirect("index.jsp");
         return;
     }
 

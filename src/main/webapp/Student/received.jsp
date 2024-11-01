@@ -149,7 +149,7 @@
 
 
 
-<%@page contentType="text/html" pageEncoding="UTF-8"  import ="in.upes.projectmanagement.Invite" import ="java.util.List" import ="java.util.ArrayList"  %>
+<%@page contentType="text/html" pageEncoding="UTF-8"  import ="in.upes.projectmanagement.Student.Invite" import ="java.util.List" import ="java.util.ArrayList"  %>
 <!DOCTYPE html>
 <html lang="en">
 <head>

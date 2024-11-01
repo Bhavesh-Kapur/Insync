@@ -272,18 +272,21 @@
 
 </body>
 <script>
-    function fetchInvite() {
-        const url = "fetchInvite";   
-        window.location.href = url;
-    }
+function fetchInvite() {
+    const contextPath = window.location.pathname.substring(0, window.location.pathname.indexOf("/", 1)); // Gets your context path
+    const url = contextPath + "/Student/fetchInvite";   
+    window.location.href = url;
+}
 
     function projDetails() {
-        const url = "ProjDetails";   
-        window.location.href = url;
+       const contextPath = window.location.pathname.substring(0, window.location.pathname.indexOf("/", 1)); // Gets your context path
+    const url = contextPath + "/Student/ProjDetails";   
+    window.location.href = url;
     }
     function Status() {
-        const url = "StatusServlet";
-        window.location.href = url;
+        const contextPath = window.location.pathname.substring(0, window.location.pathname.indexOf("/", 1)); // Gets your context path
+    const url = contextPath + "/Student/StatusServlet";   
+    window.location.href = url;
     }
 </script>
 </html>

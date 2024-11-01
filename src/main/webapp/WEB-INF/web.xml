@@ -59,42 +59,42 @@
 
     <servlet-mapping>
         <servlet-name>ProjDetails</servlet-name>
-        <url-pattern>/ProjDetails</url-pattern>
+        <url-pattern>/Student/ProjDetails</url-pattern>
     </servlet-mapping>
         
     <servlet-mapping>
         <servlet-name>logoutServlet</servlet-name>
-        <url-pattern>/logout</url-pattern>
+        <url-pattern>/Student/logout</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>
         <servlet-name>StatusServlet</servlet-name>
-        <url-pattern>/StatusServlet</url-pattern>
+        <url-pattern>/Student/StatusServlet</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>
         <servlet-name>handleInvite</servlet-name>
-        <url-pattern>/handleInvite</url-pattern>
+        <url-pattern>/Student/handleInvite</url-pattern>
     </servlet-mapping>
     
     <servlet-mapping>
         <servlet-name>fetchInvite</servlet-name>
-        <url-pattern>/fetchInvite</url-pattern>
+        <url-pattern>/Student/fetchInvite</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>
         <servlet-name>inviteServlet</servlet-name>
-        <url-pattern>/inviteServlet</url-pattern>
+        <url-pattern>/Student/inviteServlet</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>
         <servlet-name>searchStudent</servlet-name>
-        <url-pattern>/searchStudent</url-pattern>
+        <url-pattern>/Student/searchStudent</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
-        <url-pattern>/login</url-pattern>
+        <url-pattern>/Student/login</url-pattern>
     </servlet-mapping>
 
     

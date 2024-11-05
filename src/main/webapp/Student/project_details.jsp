@@ -95,6 +95,7 @@
         <h1>Project Details</h1>
 
         <div class="project-details">
+            <button >Edit </button>`
             <p><strong>Project Type:</strong> 
                 <%
                 ArrayList<TeamMember> teamMembers = (ArrayList<TeamMember>) request.getAttribute("teamMembers");
@@ -138,6 +139,10 @@
                 %>
             </tbody>
         </table>
+
+    <a href="fileUpload.jsp">Upload files</a>
+    <a href="downloadPdf.jsp">Download files</a>
+
     </div>
 
 </body>

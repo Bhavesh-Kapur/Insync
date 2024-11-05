@@ -40,6 +40,25 @@
     </servlet>
 
     <servlet>
+        <servlet-name>uploadDocuments</servlet-name>
+        <servlet-class>in.upes.projectmanagement.Student.uploadDocuments</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+
+    <servlet>
+        <servlet-name>DownloadFileServlet</servlet-name>
+        <servlet-class>in.upes.projectmanagement.Student.DownloadFileServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet>
+        <servlet-name>DownloadFilesServlet</servlet-name>
+        <servlet-class>in.upes.projectmanagement.Student.DownloadFilesServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet>
         <servlet-name>ProjDetails</servlet-name>
         <servlet-class>in.upes.projectmanagement.Student.ProjDetails</servlet-class>
         <load-on-startup>1</load-on-startup>
@@ -67,7 +86,18 @@
         <servlet-name>ProjDetails</servlet-name>
         <url-pattern>/Student/ProjDetails</url-pattern>
     </servlet-mapping>
-        
+
+
+    <servlet-mapping>
+        <servlet-name>DownloadFilesServlet</servlet-name>
+        <url-pattern>/Student/downloadFiles</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>DownloadFileServlet</servlet-name>
+        <url-pattern>/Student/downloadFile</url-pattern>
+    </servlet-mapping>
+
     <servlet-mapping>
         <servlet-name>logoutServlet</servlet-name>
         <url-pattern>/Student/logout</url-pattern>
@@ -77,6 +107,12 @@
         <servlet-name>facLogoutServlet</servlet-name>
         <url-pattern>/Faculty/logout</url-pattern>
     </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>uploadDocuments</servlet-name>
+        <url-pattern>/Student/uploadDocuments</url-pattern>
+    </servlet-mapping>
+
 
     <servlet-mapping>
         <servlet-name>StatusServlet</servlet-name>

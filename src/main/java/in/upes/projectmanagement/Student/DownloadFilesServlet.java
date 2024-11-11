@@ -6,12 +6,11 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;;
+;
 
 
 public class DownloadFilesServlet extends HttpServlet {
@@ -24,7 +23,7 @@ public class DownloadFilesServlet extends HttpServlet {
 
             stmt.setInt(1, studentId);
             ResultSet rs = stmt.executeQuery();
-
+//teere
             StringBuilder fileLinks = new StringBuilder();
             while (rs.next()) {
                 int fileId = rs.getInt("id");

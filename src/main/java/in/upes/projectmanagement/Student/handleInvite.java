@@ -278,6 +278,20 @@ public class handleInvite extends HttpServlet {
         }
     }
     private void createProject(Connection con, int teamId, int semester, int professorId) throws Exception {
+        // Check if a project already exists for the given team_id
+        String checkProjectQuery = "SELECT COUNT(*) FROM project WHERE team_id = ?";
+        try (PreparedStatement checkStmt = con.prepareStatement(checkProjectQuery)) {
+            checkStmt.setInt(1, teamId);
+            ResultSet rs = checkStmt.executeQuery();
+            
+            if (rs.next() && rs.getInt(1) > 0) {
+                // Project already exists, skip creation
+                System.out.println("Project already exists for team ID: " + teamId);
+                return;
+            }
+        }
+        
+        // If no project exists, create a new one
         String createProjectQuery = "INSERT INTO project (team_id, project_details, semester, profid) VALUES (?, ?, ?, ?)";
         try (PreparedStatement projectStmt = con.prepareStatement(createProjectQuery)) {
             projectStmt.setInt(1, teamId); // team_id
@@ -288,7 +302,7 @@ public class handleInvite extends HttpServlet {
             projectStmt.executeUpdate(); // Execute the project insertion
             System.out.println("Project created for team ID: " + teamId);
         }
-}
+    }
 }
 
 

@@ -103,7 +103,7 @@
         <div class="pics">
             <img src="./WhatsApp Image 2024-11-10 at 22.43.03 (1).jpeg" alt="Logo">
         </div>
-        <h3>Activity Coordination</h3>
+        <h3>Activity Coorionnnnacaacacnnn</h3>
         <p></p>
     </div>
 

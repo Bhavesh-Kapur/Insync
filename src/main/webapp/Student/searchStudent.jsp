@@ -123,12 +123,7 @@
     <div class="main-content">
         <h1>Create Team</h1>
 
-        
-        <form action="searchStudent" method="post">
-            <label for="sap-id-input">Enter SAP ID</label><br>
-            <input type="text" id="sap-id-input" placeholder="Enter SAP ID" name="searchPrms">
-            <button type="submit">Search by SAP ID</button>
-        </form>
+
         <form action="searchStudent" method="post">
             <label for="name-input">Enter Student Name</label><br>
             <input type="text" id="name-input" placeholder="Enter Student Name" name="searchPrms">

@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.util.List" %>
+<%@ page import="in.upes.projectmanagement.Student.Faculty" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,201 +8,121 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Invite Mentor</title>
     <style>
-        :root {
-            --primary-color: #4a90e2;
-            --secondary-color: #d6e9f8;
-            --accent-color: #ffffff;
-            --background-gradient: linear-gradient(135deg, #d6e9f8, #ffffff);
-            --heading-color: #0a0a0a;
-            --text-color: #333333;
-            --box-shadow: rgba(31, 38, 135, 0.2);
-            --close-color: #f44336;
-        }
-
         body {
-            font-family: "Poppins", sans-serif;
-            background: var(--secondary-color);
-            display: flex;
-            height: 100vh;
-            margin: 0;
-            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #DAE8F6;
+            margin: 20px;
         }
-
-        .sidebar {
-            width: 250px;
-            position: fixed;
-            height: 100%;
-            background-color: var(--accent-color);
-            padding-top: 30px;
-            border-right: 1px solid #ddd;
-        }
-
-        .sidebar .redirect-icon {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .sidebar .redirect-icon img {
-            width: 40px;
-            cursor: pointer;
-        }
-
         .main-content {
-            margin-left: 250px;
-            padding: 50px;
-            flex-grow: 1;
-        }
-
-        h1 {
-            font-size: 3rem;
-            color: var(--heading-color);
-            margin-bottom: 30px; 
-        }
-
-        input {
-            width: 50%;
-            padding: 10px;
-            font-size: 1rem;
-            border: 2px solid var(--primary-color);
-            border-radius: 12px;
-            background: var(--accent-color);
-            color: var(--text-color);
-            cursor: text;
-            margin-top: 10px;
-        }
-
-        button {
-            padding: 12px 20px; 
-            border: none;
-            border-radius: 12px;
-            background: var(--primary-color);
-            color: white;
-            cursor: pointer;
-            margin-left: 10px;
-            transition: all 0.3s ease;
-            font-size: 1rem; 
-        }
-
-        button:hover {
-            background: #3b7cd3;
-        }
-        .dialog-box {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 50%;
-            max-width: 500px;
-            background-color: var(--accent-color);
-            box-shadow: 0 10px 30px var(--box-shadow);
-            border-radius: 20px;
+            max-width: 800px;
+            margin: auto;
+            background: #ffffff;
             padding: 20px;
-            display: none;
-            text-align: center; 
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-
-        .dialog-box.active {
-            display: block;
+        h1, h2 {
+            text-align: center;
+            color: #333;
         }
-
-        .dialog-box h2 {
-            font-size: 2.5rem; 
-            margin: 10px 0; 
+        form {
+            margin-bottom: 20px;
+            text-align: center;
         }
-
-        .dialog-box table {
+        input[type="text"] {
+            padding: 8px;
+            width: 200px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+        button {
+            padding: 8px 12px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        table {
             width: 100%;
-            margin: 20px 0; 
-            border-collapse: collapse; 
-        }
-
-        .dialog-box th, .dialog-box td {
-            padding: 10px; 
-            text-align: left;
-            font-size: 1.2rem; 
-        }
-
-        .dialog-box th {
-            font-weight: bold; 
-        }
-
-        .dialog-buttons {
-            display: flex;
-            justify-content: center; 
+            border-collapse: collapse;
             margin-top: 20px;
         }
-
-        .close-btn {
-            background: var(--close-color); 
-            margin-left: 10px; 
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+        th {
+            background-color: #007BFF;
+            color: white;
+        }
+        .invite-btn {
+            background-color: #28a745;
+            color: white;
+            padding: 6px 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .invite-btn:hover {
+            background-color: #218838;
+        }
+        .no-records {
+            text-align: center;
+            font-weight: bold;
+            color: #ff0000;
         }
     </style>
 </head>
 <body>
-
-    <!-- Sidebar -->
-    <div class="sidebar">
-        <div class="redirect-icon">
-            <a href="dashboard.html">
-                <img src="https://img.icons8.com/ios-glyphs/30/000000/home.png" alt="Dashboard Icon" title="Go to Dashboard">
-            </a>
-        </div>
-    </div>
-
-    <!-- Main Content -->
     <div class="main-content">
         <h1>Invite Mentor</h1>
+        <form action="searchFaculty" method="post">
+            <label for="name">Enter Name</label><br>
+            <input type="text" id="name" placeholder="Enter Name" name="mentorName">
+            <button type="submit">Search</button>
+        </form>
 
-        <!-- Search input for Mentor by Name -->
-        <input type="text" id="mentor-name-input" placeholder="Enter Mentor Name">
-        <button onclick="searchMentor()">Search</button>
-    </div>
-
-    <!-- Dialog box for displaying mentor details -->
-    <div id="mentorDialog" class="dialog-box">
-        <h2>Mentor Details</h2>
+        <h2>Faculty List</h2>
         <table>
             <tr>
-                <th>Name:</th>
-                <td>Dr. John Doe</td>
+                <th>Faculty ID</th>
+                <th>Name</th>
+                <th>Program</th>
+                <th>Action</th>
             </tr>
+            <%
+                List<Faculty> facultyList = (List<Faculty>) request.getAttribute("facultyList");
+                if (facultyList != null && !facultyList.isEmpty()) {
+                    for (Faculty faculty : facultyList) {
+            %>
             <tr>
-                <th>Department:</th>
-                <td>Computer Science</td>
+                <td><%= faculty.getProfid() %></td>
+                <td><%= faculty.getName() %></td>
+                <td><%= faculty.getProgram() %></td>
+                <td>
+                    <form action="inviteFaculty" method="post" style="display:inline;">
+                        <input type="hidden" name="profid" value="<%= faculty.getProfid() %>">
+                        <button type="submit" class="invite-btn">Invite</button>
+                    </form>
+                </td>
             </tr>
+            <%
+                    }
+                } else {
+            %>
             <tr>
-                <th>Specialization:</th>
-                <td>AI and Machine Learning</td>
+                <td colspan="4" class="no-records">No records found</td>
             </tr>
-            <tr>
-                <th>Seating Area:</th>
-                <td>Room 101, Block A</td>
-            </tr>
-            <tr>
-                <th>Official Mail ID:</th>
-                <td>john.doe@upes.ac.in</td>
-            </tr>
+            <%
+                }
+            %>
         </table>
-        <div class="dialog-buttons">
-            <button class="invite-btn" onclick="inviteMentor()">Invite</button>
-            <button class="close-btn" onclick="closeDialog()">Close</button>
-        </div>
     </div>
-
-    <script>
-        function searchMentor() {
-            document.getElementById('mentorDialog').classList.add('active');
-        }
-
-        function closeDialog() {
-            document.getElementById('mentorDialog').classList.remove('active');
-        }
-
-        function inviteMentor() {
-            alert("Mentor Invited!");
-            closeDialog(); 
-        }
-    </script>
-
 </body>
 </html>

@@ -82,6 +82,28 @@
         <load-on-startup>1</load-on-startup>
     </servlet>
 
+    <servlet>
+        <servlet-name>searchFaculty</servlet-name>
+        <servlet-class>in.upes.projectmanagement.Student.searchFaculty</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+<servlet>
+    <servlet-name>inviteFaculty</servlet-name>
+    <servlet-class>in.upes.projectmanagement.Student.inviteFaculty</servlet-class>
+    <load-on-startup>1</load-on-startup>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>inviteFaculty</servlet-name>
+    <url-pattern>/Student/inviteFaculty</url-pattern>
+</servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>searchFaculty</servlet-name>
+        <url-pattern>/Student/searchFaculty</url-pattern>
+    </servlet-mapping>
+
     <servlet-mapping>
         <servlet-name>ProjDetails</servlet-name>
         <url-pattern>/Student/ProjDetails</url-pattern>

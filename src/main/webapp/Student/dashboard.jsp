@@ -274,18 +274,18 @@
 <script>
 function fetchInvite() {
     const contextPath = window.location.pathname.substring(0, window.location.pathname.indexOf("/", 1)); // Gets your context path
-    const url = contextPath + "/Student/fetchInvite";   
+    const url = contextPath + "/fetchInvite";   
     window.location.href = url;
 }
 
     function projDetails() {
        const contextPath = window.location.pathname.substring(0, window.location.pathname.indexOf("/", 1)); // Gets your context path
-    const url = contextPath + "/Student/ProjDetails";   
+    const url = contextPath + "/ProjDetails";   
     window.location.href = url;
     }
     function Status() {
         const contextPath = window.location.pathname.substring(0, window.location.pathname.indexOf("/", 1)); // Gets your context path
-    const url = contextPath + "/Student/StatusServlet";   
+    const url = contextPath + "/StatusServlet";   
     window.location.href = url;
     }
 </script>

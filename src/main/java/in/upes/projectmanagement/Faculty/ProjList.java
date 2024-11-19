@@ -18,7 +18,7 @@
 //     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //         Connection conn = null;
 //         PreparedStatement ps = null;
-//         ResultSet rs = null;
+//         ResultSet rs = null; 
 
 //         try {
 //             // Get database connection

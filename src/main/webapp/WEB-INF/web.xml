@@ -94,6 +94,17 @@
     <load-on-startup>1</load-on-startup>
 </servlet>
 
+<servlet>
+    <servlet-name>projList</servlet-name>
+    <servlet-class>in.upes.projectmanagement.Faculty.projList</servlet-class>
+    <load-on-startup>1</load-on-startup>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>projList</servlet-name>
+    <url-pattern>/Faculty/projList</url-pattern>
+</servlet-mapping>
+
 <servlet-mapping>
     <servlet-name>inviteFaculty</servlet-name>
     <url-pattern>/Student/inviteFaculty</url-pattern>

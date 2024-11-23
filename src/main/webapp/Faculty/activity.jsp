@@ -118,7 +118,7 @@
             <div class="panel">
                 <h3>Project List</h3>
                 <p>Details about the project...</p>
-                <a href="#">View Project</a>
+                <a href="javascript:void(0);" onclick="projList();">View Projects</a>
             </div>
             <div class="panel">
                 <h3>Student List</h3>
@@ -134,4 +134,12 @@
     </div>
 
 </body>
+
+<script>
+function projList() {
+    const contextPath = window.location.pathname.substring(0, window.location.pathname.indexOf("/", 1)); // Gets your context path
+    const url = contextPath + "/projList";   
+    window.location.href = url;
+}
+</script>
 </html>

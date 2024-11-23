@@ -123,7 +123,7 @@
             <div class="panel">
                 <h3>Student List</h3>
                 <p>Details about students...</p>
-                <a href="#">View List</a>
+                <a href="javascript:void(0);" onclick="studentList();">List Of Students</a>
             </div>
             <div class="panel">
                 <h3>Panel Group</h3>
@@ -139,6 +139,12 @@
 function projList() {
     const contextPath = window.location.pathname.substring(0, window.location.pathname.indexOf("/", 1)); // Gets your context path
     const url = contextPath + "/projList";   
+    window.location.href = url;
+}
+
+function studentList() {
+    const contextPath = window.location.pathname.substring(0, window.location.pathname.indexOf("/", 1)); // Gets your context path
+    const url = contextPath + "/studentList";   
     window.location.href = url;
 }
 </script>

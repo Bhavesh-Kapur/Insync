@@ -100,6 +100,17 @@
     <load-on-startup>1</load-on-startup>
 </servlet>
 
+<servlet>
+    <servlet-name>studentList</servlet-name>
+    <servlet-class>in.upes.projectmanagement.Faculty.studentList</servlet-class>
+    <load-on-startup>1</load-on-startup>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>studentList</servlet-name>
+    <url-pattern>/Faculty/studentList</url-pattern>
+</servlet-mapping>
+
 <servlet-mapping>
     <servlet-name>projList</servlet-name>
     <url-pattern>/Faculty/projList</url-pattern>

@@ -51,6 +51,24 @@
     </style>
 </head>
 <body>
+<%
+    String message = request.getParameter("message");
+    String error = request.getParameter("error");
+    if (message != null) {
+%>
+        <div class="message success">
+            <%= message %>
+        </div>
+<%
+    }
+    if (error != null) {
+%>
+        <div class="message error">
+            <%= error %>
+        </div>
+<%
+    }
+%>
     <div class="main-content">
         <h1>Send Invites to Professors</h1>
         <table>
@@ -73,7 +91,7 @@
                     <td><%= professor.getProfName() %></td>
                     <td><%= professor.getProgram() %></td>
                     <td>
-                        <form action="SendInviteServlet" method="post" style="display:inline;">
+                        <form action="panelInvite" method="post" style="display:inline;">
                             <input type="hidden" name="profId" value="<%= professor.getProfId() %>">
                             <button type="submit" class="invite-button">Send Invite</button>
                         </form>

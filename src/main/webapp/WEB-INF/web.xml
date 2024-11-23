@@ -112,6 +112,17 @@
     <load-on-startup>1</load-on-startup>
 </servlet>
 
+<servlet>
+    <servlet-name>panelInvite</servlet-name>
+    <servlet-class>in.upes.projectmanagement.Faculty.panelInvite</servlet-class>
+    <load-on-startup>1</load-on-startup>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>panelInvite</servlet-name>
+    <url-pattern>/Faculty/panelInvite</url-pattern>
+</servlet-mapping>
+
 <servlet-mapping>
     <servlet-name>profList</servlet-name>
     <url-pattern>/Faculty/profList</url-pattern>

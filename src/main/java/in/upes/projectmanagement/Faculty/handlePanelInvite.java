@@ -24,7 +24,9 @@ public class handlePanelInvite extends HttpServlet {
                 HttpSession session = request.getSession();
             int profid = (int)session.getAttribute("profid");
             conn = databaseConnection.initializeDatabase();
-            String action = request.getParameter("action"); 
+            int inviteId = Integer.parseInt(request.getParameter("inviteId"));
+            String action = request.getParameter("action");
+            System.out.println(inviteId);
 
             if ("accept".equalsIgnoreCase(action)) {
                 // Update faculty table to set panel_member = 1
@@ -35,18 +37,19 @@ public class handlePanelInvite extends HttpServlet {
             }
 
             // Update invite status
-            String updateInviteQuery = "UPDATE panel_invites SET status = ? WHERE profid = ? AND status = 'pending'";
+            String updateInviteQuery = "UPDATE panel_invites SET status = ? WHERE profid = ? AND status = 'pending' AND invite_id = ?";
             psUpdateInvite = conn.prepareStatement(updateInviteQuery);
             psUpdateInvite.setString(1, action); // 'accepted' or 'rejected'
             psUpdateInvite.setInt(2, profid);
+            psUpdateInvite.setInt(3, inviteId);
             psUpdateInvite.executeUpdate();
 
             // Redirect with success message
-            response.sendRedirect("invite_list.jsp?message=Invite " + action + "ed successfully");
+            response.sendRedirect("facDashboard.jsp?message=Invite " + action + "ed successfully");
 
         } catch (Exception e) {
             e.printStackTrace();
-            response.sendRedirect("invite_list.jsp?error=Error handling invite");
+            response.sendRedirect("facDashboard.jsp?error=Error handling invite");
         } finally {
             try {
                 if (psUpdateFaculty != null) psUpdateFaculty.close();

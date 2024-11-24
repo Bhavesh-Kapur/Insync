@@ -66,7 +66,7 @@ CREATE TABLE `faculty` (
 
 LOCK TABLES `faculty` WRITE;
 /*!40000 ALTER TABLE `faculty` DISABLE KEYS */;
-INSERT INTO `faculty` VALUES (101,'Dr. Smith',1,0,0,'Devops','pass'),(102,'Dr. Jones',0,1,0,'BTech DevOps','pass'),(103,'Dr. Allen',0,0,0,'BTech AI','pass'),(104,'Dr. Clark',1,0,0,'BTech DS','pass'),(105,'Dr. Brown',0,1,0,'BTech IT','pass');
+INSERT INTO `faculty` VALUES (101,'Dr. Smith',1,0,0,'Devops','pass'),(102,'Dr. Jones',0,1,1,'BTech DevOps','pass'),(103,'Dr. Allen',0,0,0,'BTech AI','pass'),(104,'Dr. Clark',1,0,0,'BTech DS','pass'),(105,'Dr. Brown',0,1,0,'BTech IT','pass');
 /*!40000 ALTER TABLE `faculty` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -242,7 +242,7 @@ CREATE TABLE `panel_invites` (
   PRIMARY KEY (`invite_id`),
   KEY `profid` (`profid`),
   CONSTRAINT `panel_invites_ibfk_1` FOREIGN KEY (`profid`) REFERENCES `faculty` (`profid`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -251,7 +251,7 @@ CREATE TABLE `panel_invites` (
 
 LOCK TABLES `panel_invites` WRITE;
 /*!40000 ALTER TABLE `panel_invites` DISABLE KEYS */;
-INSERT INTO `panel_invites` VALUES (1,102,101,'pending');
+INSERT INTO `panel_invites` VALUES (1,102,101,'accept'),(2,102,103,'pending');
 /*!40000 ALTER TABLE `panel_invites` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -499,4 +499,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-11-23 18:33:27
+-- Dump completed on 2024-11-24 17:11:32

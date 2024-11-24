@@ -124,6 +124,17 @@
     <load-on-startup>1</load-on-startup>
 </servlet>
 
+<servlet>
+    <servlet-name>handlePanelInvite</servlet-name>
+    <servlet-class>in.upes.projectmanagement.Faculty.handlePanelInvite</servlet-class>
+    <load-on-startup>1</load-on-startup>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>handlePanelInvite</servlet-name>
+    <url-pattern>/Faculty/handlePanelInvite</url-pattern>
+</servlet-mapping>
+
 <servlet-mapping>
     <servlet-name>fetchPanelInvite</servlet-name>
     <url-pattern>/Faculty/fetchPanelInvite</url-pattern>

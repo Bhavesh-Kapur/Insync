@@ -30,11 +30,11 @@ public class fetchPanelInvite extends HttpServlet {
 
             System.out.println(profId);
 
-            // Fetch panel invites
+            // Fetch pending panel invites
             String sqlPanelInvites = "SELECT pi.invite_id, f.name AS sender_name " +
                                      "FROM panel_invites pi " +
                                      "JOIN faculty f ON pi.sent_by = f.profid " +
-                                     "WHERE pi.profid = ?";
+                                     "WHERE pi.profid = ? AND pi.status = 'pending'";
             PreparedStatement psPanel = conn.prepareStatement(sqlPanelInvites);
             psPanel.setInt(1, profId);
             ResultSet rsPanel = psPanel.executeQuery();
@@ -45,11 +45,11 @@ public class fetchPanelInvite extends HttpServlet {
                 panelRequests.add(new PanelRequest(inviteId, 0, senderName, "Panel"));
             }
 
-            // Fetch mentor invites
+            // Fetch pending mentor invites
             String sqlMentorInvites = "SELECT mi.inviteid, t.team_id, t.team_name " +
                                       "FROM mentor_invite mi " +
                                       "JOIN team t ON mi.team_id = t.team_id " +
-                                      "WHERE mi.profid = ?";
+                                      "WHERE mi.profid = ? AND mi.status = 'pending'";
             PreparedStatement psMentor = conn.prepareStatement(sqlMentorInvites);
             psMentor.setInt(1, profId);
             ResultSet rsMentor = psMentor.executeQuery();

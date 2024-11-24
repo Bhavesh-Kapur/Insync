@@ -52,6 +52,32 @@
         .button-container button:hover {
             background-color: #45a049;
         }
+        .invite-container {
+            margin-top: 30px;
+            text-align: left;
+        }
+        .invite-container h2 {
+            color: #333;
+        }
+        .invite-container ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .invite-container li {
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+            background-color: #f4f4f4;
+            border-radius: 5px;
+        }
+        .invite-container form {
+            display: inline-block;
+            margin-left: 10px;
+        }
+        .button-container button {
+            padding: 10px 20px;
+            font-size: 14px;
+        }
     </style>
 </head>
 <body>
@@ -69,66 +95,88 @@
             <button onclick="location.href='panel.jsp'">Panel</button>
             <button onclick="location.href='activity.jsp'">Activity Coordination</button>
         </div>
-          <%-- <form action="<%= request.getContextPath() %>/LogoutServlet" method="post">
-            <button type="submit" class="logout-button">Logout</button>
-        </form> --%>
-    <div class="panel-request-container">
-    <h2>Panel Requests</h2>
-    
-    <!-- Form to fetch panel requests -->
-    <form action="fetchPanelInvite" method="GET">
+
+        <form action="fetchPanelInvite" method="GET">
     <input type="hidden" name="profId" value="<%= session.getAttribute("profid") %>">
         <button type="submit">Fetch Requests</button>
     </form>
-
-<div class="panel-invite-container">
-    <h2>Panel Invitations</h2>
-
-    <!-- Display panel invites -->
-    <%
-        List<PanelRequest> panelInvites = (List<PanelRequest>) request.getAttribute("panelInvites");
-        if (panelInvites != null && !panelInvites.isEmpty()) {
-    %>
-        <ul>
-            <% for (PanelRequest requestEntry : panelInvites) { %>
-                <li>
-                    <strong>Invite ID:</strong> <%= requestEntry.getRequestId() %><br>
-                    <strong>Sent By:</strong> <%= requestEntry.getTeamName() %>
-                </li>
+        <!-- Panel Invitations Section -->
+        <div class="invite-container">
+            <h2>Panel Invitations</h2>
+            <%
+                List<PanelRequest> panelInvites = (List<PanelRequest>) request.getAttribute("panelInvites");
+                if (panelInvites != null && !panelInvites.isEmpty()) {
+            %>
+                <ul>
+                    <% for (PanelRequest requestEntry : panelInvites) { %>
+                        <li>
+                            <strong>Invite ID:</strong> <%= requestEntry.getRequestId() %><br>
+                            <strong>Sent By:</strong> <%= requestEntry.getTeamName() %><br>
+                            <form action="handlePanelInvite" method="POST" style="display:inline;">
+                                <input type="hidden" name="inviteId" value="<%= requestEntry.getRequestId() %>">
+                                <button type="submit" name="action" value="accept">Accept</button>
+                                <button type="submit" name="action" value="reject">Reject</button>
+                            </form>
+                        </li>
+                    <% } %>
+                </ul>
+            <% 
+                } else { 
+            %>
+                <p>No panel invites available.</p>
             <% } %>
-        </ul>
-    <% 
-        } else { 
-    %>
-        <p>No panel invites available.</p>
-    <% } %>
-</div>
+        </div>
 
-<div class="mentor-invite-container">
-    <h2>Mentor Invitations</h2>
-
-    <!-- Display mentor invites -->
-    <%
-        List<PanelRequest> mentorInvites = (List<PanelRequest>) request.getAttribute("mentorInvites");
-        if (mentorInvites != null && !mentorInvites.isEmpty()) {
-    %>
-        <ul>
-            <% for (PanelRequest requestEntry : mentorInvites) { %>
-                <li>
-                    <strong>Team Name:</strong> <%= requestEntry.getTeamName() %> 
-                    (<strong>Team ID:</strong> <%= requestEntry.getTeamId() %>)<br>
-                    <strong>Request ID:</strong> <%= requestEntry.getRequestId() %>
-                </li>
+        <!-- Mentor Invitations Section -->
+        <div class="invite-container">
+            <h2>Mentor Invitations</h2>
+            <%
+                List<PanelRequest> mentorInvites = (List<PanelRequest>) request.getAttribute("mentorInvites");
+                if (mentorInvites != null && !mentorInvites.isEmpty()) {
+            %>
+                <ul>
+                    <% for (PanelRequest requestEntry : mentorInvites) { %>
+                        <li>
+                            <strong>Team Name:</strong> <%= requestEntry.getTeamName() %> 
+                            (<strong>Team ID:</strong> <%= requestEntry.getTeamId() %>)<br>
+                            <strong>Request ID:</strong> <%= requestEntry.getRequestId() %><br>
+                            <form action="handleMentorInvite" method="POST" style="display:inline;">
+                                <input type="hidden" name="inviteId" value="<%= requestEntry.getRequestId() %>">
+                                <button type="submit" name="action" value="accept">Accept</button>
+                                <button type="submit" name="action" value="reject">Reject</button>
+                            </form>
+                        </li>
+                    <% } %>
+                </ul>
+            <% 
+                } else { 
+            %>
+                <p>No mentor invites available.</p>
             <% } %>
-        </ul>
-    <% 
-        } else { 
-    %>
-        <p>No mentor invites available.</p>
-    <% } %>
-</div>
-    </div>
+        </div>
+
+        <!-- Logout Section -->
         <a href="logout" class="logout-button">Logout</a>
     </div>
+
+
+    <% 
+    String message = request.getParameter("message");
+    String error = request.getParameter("error");
+
+    if (message != null) {
+%>
+        <div style="color: green; margin: 10px 0; font-weight: bold;">
+            <%= message %>
+        </div>
+<% 
+    } else if (error != null) { 
+%>
+        <div style="color: red; margin: 10px 0; font-weight: bold;">
+            <%= error %>
+        </div>
+<% 
+    } 
+%>
 </body>
 </html>

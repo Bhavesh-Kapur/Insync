@@ -14,11 +14,11 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-// Servlet annotation for URL mapping
 @WebServlet("/fetchPanelInvite")
 public class fetchPanelInvite extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<PanelRequest> panelRequests = new ArrayList<>();
+        List<PanelRequest> mentorRequests = new ArrayList<>();
 
         try {
             // Initialize database connection
@@ -30,29 +30,44 @@ public class fetchPanelInvite extends HttpServlet {
 
             System.out.println(profId);
 
-            // SQL query to fetch invites
-            String sql = "SELECT pi.invite_id, f.name AS sender_name " +
-                         "FROM panel_invites pi " +
-                         "JOIN faculty f ON pi.sent_by = f.profid " +
-                         "WHERE pi.profid = ?";
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setInt(1, profId);
-            ResultSet rs = ps.executeQuery();
+            // Fetch panel invites
+            String sqlPanelInvites = "SELECT pi.invite_id, f.name AS sender_name " +
+                                     "FROM panel_invites pi " +
+                                     "JOIN faculty f ON pi.sent_by = f.profid " +
+                                     "WHERE pi.profid = ?";
+            PreparedStatement psPanel = conn.prepareStatement(sqlPanelInvites);
+            psPanel.setInt(1, profId);
+            ResultSet rsPanel = psPanel.executeQuery();
 
-            // Populate panelRequests list
-            while (rs.next()) {
-                int inviteId = rs.getInt("invite_id");
-                String senderName = rs.getString("sender_name");
-                panelRequests.add(new PanelRequest(inviteId, senderName));
-                System.out.println(panelRequests);
-                System.out.println(senderName);
+            while (rsPanel.next()) {
+                int inviteId = rsPanel.getInt("invite_id");
+                String senderName = rsPanel.getString("sender_name");
+                panelRequests.add(new PanelRequest(inviteId, 0, senderName, "Panel"));
             }
+
+            // Fetch mentor invites
+            String sqlMentorInvites = "SELECT mi.inviteid, t.team_id, t.team_name " +
+                                      "FROM mentor_invite mi " +
+                                      "JOIN team t ON mi.team_id = t.team_id " +
+                                      "WHERE mi.profid = ?";
+            PreparedStatement psMentor = conn.prepareStatement(sqlMentorInvites);
+            psMentor.setInt(1, profId);
+            ResultSet rsMentor = psMentor.executeQuery();
+
+            while (rsMentor.next()) {
+                int inviteId = rsMentor.getInt("inviteid");
+                int teamId = rsMentor.getInt("team_id");
+                String teamName = rsMentor.getString("team_name");
+                mentorRequests.add(new PanelRequest(inviteId, teamId, teamName, "Mentor"));
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         // Set the invites in the request scope
         request.setAttribute("panelInvites", panelRequests);
+        request.setAttribute("mentorInvites", mentorRequests);
 
         // Forward back to the JSP page
         request.getRequestDispatcher("facDashboard.jsp").forward(request, response);

@@ -81,30 +81,52 @@
         <button type="submit">Fetch Requests</button>
     </form>
 
-<div id="panelRequestContainer">
-        <% 
-            List<PanelRequest> panelRequests = (List<PanelRequest>) request.getAttribute("panelInvites");
-            if (panelRequests != null && !panelRequests.isEmpty()) {
-        %>
-                <ul>
-                    <% for (PanelRequest requestEntry : panelRequests) { %>
-                        <li>
-                            Request from: <strong><%= requestEntry.getSenderName() %></strong> 
-                            (Request ID: <%= requestEntry.getRequestId() %>)
-                        </li>
-                    <% } %>
-                </ul>
-        <% 
-            } else { 
-        %>
-                <p>No panel requests available.</p>
-        <% 
-            } 
-        %>
-    </div>
+<div class="panel-invite-container">
+    <h2>Panel Invitations</h2>
 
-   
-    </div>
+    <!-- Display panel invites -->
+    <%
+        List<PanelRequest> panelInvites = (List<PanelRequest>) request.getAttribute("panelInvites");
+        if (panelInvites != null && !panelInvites.isEmpty()) {
+    %>
+        <ul>
+            <% for (PanelRequest requestEntry : panelInvites) { %>
+                <li>
+                    <strong>Invite ID:</strong> <%= requestEntry.getRequestId() %><br>
+                    <strong>Sent By:</strong> <%= requestEntry.getTeamName() %>
+                </li>
+            <% } %>
+        </ul>
+    <% 
+        } else { 
+    %>
+        <p>No panel invites available.</p>
+    <% } %>
+</div>
+
+<div class="mentor-invite-container">
+    <h2>Mentor Invitations</h2>
+
+    <!-- Display mentor invites -->
+    <%
+        List<PanelRequest> mentorInvites = (List<PanelRequest>) request.getAttribute("mentorInvites");
+        if (mentorInvites != null && !mentorInvites.isEmpty()) {
+    %>
+        <ul>
+            <% for (PanelRequest requestEntry : mentorInvites) { %>
+                <li>
+                    <strong>Team Name:</strong> <%= requestEntry.getTeamName() %> 
+                    (<strong>Team ID:</strong> <%= requestEntry.getTeamId() %>)<br>
+                    <strong>Request ID:</strong> <%= requestEntry.getRequestId() %>
+                </li>
+            <% } %>
+        </ul>
+    <% 
+        } else { 
+    %>
+        <p>No mentor invites available.</p>
+    <% } %>
+</div>
     </div>
         <a href="logout" class="logout-button">Logout</a>
     </div>

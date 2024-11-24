@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="javax.servlet.*, javax.servlet.http.*, javax.servlet.annotation.*" %>
-
+<%@ page import="in.upes.projectmanagement.Faculty.PanelRequest" %>
 <%@ page import="java.util.*" %>
 <!DOCTYPE html>
 <html>
@@ -72,6 +72,40 @@
           <%-- <form action="<%= request.getContextPath() %>/LogoutServlet" method="post">
             <button type="submit" class="logout-button">Logout</button>
         </form> --%>
+    <div class="panel-request-container">
+    <h2>Panel Requests</h2>
+    
+    <!-- Form to fetch panel requests -->
+    <form action="fetchPanelInvite" method="GET">
+    <input type="hidden" name="profId" value="<%= session.getAttribute("profid") %>">
+        <button type="submit">Fetch Requests</button>
+    </form>
+
+<div id="panelRequestContainer">
+        <% 
+            List<PanelRequest> panelRequests = (List<PanelRequest>) request.getAttribute("panelInvites");
+            if (panelRequests != null && !panelRequests.isEmpty()) {
+        %>
+                <ul>
+                    <% for (PanelRequest requestEntry : panelRequests) { %>
+                        <li>
+                            Request from: <strong><%= requestEntry.getSenderName() %></strong> 
+                            (Request ID: <%= requestEntry.getRequestId() %>)
+                        </li>
+                    <% } %>
+                </ul>
+        <% 
+            } else { 
+        %>
+                <p>No panel requests available.</p>
+        <% 
+            } 
+        %>
+    </div>
+
+   
+    </div>
+    </div>
         <a href="logout" class="logout-button">Logout</a>
     </div>
 </body>

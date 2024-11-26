@@ -91,7 +91,7 @@
         
         <!-- Button Section -->
         <div class="button-container">
-            <button onclick="location.href='mentor.jsp'">Mentor</button>
+            <button ><a href="javascript:void(0);" onclick="mentor();">Mentor</a></button>
             <button onclick="location.href='panel.jsp'">Panel</button>
             <button onclick="location.href='activity.jsp'">Activity Coordination</button>
         </div>
@@ -179,4 +179,12 @@
     } 
 %>
 </body>
+
+<script>
+function mentor() {
+    const contextPath = window.location.pathname.substring(0, window.location.pathname.indexOf("/", 1)); // Gets your context path
+    const url = contextPath + "/mentorProject";   
+    window.location.href = url;
+}
+</script>
 </html>

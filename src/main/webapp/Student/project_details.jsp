@@ -95,8 +95,21 @@
         <h1>Project Details</h1>
 
         <div class="project-details">
-            <button >Edit </button>`
-            <p><strong>Project Type:</strong> 
+            <button onclick="openEditForm()">Edit</button>
+
+<div id="editForm" style="display:none;">
+    <form action="UpdateProjectDetailsServlet" method="POST">
+        <h2>Edit Project Details</h2>
+        <br>
+        <label for="teamName">Team Name:</label>
+        <input type="text" id="teamName" name="teamName">
+        <br>
+        <button type="submit">Save Changes</button>
+        <button type="button" onclick="closeEditForm()">Cancel</button>
+    </form>
+</div>
+
+ <p><strong>Project Type:</strong> 
                 <%
                 ArrayList<TeamMember> teamMembers = (ArrayList<TeamMember>) request.getAttribute("teamMembers");
                 String projectType = "N/A";
@@ -146,4 +159,13 @@
     </div>
 
 </body>
+<script>
+    function openEditForm() {
+        document.getElementById('editForm').style.display = 'block';
+    }
+    function closeEditForm() {
+        document.getElementById('editForm').style.display = 'none';
+    }
+</script>
+           
 </html>

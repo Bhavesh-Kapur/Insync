@@ -1,111 +1,61 @@
-package in.upes.projectmanagement;
-
-import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.List;
-
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-
-public class PanelServlet extends HttpServlet {
-    private static final long serialVersionUID = 1L;
-
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<ProjectDetails> projectList = new ArrayList<>();
-
-        try (Connection con = databaseConnection.initializeDatabase()) {
-            String sql = "SELECT p.projectId, p.projectName, t.teamName, p.marks, m.mentorName " +
-                         "FROM Projects p " +
-                         "JOIN Teams t ON p.teamId = t.teamId " +
-                         "JOIN Mentors m ON t.mentorId = m.mentorId";
-
-            try (PreparedStatement stmt = con.prepareStatement(sql); ResultSet rs = stmt.executeQuery()) {
-                while (rs.next()) {
-                    ProjectDetails project = new ProjectDetails(
-                        rs.getInt("projectId"),
-                        rs.getString("projectName"),
-                        rs.getString("teamName"),
-                        rs.getInt("marks"),
-                        rs.getString("mentorName")
-                    );
-                    projectList.add(project);
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            response.sendRedirect("error.jsp");
-            return;
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Project Evaluation</title>
+    <style>
+        table {
+            width: 80%;
+            margin: auto;
+            border-collapse: collapse;
         }
-
-        request.setAttribute("projectList", projectList);
-        request.getRequestDispatcher("panel.jsp").forward(request, response);
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String projectId = request.getParameter("projectId");
-        String marks = request.getParameter("marks");
-
-        if (projectId != null && marks != null) {
-            try (Connection con = databaseConnection.initializeDatabase()) {
-                String sql = "UPDATE Projects SET marks = ? WHERE projectId = ?";
-                try (PreparedStatement stmt = con.prepareStatement(sql)) {
-                    stmt.setInt(1, Integer.parseInt(marks));
-                    stmt.setInt(2, Integer.parseInt(projectId));
-                    stmt.executeUpdate();
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-                response.sendRedirect("error.jsp");
-                return;
-            }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
         }
-        
-        response.sendRedirect("PanelServlet");
-    }
-
-    public static class ProjectDetails {
-        private int projectId;
-        private String projectName;
-        private String teamName;
-        private int marks;
-        private String mentorName;
-
-        public ProjectDetails(int projectId, String projectName, String teamName, int marks, String mentorName) {
-            this.projectId = projectId;
-            this.projectName = projectName;
-            this.teamName = teamName;
-            this.marks = marks;
-            this.mentorName = mentorName;
+        th {
+            background-color: #f4f4f4;
         }
-
-        public int getProjectId() {
-            return projectId;
+        tr:hover {
+            background-color: #f9f9f9;
         }
-
-        public String getProjectName() {
-            return projectName;
+        form {
+            margin: 0;
         }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">Project Evaluation Panel</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Project Name</th>
+                <th>Team Name</th>
+                <th>Marks</th>
+                <th>Mentor Name</th>
+                <th>Update Marks</th>
+            </tr>
+        </thead>
+        <tbody>
+            <c:forEach var="project" items="${projectList}">
+                <tr>
+                    <td>${project.projectName}</td>
+                    <td>${project.teamName}</td>
+                    <td>${project.marks}</td>
+                    <td>${project.mentorName}</td>
+                    <td>
+                        <form action="PanelServlet" method="post">
+                            <input type="hidden" name="projectId" value="${project.projectId}" />
+                            <input type="number" name="marks" min="0" max="100" placeholder="Enter marks" required />
+                            <button type="submit">Save</button>
+                        </form>
+                    </td>
+                </tr>
+            </c:forEach>
+        </tbody>
+    </table>
+</body>
+</html>
 
-        public String getTeamName() {
-            return teamName;
-        }
 
-        public int getMarks() {
-            return marks;
-        }
-
-        public String getMentorName() {
-            return mentorName;
-        }
-    }
-}
-
-
-backend
+frontend

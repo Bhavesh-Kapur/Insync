@@ -199,9 +199,9 @@
         <br>
         <!-- <ul class="teacher-details"> -->
             <p>Activity Coordinator</p>
-           <p>Name: Dr.Smith</p>
-           <p>Sap I'd:400107137</p>
-           <p>School: SOCS</p>
+           <p>Name: <%= session.getAttribute("name") %></p>
+           <p>Sap I'd: <%= session.getAttribute("profid") %></p>
+           <p>School: <%= session.getAttribute("program") %></p>
            <p>Sitting Area:9104</p>
         <a href="logout" class="logout-button">Logout</a>
     </div>

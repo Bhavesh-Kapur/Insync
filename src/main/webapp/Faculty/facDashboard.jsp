@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="javax.servlet.*, javax.servlet.http.*, javax.servlet.annotation.*" %>
+<%@ page import="javax.servlet., javax.servlet.http., javax.servlet.annotation.*" %>
 <%@ page import="in.upes.projectmanagement.Faculty.PanelRequest" %>
 <%@ page import="java.util.*" %>
 <!DOCTYPE html>
@@ -30,6 +30,7 @@
             border: 1px solid #ccc;
             border-radius: 5px;
             background-color: #f9f9f9;
+            width: 100%;
         }
         .details-section h2 {
             margin-top: 0;

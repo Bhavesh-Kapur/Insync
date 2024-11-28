@@ -56,7 +56,7 @@
             color: white;
             border-radius: 5px;
             transition: background-color 0.3s;
-            text-align: ;
+            /* text-align: ; */
         }
         .button-container .square-div:hover {
             background-color: #5cacee; 
@@ -129,7 +129,8 @@
 
             
             <div class="button-container">
-                <div class="square-div" onclick="mentor()">Mentor</div>
+                <!-- <div class="square-div" onclick="mentor()">Mentor</div> -->
+                <div class="square-div" onclick="location.href='mentor_dashboard.jsp'">Mentor</div>
                 <div class="square-div" onclick="location.href='panel_dashboard.jsp'">Panel</div>
                 <div class="square-div" onclick="location.href='activity.jsp'">Activity Coordinator</div>
             </div>
@@ -221,12 +222,12 @@
 <% 
     } 
 %>
-<script>
+<!-- <script>
 function mentor() {
     const contextPath = window.location.pathname.substring(0, window.location.pathname.indexOf("/", 1)); 
     const url = contextPath + "/mentorProject";   
     window.location.href = url;
 }
-</script>
+</script> -->
 </body>
 </html>

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="java.util.List, in.upes.projectmanagement.Faculty.mProject, jakarta.servlet.http.HttpServletRequest" %>
+<%@ page import="java.util.List, in.upes.projectmanagement.Faculty.mProject" %>
 <html>
 <head>
     <title>Mentor Projects</title>
@@ -25,93 +25,123 @@
             background-color: #007BFF;
             color: white;
         }
-        a {
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        a, button {
             text-decoration: none;
             color: #007BFF;
             font-weight: bold;
+            background: none;
+            border: none;
+            cursor: pointer;
         }
-        a:hover {
+        a:hover, button:hover {
             color: #0056b3;
         }
-        #fillMarksSection {
+        .hidden {
             display: none;
+        }
+        .form-container {
             margin-top: 20px;
+            padding: 10px;
             border: 1px solid #ddd;
-            padding: 15px;
-            background-color: #fff;
+            background-color: #ffffff;
         }
-        #fillMarksSection h2 {
-            color: #007BFF;
+        .message {
+            font-size: 16px;
+            color: green;
         }
-        .close-btn {
+        .error {
+            font-size: 16px;
             color: red;
-            cursor: pointer;
         }
     </style>
     <script>
-        // Function to toggle visibility of the fill marks section
-        function showFillMarks(projectId, projectName) {
-            document.getElementById('fillMarksSection').style.display = 'block';
-            document.getElementById('projectIdInput').value = projectId;
-            document.getElementById('projectNameDisplay').innerText = projectName;
-        }
-
-        // Function to hide the fill marks section
-        function closeFillMarks() {
-            document.getElementById('fillMarksSection').style.display = 'none';
+        function showForm(projectId, projectName) {
+            document.getElementById("projectForm").classList.remove("hidden");
+            document.getElementById("selectedProjectId").value = projectId;
+            document.getElementById("selectedProjectName").innerText = projectName;
         }
     </script>
 </head>
 <body>
-    <h1>Your Projects</h1>
+    <h1>Your Assigned Projects</h1>
+
+    <!-- Display success or error messages -->
     <%
-        // Retrieve the list of projects from the request attribute
-        List<mProject> mprojectList = (List<mProject>) request.getAttribute("mprojectList");
-        if (mprojectList != null && !mprojectList.isEmpty()) {
+        String successMessage = (String) request.getAttribute("successMessage");
+        String errorMessage = (String) request.getAttribute("errorMessage");
+
+        if (successMessage != null) {
     %>
-    <table>
-        <tr>
-            <th>Project ID</th>
-            <th>Project Name</th>
-            <th>Semester</th>
-            <th>Action</th>
-        </tr>
-        <%
-            for (mProject mproject : mprojectList) {
-        %>
-        <tr>
-            <td><%= mproject.getProjectId() %></td>
-            <td><%= mproject.getProjectName() %></td>
-            <td><%= mproject.getSemester() %></td>
-            <td>
-                <a href="javascript:void(0);" onclick="showFillMarks('<%= mproject.getProjectId() %>', '<%= mproject.getProjectName() %>')">Fill Marks</a>
-            </td>
-        </tr>
-        <%
-            }
-        %>
-    </table>
+        <p class="message"><%= successMessage %></p>
     <%
-        } else {
+        }
+        if (errorMessage != null) {
     %>
-        <p>No projects assigned to you as a mentor.</p>
+        <p class="error"><%= errorMessage %></p>
     <%
         }
     %>
 
-    <!-- Hidden Section for Filling Marks -->
-    <div id="fillMarksSection">
-        <span class="close-btn" onclick="closeFillMarks()">&#x2716; Close</span>
-        <h2>Fill Marks for <span id="projectNameDisplay"></span></h2>
-        <form method="post" action="processMarks.jsp">
-            <input type="hidden" id="projectIdInput" name="projectId" value="">
-            <label for="synopsisMarks">Synopsis Marks:</label>
-            <input type="number" id="synopsisMarks" name="synopsisMarks" min="0" max="100" required><br><br>
-            <label for="midTermMarks">Mid-Term Marks:</label>
-            <input type="number" id="midTermMarks" name="midTermMarks" min="0" max="100" required><br><br>
-            <label for="endTermMarks">End-Term Marks:</label>
-            <input type="number" id="endTermMarks" name="endTermMarks" min="0" max="100" required><br><br>
-            <button type="submit">Submit Marks</button>
+    <!-- Display the list of projects -->
+    <%
+        List<mProject> mprojectList = (List<mProject>) request.getAttribute("mprojectList");
+        if (mprojectList != null && !mprojectList.isEmpty()) {
+    %>
+    <table>
+        <thead>
+            <tr>
+                <th>Project ID</th>
+                <th>Project Name</th>
+                <th>Semester</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+        <%
+            for (mProject mproject : mprojectList) {
+        %>
+            <tr>
+                <td><%= mproject.getProjectId() %></td>
+                <td><%= mproject.getProjectName() %></td>
+                <td><%= mproject.getSemester() %></td>
+                <td>
+                    <!-- Button to show form for this project -->
+                    <button onclick="showForm('<%= mproject.getProjectId() %>', '<%= mproject.getProjectName() %>')">
+                        Fill Marks
+                    </button>
+                </td>
+            </tr>
+        <%
+            }
+        %>
+        </tbody>
+    </table>
+    <%
+        } else {
+    %>
+        <p>No projects have been assigned to you as a mentor.</p>
+    <%
+        }
+    %>
+
+    <div id="projectForm" class="form-container hidden">
+        <h2>Fill Marks for Project: <span id="selectedProjectName"></span><span id="selectedProjectId"></span></h2>
+        <form method="post" action="processMarks">
+            <input type="hidden" id="selectedProjectId" name="selectedProjectId" />
+            
+            <label for="midtermMarks">Midterm Marks:</label><br>
+            <input type="number" id="midtermMarks" name="midtermMarks" required min="0" max="100"><br><br>
+
+            <label for="endtermMarks">Endterm Marks:</label><br>
+            <input type="number" id="endtermMarks" name="endtermMarks" required min="0" max="100"><br><br>
+
+            <label for="synopsisMarks">Synopsis Marks:</label><br>
+            <input type="number" id="synopsisMarks" name="synopsisMarks" required min="0" max="100"><br><br>
+
+            <input type="submit" value="Submit Marks">
         </form>
     </div>
 </body>

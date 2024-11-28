@@ -23,7 +23,7 @@
             box-sizing: border-box;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-start; /* Align items to the top */
+            justify-content: flex-start;
         }
 
         .home-icon {
@@ -42,7 +42,7 @@
             color: var(--heading-color);
             margin-bottom: 10px;
             text-align: center;
-            padding-top: 10px; /* Reduced space here */
+            padding-top: 10px;
         }
 
         h2 {
@@ -60,7 +60,7 @@
             background: var(--accent-color);
             border-radius: 12px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin-top: 10px; /* Reduced margin here */
+            margin-top: 10px;
         }
 
         form {
@@ -162,15 +162,9 @@
             <button type="submit">Search</button>
         </form>
 
-        <% 
-            if (request.getAttribute("successMessage") != null) { 
-        %>
-            <div class="success">
-                <%= request.getAttribute("successMessage") %>
-            </div>
-        <% 
-            }
-        %>
+        <div class="success">
+            <%= request.getAttribute("successMessage") %>
+        </div>
 
         <h2>Faculty List</h2>
         <table>
@@ -183,7 +177,7 @@
                 </tr>
             </thead>
             <tbody>
-                <% 
+                <%
                     List<Faculty> facultyList = (List<Faculty>) request.getAttribute("facultyList");
                     if (facultyList != null && !facultyList.isEmpty()) {
                         for (Faculty faculty : facultyList) {
@@ -199,14 +193,14 @@
                         </form>
                     </td>
                 </tr>
-                <% 
+                <%
                         }
                     } else {
                 %>
                 <tr>
                     <td colspan="4" class="no-records">No records found</td>
                 </tr>
-                <% 
+                <%
                     }
                 %>
             </tbody>

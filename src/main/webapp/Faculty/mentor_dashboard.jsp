@@ -211,7 +211,7 @@
         <div class="activity-box activity-1">
             <!-- No text here, just the image background -->
              <div class ='a'>
-                <a href="">Project List</a>
+            <a href="javascript:void(0);" onclick="projectList();">Project List</a>
              </div>
         </div>
         <div class="activity-box activity-2">
@@ -240,10 +240,10 @@
     </div>
 
 </body>
-<!-- <script>
-    function projList() {
+<script>
+    function projectList() {
         const contextPath = window.location.pathname.substring(0, window.location.pathname.indexOf("/", 1)); // Gets your context path
-        const url = contextPath + "/projList";   
+        const url = contextPath + "/FetchMentorProjects";   
         window.location.href = url;
     }
     
@@ -259,7 +259,7 @@
         window.location.href = url;
     }
     
-    </script> -->
+    </script> 
     </html>
     
 

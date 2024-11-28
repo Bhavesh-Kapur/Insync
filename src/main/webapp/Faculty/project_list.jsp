@@ -28,26 +28,26 @@
             box-sizing: border-box;
         }
 
-        .main-content {
-            max-width: 900px;
-            margin: 0 auto;
-            background-color: var(--accent-color);
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-
         h1 {
             text-align: center;
             color: var(--heading-color);
             font-size: 2.2rem;
-            margin-bottom: 20px;
+            margin-bottom: 30px; /* Increased space between title and box */
+        }
+
+        .main-content {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: var(--accent-color);
+            padding: 20px 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 20px;
+            margin-top: 30px; /* Increased space between the heading and table */
         }
 
         table, th, td {
@@ -81,8 +81,8 @@
     </style>
 </head>
 <body>
+    <h1>Project List</h1> <!-- Title outside the box -->
     <div class="main-content">
-        <h1>Project List</h1>
         <table>
             <thead>
                 <tr>

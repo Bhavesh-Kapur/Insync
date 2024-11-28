@@ -123,7 +123,7 @@
         <div class="left-section">
 
             <div class="details-section">
-                <h2>Welcome, <%= session.getAttribute("name") %>!</h2>
+                <h2>Welcomeee, <%= session.getAttribute("name") %>!</h2>
                 <p><strong>Program:</strong> <%= session.getAttribute("program") %></p>
                 <p><strong>Professor ID:</strong> <%= session.getAttribute("profid") %></p>
             </div>

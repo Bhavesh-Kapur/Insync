@@ -1,3 +1,6 @@
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="in.upes.projectmanagement.Faculty.mProject" %>
+<%@ page import="jakarta.servlet.http.HttpServletRequest" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>

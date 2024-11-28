@@ -66,7 +66,7 @@
             flex: 1;
         }
         .fetch-request-button {
-            width: 80%;
+            width: 50%;
             padding: 15px;
             font-size: 16px;
             cursor: pointer;

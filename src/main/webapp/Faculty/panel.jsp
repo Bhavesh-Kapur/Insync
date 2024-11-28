@@ -103,7 +103,7 @@
             <thead>
                 <tr>
                     <th>Project Name</th>
-                    <th>Team Name</th>
+                    <th>Team ID</th>
                     <th>Enter Synopsis Marks</th>
                     <th>Enter Mid-Term Marks</th>
                     <th>Enter End-Sem Marks</th>

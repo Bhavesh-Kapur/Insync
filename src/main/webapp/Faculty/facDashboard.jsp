@@ -52,14 +52,14 @@
             font-size: 18px;
             font-weight: bold;
             cursor: pointer;
-            background-color: #87CEFA; /* Light blue */
+            background-color: #87CEFA; 
             color: white;
             border-radius: 5px;
             transition: background-color 0.3s;
             text-align: ;
         }
         .button-container .square-div:hover {
-            background-color: #5cacee; /* Slightly darker blue */
+            background-color: #5cacee; 
         }
         .right-section {
             flex: 1;
@@ -69,7 +69,7 @@
             padding: 15px;
             font-size: 16px;
             cursor: pointer;
-            background-color: #87CEFA; /* Light blue */
+            background-color: #87CEFA; 
             color: white;
             border: none;
             border-radius: 5px;
@@ -105,7 +105,7 @@
             margin-top: 20px;
             padding: 10px 20px;
             font-size: 16px;
-            background-color: #ff6347; /* Tomato */
+            background-color: #ff6347; 
             color: white;
             text-decoration: none;
             border-radius: 5px;
@@ -118,16 +118,16 @@
 </head>
 <body>
     <div class="dashboard-container">
-        <!-- Left Section -->
+
         <div class="left-section">
-            <!-- Details Section -->
+
             <div class="details-section">
                 <h2>Welcome, <%= session.getAttribute("name") %>!</h2>
                 <p><strong>Program:</strong> <%= session.getAttribute("program") %></p>
                 <p><strong>Professor ID:</strong> <%= session.getAttribute("profid") %></p>
             </div>
 
-            <!-- Div Section -->
+            
             <div class="button-container">
                 <div class="square-div" onclick="mentor()">Mentor</div>
                 <div class="square-div" onclick="location.href='panel_dashboard.jsp'">Panel</div>
@@ -135,15 +135,15 @@
             </div>
         </div>
 
-        <!-- Right Section -->
+        
         <div class="right-section">
-            <!-- Fetch Request Button -->
+            
             <form action="fetchPanelInvite" method="GET">
                 <input type="hidden" name="profId" value="<%= session.getAttribute("profid") %>">
                 <button type="submit" class="fetch-request-button">Fetch Requests</button>
             </form>
 
-            <!-- Panel Invitations Section -->
+            
             <div class="invite-container">
                 <h2>Panel Invitations</h2>
                 <%
@@ -170,7 +170,7 @@
                 <% } %>
             </div>
 
-            <!-- Mentor Invitations Section -->
+            
             <div class="invite-container">
                 <h2>Mentor Invitations</h2>
                 <%
@@ -200,7 +200,7 @@
         </div>
     </div>
 
-    <!-- Logout Section -->
+    
     <a href="logout" class="logout-button">Logout</a>
 
     <% 
@@ -223,7 +223,7 @@
 %>
 <script>
 function mentor() {
-    const contextPath = window.location.pathname.substring(0, window.location.pathname.indexOf("/", 1)); // Gets your context path
+    const contextPath = window.location.pathname.substring(0, window.location.pathname.indexOf("/", 1)); 
     const url = contextPath + "/mentorProject";   
     window.location.href = url;
 }

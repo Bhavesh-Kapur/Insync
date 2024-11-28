@@ -159,6 +159,17 @@
 <load-on-startup>1</load-on-startup>
 </servlet>
 
+<servlet>
+<servlet-name>HandleMentorInvite</servlet-name>
+<servlet-class>in.upes.projectmanagement.Faculty.HandleMentorInvite</servlet-class>
+<load-on-startup>1</load-on-startup>
+</servlet>
+
+<servlet-mapping>
+<servlet-name>HandleMentorInvite</servlet-name>
+<url-pattern>/Faculty/HandleMentorInvite</url-pattern>
+</servlet-mapping>
+
 <servlet-mapping>
     <servlet-name>FetchMarksServlet</servlet-name>
     <url-pattern>/Faculty/FetchMarksServlet</url-pattern>

@@ -184,7 +184,7 @@
                                 <strong>Team Name:</strong> <%= requestEntry.getTeamName() %> 
                                 (<strong>Team ID:</strong> <%= requestEntry.getTeamId() %>)<br>
                                 <strong>Request ID:</strong> <%= requestEntry.getRequestId() %><br>
-                                <form action="handleMentorInvite" method="POST" style="display:inline;">
+                                <form action="HandleMentorInvite" method="POST" style="display:inline;">
                                     <input type="hidden" name="inviteId" value="<%= requestEntry.getRequestId() %>">
                                     <button type="submit" name="action" value="accept">Accept</button>
                                     <button type="submit" name="action" value="reject">Reject</button>

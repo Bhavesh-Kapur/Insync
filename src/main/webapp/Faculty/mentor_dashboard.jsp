@@ -228,7 +228,7 @@
             <!-- No text here, just the image background -->
              <div class="a">
                 <!-- <a href="javascript:void(0);" onclick="profList();">Panel List</a>  -->
-                 <a href="">Call Students</a>
+                 <a href="">Call Studentss</a>
              </div>
         </div>
         <div class="activity-box activity-4">

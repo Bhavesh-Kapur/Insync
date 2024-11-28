@@ -218,7 +218,7 @@
             <!-- No text here, just the image background -->
              <div class ='a'>
                
-                <!-- <a href="javascript:void(0);" onclick="studentList();">Students List</a> -->4
+                <!-- <a href="javascript:void(0);" onclick="studentList();">Students List</a> -->
                  <a href="panel.jsp">Give Marks</a>
              </div>
         </div>

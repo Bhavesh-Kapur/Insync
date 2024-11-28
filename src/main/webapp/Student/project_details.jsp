@@ -83,6 +83,23 @@
         .status-section {
             margin-bottom: 30px;
         }
+
+        .button {
+            display: inline-block;
+            background-color: #4a90e2;
+            color: white;
+            padding: 10px 20px;
+            margin: 15px 0;
+            text-align: center;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #3b7cd3;
+        }
     </style>
 </head>
 <body>
@@ -97,19 +114,19 @@
         <div class="project-details">
             <button onclick="openEditForm()">Edit</button>
 
-<div id="editForm" style="display:none;">
-    <form action="UpdateProjectDetailsServlet" method="POST">
-        <h2>Edit Project Details</h2>
-        <br>
-        <label for="teamName">Team Name:</label>
-        <input type="text" id="teamName" name="teamName">
-        <br>
-        <button type="submit">Save Changes</button>
-        <button type="button" onclick="closeEditForm()">Cancel</button>
-    </form>
-</div>
+            <div id="editForm" style="display:none;">
+                <form action="UpdateProjectDetailsServlet" method="POST">
+                    <h2>Edit Project Details</h2>
+                    <br>
+                    <label for="teamName">Team Name:</label>
+                    <input type="text" id="teamName" name="teamName">
+                    <br>
+                    <button type="submit">Save Changes</button>
+                    <button type="button" onclick="closeEditForm()">Cancel</button>
+                </form>
+            </div>
 
- <p><strong>Project Type:</strong> 
+            <p><strong>Project Type:</strong> 
                 <%
                 ArrayList<TeamMember> teamMembers = (ArrayList<TeamMember>) request.getAttribute("teamMembers");
                 String projectType = "N/A";
@@ -153,8 +170,8 @@
             </tbody>
         </table>
 
-    <a href="fileUpload.jsp">Upload files</a>
-    <a href="downloadPdf.jsp">Download files</a>
+        <a href="fileUpload.jsp" class="button">Upload Files</a>
+        <a href="downloadPdf.jsp" class="button">Download Files</a>
 
     </div>
 
@@ -167,5 +184,5 @@
         document.getElementById('editForm').style.display = 'none';
     }
 </script>
-           
+
 </html>

@@ -62,6 +62,7 @@
             document.getElementById("projectForm").classList.remove("hidden");
             document.getElementById("selectedProjectId").value = projectId;
             document.getElementById("selectedProjectName").innerText = projectName;
+            document.getElementById("selectedProjectIdSpan").innerText = projectId;
         }
     </script>
 </head>
@@ -128,10 +129,10 @@
     %>
 
     <div id="projectForm" class="form-container hidden">
-        <h2>Fill Marks for Project: <span id="selectedProjectName"></span><span id="selectedProjectId"></span></h2>
+        <h2>Fill Marks for Project: <span id="selectedProjectName"></span><span id="selectedProjectIdSpan"></span></h2>
         <form method="post" action="processMarks">
             <input type="hidden" id="selectedProjectId" name="selectedProjectId" />
-            
+
             <label for="midtermMarks">Midterm Marks:</label><br>
             <input type="number" id="midtermMarks" name="midtermMarks" required min="0" max="100"><br><br>
 
@@ -144,5 +145,30 @@
             <input type="submit" value="Submit Marks">
         </form>
     </div>
+
+  <%
+    // Show success message using session attribute
+    String popupMessage = (String) session.getAttribute("popupMessage");
+    if (popupMessage != null) {
+        session.removeAttribute("popupMessage"); // Remove the attribute after reading
+        out.println("<script>alert('" + popupMessage + "');</script>");
+    }
+%>
+
+<form action="mentorProject" method="GET">
+    <input type="hidden" name="profId" value="<%= session.getAttribute("profid") %>">
+    <button type="submit">Fetch</button>
+</form>
+
+<script>
+    // Show a popup only if a message is present in session and then remove it
+    window.onload = function () {
+        var popupMessage = '<%= popupMessage %>';
+        if (popupMessage) {
+            alert(popupMessage); // Display as a popup
+        }
+    };
+</script>
+
 </body>
 </html>

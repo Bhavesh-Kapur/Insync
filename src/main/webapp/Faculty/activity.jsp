@@ -197,13 +197,12 @@
     <div class="sidebar">
         <img src="https://static.vecteezy.com/system/resources/previews/006/877/567/non_2x/work-character-solid-icon-illustration-office-workers-teachers-judges-police-artists-employees-free-vector.jpg" alt="Teacher Icon">
         <br>
-        <ul class="teacher-details">
+        <!-- <ul class="teacher-details"> -->
             <p>Activity Coordinator</p>
-            <li><span> Name:</span> <span>${sessionScope.name}</span></li>
-            <li><span>Sap Id:</span> <span>${sessionScope.sap}</span></li>
-            <li><span>School:</span> <span>${sessionScope.school}</span></li>
-            <li><span>Sitting Room:</span> <span>${sessionScope.room}</span></li>
-        </ul>
+           <p>Name: Dr.Smith</p>
+           <p>Sap I'd:400107137</p>
+           <p>School: SOCS</p>
+           <p>Sitting Area:9104</p>
         <a href="logout" class="logout-button">Logout</a>
     </div>
 
@@ -212,13 +211,14 @@
         <div class="activity-box activity-1">
             <!-- No text here, just the image background -->
              <div class ='a'>
-                <a>Project List</a>
+                <a href="javascript:void(0);" onclick="projList();">Project List</a>
              </div>
         </div>
         <div class="activity-box activity-2">
             <!-- No text here, just the image background -->
              <div class ='a'>
-                <a>Students List</a>
+               
+                <a href="javascript:void(0);" onclick="studentList();">Students List</a>
              </div>
         </div>
 
@@ -226,7 +226,7 @@
         <div class="activity-box activity-3">
             <!-- No text here, just the image background -->
              <div class="a">
-                <a>Panel List</a>
+                <a href="javascript:void(0);" onclick="profList();">Panel List</a> 
              </div>
         </div>
         <div class="activity-box activity-4">
@@ -238,4 +238,26 @@
     </div>
 
 </body>
-</html>
+<script>
+    function projList() {
+        const contextPath = window.location.pathname.substring(0, window.location.pathname.indexOf("/", 1)); // Gets your context path
+        const url = contextPath + "/projList";   
+        window.location.href = url;
+    }
+    
+    function studentList() {
+        const contextPath = window.location.pathname.substring(0, window.location.pathname.indexOf("/", 1)); // Gets your context path
+        const url = contextPath + "/studentList";   
+        window.location.href = url;
+    }
+    
+    function profList() {
+        const contextPath = window.location.pathname.substring(0, window.location.pathname.indexOf("/", 1)); // Gets your context path
+        const url = contextPath + "/profList";   
+        window.location.href = url;
+    }
+    
+    </script>
+    </html>
+    
+

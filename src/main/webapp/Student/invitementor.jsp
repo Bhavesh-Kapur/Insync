@@ -165,9 +165,15 @@
             <button type="submit">Search</button>
         </form>
 
-        <div class="success">
-            <%= request.getAttribute("successMessage") %>
-        </div>
+        <!-- Success Message -->
+        <%
+            String successMessage = (String) request.getAttribute("successMessage");
+            if (successMessage != null) {
+        %>
+        <div class="success"><%= successMessage %></div>
+        <%
+            }
+        %>
 
         <h2>Faculty List</h2>
         <table>

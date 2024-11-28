@@ -147,7 +147,7 @@
 
 
         .activity-2 {
-            background-image: url('https://icon-library.com/images/students-icon/students-icon-7.jpg');
+            background-image: url('https://www.pngitem.com/pimgs/m/28-285254_web-icons-round-2-02-evaluation-icon-hd.png');
     background-size: 250px 220px; /* Adjust the image size */
     background-position: center;
     background-repeat: no-repeat;
@@ -159,7 +159,7 @@
         }
 
         .activity-3 {
-            background-image: url('https://cdn2.iconfinder.com/data/icons/business-attitude/512/meeting-256.png');
+            background-image: url('https://cdn-icons-png.flaticon.com/512/11472/11472668.png');
             background-size: 250px 220px; /* Adjust the image size */
     background-position: center;
     background-repeat: no-repeat;
@@ -170,7 +170,7 @@
         }
 
         .activity-4 {
-            background-image: url('https://thumbs.dreamstime.com/b/check-list-linear-icon-clipboard-marks-setting-vector-illustration-236017995.jpg');
+            background-image: url('https://img.freepik.com/premium-vector/feedback-icon-client-review-recognition_946691-718.jpg');
             background-size: 250px 220px; /* Adjust the image size */
     background-position: center;
     background-repeat: no-repeat;
@@ -198,7 +198,7 @@
         <img src="https://static.vecteezy.com/system/resources/previews/006/877/567/non_2x/work-character-solid-icon-illustration-office-workers-teachers-judges-police-artists-employees-free-vector.jpg" alt="Teacher Icon">
         <br>
         <!-- <ul class="teacher-details"> -->
-            <p>Mentorr</p>
+            <p>Mentor</p>
            <p>Name: <%= session.getAttribute("name") %></p>
            <p>Sap I'd: <%= session.getAttribute("profid") %></p>
            <p>School: <%= session.getAttribute("program") %></p>
@@ -228,7 +228,7 @@
             <!-- No text here, just the image background -->
              <div class="a">
                 <!-- <a href="javascript:void(0);" onclick="profList();">Panel List</a>  -->
-                 <a href="">Call Studentss</a>
+                 <a href="">Call Students</a>
              </div>
         </div>
         <div class="activity-box activity-4">

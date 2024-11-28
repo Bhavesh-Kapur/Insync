@@ -8,34 +8,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project List</title>
     <style>
+        :root {
+            --primary-color: #4a90e2;
+            --secondary-color: #d6e9f8;
+            --accent-color: #ffffff;
+            --background-gradient: linear-gradient(135deg, #d6e9f8, #ffffff);
+            --heading-color: #0a0a0a;
+            --text-color: #333333;
+            --border-color: #ccc;
+            --hover-bg-color: #f1f1f1;
+            --table-header-bg: #f4f4f4;
+        }
+
         body {
             font-family: Arial, sans-serif;
-            margin: 20px;
+            background: var(--background-gradient);
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
         }
+
+        .main-content {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: var(--accent-color);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--heading-color);
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+
         table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
         }
+
         table, th, td {
-            border: 1px solid #ccc;
+            border: 1px solid var(--border-color);
         }
+
         th, td {
-            padding: 10px;
+            padding: 12px;
             text-align: left;
+            font-size: 1rem;
         }
+
         th {
-            background-color: #f4f4f4;
+            background-color: var(--table-header-bg);
+            color: var(--heading-color);
         }
+
         tr:hover {
-            background-color: #f1f1f1;
+            background-color: var(--hover-bg-color);
         }
-        .main-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        h1 {
+
+        .no-projects {
             text-align: center;
+            font-size: 1.1rem;
+            color: var(--text-color);
+            padding: 20px;
+            background-color: #f9f9f9;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
         }
     </style>
 </head>
@@ -67,7 +108,7 @@
                     } else {
                 %>
                 <tr>
-                    <td colspan="3">No projects available</td>
+                    <td colspan="3" class="no-projects">No projects available</td>
                 </tr>
                 <%
                     }

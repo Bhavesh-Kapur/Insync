@@ -232,7 +232,7 @@
         <div class="activity-box activity-4">
             <!-- No text here, just the image background -->
              <div class="a">
-                <a>Marks List</a>
+                <a href="javascript:void(0);" onclick="markList();">Marks List</a> 
              </div>
         </div>
     </div>
@@ -254,6 +254,12 @@
     function profList() {
         const contextPath = window.location.pathname.substring(0, window.location.pathname.indexOf("/", 1)); // Gets your context path
         const url = contextPath + "/profList";   
+        window.location.href = url;
+    }
+
+      function markList() {
+        const contextPath = window.location.pathname.substring(0, window.location.pathname.indexOf("/", 1)); // Gets your context path
+        const url = contextPath + "/FetchMarksServlet";   
         window.location.href = url;
     }
     

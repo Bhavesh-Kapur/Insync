@@ -141,7 +141,28 @@
     <servlet-class>in.upes.projectmanagement.Faculty.processMarks</servlet-class>
     <load-on-startup>1</load-on-startup>
 </servlet>
+<!-- 
+<servlet>
+    <servlet-name>ManagePannelsServlet</servlet-name>
+    <servlet-class>in.upes.projectmanagement.Faculty.ManagePanelsServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+</servlet>
 
+<servlet-mapping>
+    <servlet-name>ManagePanelsServlet</servlet-name>
+    <url-pattern>/Faculty/ManagePanelsServlet</url-pattern>
+</servlet-mapping> -->
+
+<servlet>
+<servlet-name>FetchMarksServlet</servlet-name>
+<servlet-class>in.upes.projectmanagement.Faculty.FetchMarksServlet</servlet-class>
+<load-on-startup>1</load-on-startup>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>FetchMarksServlet</servlet-name>
+    <url-pattern>/Faculty/FetchMarksServlet</url-pattern>
+</servlet-mapping>
 <servlet-mapping>
     <servlet-name>processMarks</servlet-name>
     <url-pattern>/Faculty/processMarks</url-pattern>

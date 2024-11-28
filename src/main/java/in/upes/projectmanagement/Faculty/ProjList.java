@@ -40,6 +40,7 @@ public class projList extends HttpServlet {
                 int projectId = rs.getInt("project_id");
                 String projectName = rs.getString("project_details");
                 int semester = rs.getInt("semester");
+                System.out.println(projectId);
                 // Create a Project object (custom POJO for holding project details)
                 Project project = new Project(projectId, projectName, semester);
                 projectList.add(project);

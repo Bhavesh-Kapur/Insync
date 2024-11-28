@@ -11,17 +11,21 @@
         body {
             font-family: Arial, sans-serif;
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding-top: 50px;
+            justify-content: flex-start;
+            align-items: flex-start;
+            padding: 20px;
         }
         .dashboard-container {
-            width: 80%;
-            max-width: 600px;
-            text-align: center;
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+        }
+        .left-section {
+            width: 30%;
+            padding-right: 20px;
         }
         .details-section {
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             padding: 15px;
             border: 1px solid #ccc;
             border-radius: 5px;
@@ -36,25 +40,47 @@
         }
         .button-container {
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
+            gap: 10px;
         }
-        .button-container button {
-            width: 30%;
-            padding: 20px;
+        .button-container .square-div {
+            width: 70%;
+            height: 120px;
+            display: flex;
+            justify-content: center;
+            align-items: center ;
             font-size: 18px;
+            font-weight: bold;
             cursor: pointer;
-            background-color: #4CAF50;
+            background-color: #87CEFA; /* Light blue */
+            color: white;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            text-align: ;
+        }
+        .button-container .square-div:hover {
+            background-color: #5cacee; /* Slightly darker blue */
+        }
+        .right-section {
+            flex: 1;
+        }
+        .fetch-request-button {
+            width: 80%;
+            padding: 15px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #87CEFA; /* Light blue */
             color: white;
             border: none;
             border-radius: 5px;
             transition: background-color 0.3s;
+            margin-bottom: 20px;
         }
-        .button-container button:hover {
-            background-color: #45a049;
+        .fetch-request-button:hover {
+            background-color: #5cacee;
         }
         .invite-container {
-            margin-top: 30px;
-            text-align: left;
+            margin-bottom: 20px;
         }
         .invite-container h2 {
             color: #333;
@@ -74,91 +100,108 @@
             display: inline-block;
             margin-left: 10px;
         }
-        .button-container button {
+        .logout-button {
+            display: inline-block;
+            margin-top: 20px;
             padding: 10px 20px;
-            font-size: 14px;
+            font-size: 16px;
+            background-color: #ff6347; /* Tomato */
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .logout-button:hover {
+            background-color: #e5533d;
         }
     </style>
 </head>
 <body>
     <div class="dashboard-container">
-        <!-- Details Section -->
-        <div class="details-section">
-            <h2>Welcome, <%= session.getAttribute("name") %>!</h2>
-            <p><strong>Program:</strong> <%= session.getAttribute("program") %></p>
-            <p><strong>Professor ID:</strong> <%= session.getAttribute("profid") %></p>
-        </div>
-        
-        <!-- Button Section -->
-        <div class="button-container">
-            <button ><a href="javascript:void(0);" onclick="mentor();">Mentor</a></button>
-            <button onclick="location.href='panel.jsp'">Panel</button>
-            <button onclick="location.href='activity.jsp'">Activity Coordination</button>
+        <!-- Left Section -->
+        <div class="left-section">
+            <!-- Details Section -->
+            <div class="details-section">
+                <h2>Welcome, <%= session.getAttribute("name") %>!</h2>
+                <p><strong>Program:</strong> <%= session.getAttribute("program") %></p>
+                <p><strong>Professor ID:</strong> <%= session.getAttribute("profid") %></p>
+            </div>
+
+            <!-- Div Section -->
+            <div class="button-container">
+                <div class="square-div" onclick="mentor()">Mentor</div>
+                <div class="square-div" onclick="location.href='panel_dashboard.jsp'">Panel</div>
+                <div class="square-div" onclick="location.href='activity.jsp'">Activity Coordinator</div>
+            </div>
         </div>
 
-        <form action="fetchPanelInvite" method="GET">
-    <input type="hidden" name="profId" value="<%= session.getAttribute("profid") %>">
-        <button type="submit">Fetch Requests</button>
-    </form>
-        <!-- Panel Invitations Section -->
-        <div class="invite-container">
-            <h2>Panel Invitations</h2>
-            <%
-                List<PanelRequest> panelInvites = (List<PanelRequest>) request.getAttribute("panelInvites");
-                if (panelInvites != null && !panelInvites.isEmpty()) {
-            %>
-                <ul>
-                    <% for (PanelRequest requestEntry : panelInvites) { %>
-                        <li>
-                            <strong>Invite ID:</strong> <%= requestEntry.getRequestId() %><br>
-                            <strong>Sent By:</strong> <%= requestEntry.getTeamName() %><br>
-                            <form action="handlePanelInvite" method="POST" style="display:inline;">
-                                <input type="hidden" name="inviteId" value="<%= requestEntry.getRequestId() %>">
-                                <button type="submit" name="action" value="accept">Accept</button>
-                                <button type="submit" name="action" value="reject">Reject</button>
-                            </form>
-                        </li>
-                    <% } %>
-                </ul>
-            <% 
-                } else { 
-            %>
-                <p>No panel invites available.</p>
-            <% } %>
-        </div>
+        <!-- Right Section -->
+        <div class="right-section">
+            <!-- Fetch Request Button -->
+            <form action="fetchPanelInvite" method="GET">
+                <input type="hidden" name="profId" value="<%= session.getAttribute("profid") %>">
+                <button type="submit" class="fetch-request-button">Fetch Requests</button>
+            </form>
 
-        <!-- Mentor Invitations Section -->
-        <div class="invite-container">
-            <h2>Mentor Invitations</h2>
-            <%
-                List<PanelRequest> mentorInvites = (List<PanelRequest>) request.getAttribute("mentorInvites");
-                if (mentorInvites != null && !mentorInvites.isEmpty()) {
-            %>
-                <ul>
-                    <% for (PanelRequest requestEntry : mentorInvites) { %>
-                        <li>
-                            <strong>Team Name:</strong> <%= requestEntry.getTeamName() %> 
-                            (<strong>Team ID:</strong> <%= requestEntry.getTeamId() %>)<br>
-                            <strong>Request ID:</strong> <%= requestEntry.getRequestId() %><br>
-                            <form action="handleMentorInvite" method="POST" style="display:inline;">
-                                <input type="hidden" name="inviteId" value="<%= requestEntry.getRequestId() %>">
-                                <button type="submit" name="action" value="accept">Accept</button>
-                                <button type="submit" name="action" value="reject">Reject</button>
-                            </form>
-                        </li>
-                    <% } %>
-                </ul>
-            <% 
-                } else { 
-            %>
-                <p>No mentor invites available.</p>
-            <% } %>
-        </div>
+            <!-- Panel Invitations Section -->
+            <div class="invite-container">
+                <h2>Panel Invitations</h2>
+                <%
+                    List<PanelRequest> panelInvites = (List<PanelRequest>) request.getAttribute("panelInvites");
+                    if (panelInvites != null && !panelInvites.isEmpty()) {
+                %>
+                    <ul>
+                        <% for (PanelRequest requestEntry : panelInvites) { %>
+                            <li>
+                                <strong>Invite ID:</strong> <%= requestEntry.getRequestId() %><br>
+                                <strong>Sent By:</strong> <%= requestEntry.getTeamName() %><br>
+                                <form action="handlePanelInvite" method="POST" style="display:inline;">
+                                    <input type="hidden" name="inviteId" value="<%= requestEntry.getRequestId() %>">
+                                    <button type="submit" name="action" value="accept">Accept</button>
+                                    <button type="submit" name="action" value="reject">Reject</button>
+                                </form>
+                            </li>
+                        <% } %>
+                    </ul>
+                <% 
+                    } else { 
+                %>
+                    <p>No panel invites available.</p>
+                <% } %>
+            </div>
 
-        <!-- Logout Section -->
-        <a href="logout" class="logout-button">Logout</a>
+            <!-- Mentor Invitations Section -->
+            <div class="invite-container">
+                <h2>Mentor Invitations</h2>
+                <%
+                    List<PanelRequest> mentorInvites = (List<PanelRequest>) request.getAttribute("mentorInvites");
+                    if (mentorInvites != null && !mentorInvites.isEmpty()) {
+                %>
+                    <ul>
+                        <% for (PanelRequest requestEntry : mentorInvites) { %>
+                            <li>
+                                <strong>Team Name:</strong> <%= requestEntry.getTeamName() %> 
+                                (<strong>Team ID:</strong> <%= requestEntry.getTeamId() %>)<br>
+                                <strong>Request ID:</strong> <%= requestEntry.getRequestId() %><br>
+                                <form action="handleMentorInvite" method="POST" style="display:inline;">
+                                    <input type="hidden" name="inviteId" value="<%= requestEntry.getRequestId() %>">
+                                    <button type="submit" name="action" value="accept">Accept</button>
+                                    <button type="submit" name="action" value="reject">Reject</button>
+                                </form>
+                            </li>
+                        <% } %>
+                    </ul>
+                <% 
+                    } else { 
+                %>
+                    <p>No mentor invites available.</p>
+                <% } %>
+            </div>
+        </div>
     </div>
 
+    <!-- Logout Section -->
+    <a href="logout" class="logout-button">Logout</a>
 
     <% 
     String message = request.getParameter("message");
@@ -178,8 +221,6 @@
 <% 
     } 
 %>
-</body>
-
 <script>
 function mentor() {
     const contextPath = window.location.pathname.substring(0, window.location.pathname.indexOf("/", 1)); // Gets your context path
@@ -187,4 +228,5 @@ function mentor() {
     window.location.href = url;
 }
 </script>
+</body>
 </html>

@@ -136,8 +136,19 @@
     <load-on-startup>1</load-on-startup>
 </servlet>
 
+<servlet>
+    <servlet-name>processMarks</servlet-name>
+    <servlet-class>in.upes.projectmanagement.Faculty.processMarks</servlet-class>
+    <load-on-startup>1</load-on-startup>
+</servlet>
+
 <servlet-mapping>
-    <servlet-name>mentorProject</servlet-name>
+    <servlet-name>processMarks</servlet-name>
+    <url-pattern>/Faculty/processMarks</url-pattern>
+</servlet-mapping>
+
+<servlet-mapping>
+<servlet-name>mentorProject</servlet-name>
     <url-pattern>/Faculty/mentorProject</url-pattern>
 </servlet-mapping>
 

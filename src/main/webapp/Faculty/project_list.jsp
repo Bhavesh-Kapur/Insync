@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project List</title>
+    <title>List of Projects</title>
     <style>
         :root {
             --primary-color: #4a90e2;
@@ -32,7 +32,7 @@
             text-align: center;
             color: var(--heading-color);
             font-size: 2.2rem;
-            margin-bottom: 30px; /* Increased space between title and box */
+            margin-bottom: 30px;
         }
 
         .main-content {
@@ -47,7 +47,7 @@
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 30px; /* Increased space between the heading and table */
+            margin-top: 30px;
         }
 
         table, th, td {
@@ -81,7 +81,7 @@
     </style>
 </head>
 <body>
-    <h1>Project List</h1> <!-- Title outside the box -->
+    <h1>List of Projects</h1>
     <div class="main-content">
         <table>
             <thead>
@@ -93,7 +93,6 @@
             </thead>
             <tbody>
                 <%
-                    // Fetch the project list from the request attribute
                     List<Project> projectList = (List<Project>) request.getAttribute("projectList");
                     if (projectList != null && !projectList.isEmpty()) {
                         for (Project project : projectList) {

@@ -3,7 +3,6 @@
 <head>
     <title>Panel - Team Notifications</title>
     <style>
-        /* Add some styles here */
     </style>
 </head>
 <body>

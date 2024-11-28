@@ -29,7 +29,7 @@
         /* Sidebar */
         .sidebar {
             background-color: var(--sidebar-bg);
-            width: 300px;
+            width: 301px;
             padding: 20px;
             box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
             height: 100vh;

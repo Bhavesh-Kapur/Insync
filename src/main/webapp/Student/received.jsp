@@ -301,6 +301,9 @@
         </div>
     </div>
 
+
+<form action = "ViewMessagesServlet" method="GET" >
+<button type="submit"> Messages</button></form>
 </body>
 </html>
 

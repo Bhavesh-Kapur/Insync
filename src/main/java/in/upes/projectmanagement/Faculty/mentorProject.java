@@ -4,9 +4,9 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
-import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -18,48 +18,68 @@ public class mentorProject extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Connection conn = null;
-        PreparedStatement ps = null;
+        PreparedStatement psFetchMentorProjects = null;
         ResultSet rs = null;
-
+        
         try {
-            // Get database connection
-            conn = databaseConnection.initializeDatabase();
+            // Get professor id from the session
             HttpSession session = request.getSession();
-            int currentProfId = (int) session.getAttribute("profid");
+            int profid = (int) session.getAttribute("profid");
 
-            // Query to fetch all projects where the current professor is the mentor
-            String fetchProjectsQuery = "SELECT project_id, project_details, semester FROM project WHERE profid = ?";
-            ps = conn.prepareStatement(fetchProjectsQuery);
-            ps.setInt(1, currentProfId);
-            rs = ps.executeQuery();
+            // Initialize the database connection
+            conn = databaseConnection.initializeDatabase();
+
+            // SQL query to fetch all project IDs assigned to the professor
+            String fetchMentorProjectsQuery = "SELECT projectid1, projectid2, projectid3, projectid4 FROM mentor_proj WHERE profid = ?";
+            psFetchMentorProjects = conn.prepareStatement(fetchMentorProjectsQuery);
+            psFetchMentorProjects.setInt(1, profid);
+            rs = psFetchMentorProjects.executeQuery();
 
             // List to store project details
-            ArrayList<mProject> mprojectList = new ArrayList<>();
+            ArrayList<mProject> mProjectList = new ArrayList<>();
+            
             while (rs.next()) {
-                int projectId = rs.getInt("project_id");
-                String projectName = rs.getString("project_details");
-                String semester = rs.getString("semester");
+                // Loop through the four project id columns
+                for (int i = 1; i <= 4; i++) {
+                    Integer projectId = rs.getObject("projectid" + i, Integer.class);
+                    if (projectId != null) {
+                        System.out.println(projectId);
+                        // Fetch the project details from the project table
+                        String fetchProjectDetailsQuery = "SELECT project_details, semester FROM project WHERE project_id = ?";
+                        PreparedStatement psFetchProjectDetails = conn.prepareStatement(fetchProjectDetailsQuery);
+                        psFetchProjectDetails.setInt(1, projectId);
+                        ResultSet rsProject = psFetchProjectDetails.executeQuery();
 
-                // Create an mProject object
-                mProject mproject = new mProject(projectId, projectName, semester);
-                mprojectList.add(mproject);
+                        if (rsProject.next()) {
+                            String projectName = rsProject.getString("project_details");
+                            String semester = rsProject.getString("semester");
+
+                            // Create a new mProject object and add it to the list
+                            mProject mproject = new mProject(projectId, projectName, semester);
+                            mProjectList.add(mproject);
+                        }
+                        rsProject.close(); // Close the ResultSet for the project details query
+                    }
+                }
             }
 
-            // Add the project list to the request attributes
-            request.setAttribute("mprojectList", mprojectList);
+            // Set the list of mentor projects as an attribute in the request
+            request.setAttribute("mProjectList", mProjectList);
 
-            // Forward the request to a JSP page for rendering
-            RequestDispatcher dispatcher = request.getRequestDispatcher("mentor.jsp");
-            dispatcher.forward(request, response);
+            // Forward the request to a JSP page to display the projects
+            request.getRequestDispatcher("mentor.jsp").forward(request, response);
 
-        } catch (Exception e) {
+        } catch (SQLException e) {
+            e.printStackTrace();
+            response.sendRedirect("facDashboard.jsp?error=Error fetching projects");
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } finally {
             try {
+                if (psFetchMentorProjects != null) psFetchMentorProjects.close();
                 if (rs != null) rs.close();
-                if (ps != null) ps.close();
                 if (conn != null) conn.close();
-            } catch (Exception ex) {
+            } catch (SQLException ex) {
                 ex.printStackTrace();
             }
         }

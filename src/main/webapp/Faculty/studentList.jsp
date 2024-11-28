@@ -96,7 +96,7 @@
         <table>
             <thead>
                 <tr>
-                    <th>Student ID</th>
+                    <th>SAP ID</th>
                     <th>Student Name</th>
                     <th>Semester</th>
                 </tr>

@@ -147,7 +147,7 @@
 
 
         .activity-2 {
-            background-image: url('https://www.pngitem.com/pimgs/m/28-285254_web-icons-round-2-02-evaluation-icon-hd.png');
+            background-image: url('https://cdn-icons-png.flaticon.com/512/7884/7884551.png');
     background-size: 250px 220px; /* Adjust the image size */
     background-position: center;
     background-repeat: no-repeat;

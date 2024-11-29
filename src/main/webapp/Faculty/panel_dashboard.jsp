@@ -147,7 +147,7 @@
 
 
         .activity-2 {
-            background-image: url('https://icon-library.com/images/students-icon/students-icon-7.jpg');
+            background-image: url('https://cdn-icons-png.flaticon.com/512/7626/7626093.png');
     background-size: 250px 220px; /* Adjust the image size */
     background-position: center;
     background-repeat: no-repeat;
@@ -159,7 +159,7 @@
         }
 
         .activity-3 {
-            background-image: url('https://cdn2.iconfinder.com/data/icons/business-attitude/512/meeting-256.png');
+            background-image: url('https://img.freepik.com/free-vector/3d-render-documents-icon_165488-4621.jpg');
             background-size: 250px 220px; /* Adjust the image size */
     background-position: center;
     background-repeat: no-repeat;

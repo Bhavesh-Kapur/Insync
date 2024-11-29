@@ -154,9 +154,8 @@
         <br>
         <ul class="student-details">
             <li><span>Name:</span> <span>${sessionScope.name}</span></li>
-            <li><span>SAP ID:</span> <span>${sessionScope.sapid}</span></li>
+            <li><span>SAP ID:</span> <span>${sessionScope.profid}</span></li>
             <li><span>Program:</span> <span>${sessionScope.program}</span></li>
-            <li><span>Semester:</span> <span>${sessionScope.semester}</span></li>
         </ul>
         <a href="logout" class="logout-button">Logout</a>
     </div>
@@ -164,14 +163,16 @@
     <div class="content">
         <h1>Feedback</h1>
         <div class="form-group">
+              <form action="sendMessage" method="post">
             <label for="groupId">Enter Group ID:</label>
-            <input type="text" id="groupId" name="groupId" placeholder="Enter Group ID">
+            <input type="text" id="groupId" name="project_id" placeholder="Enter Group ID">
         </div>
         <div class="form-group">
             <label for="feedback">Enter Feedback:</label>
-            <textarea id="feedback" name="feedback" placeholder="Write your feedback here"></textarea>
+            <textarea id="feedback" name="message" placeholder="Write your feedback here"></textarea>
         </div>
         <button class="submit-btn">Submit</button>
+        </form>
     </div>
 </body>
 </html>

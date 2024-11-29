@@ -170,7 +170,7 @@
         }
 
         .activity-4 {
-            background-image: url('https://thumbs.dreamstime.com/b/check-list-linear-icon-clipboard-marks-setting-vector-illustration-236017995.jpg');
+            background-image: url('https://cdn-icons-png.flaticon.com/512/11472/11472668.png');
             background-size: 250px 220px; /* Adjust the image size */
     background-position: center;
     background-repeat: no-repeat;

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="javax.servlet., javax.servlet.http., javax.servlet.annotation.*" %>
+<%@ page import="javax.servlet.*, javax.servlet.http.*, javax.servlet.annotation.*" %>
 <%@ page import="in.upes.projectmanagement.Faculty.PanelRequest" %>
 <%@ page import="java.util.*" %>
 <!DOCTYPE html>
@@ -123,7 +123,7 @@
         <div class="left-section">
 
             <div class="details-section">
-                <h2>Welcomeee, <%= session.getAttribute("name") %>!</h2>
+                <h2>Welcome, <%= session.getAttribute("name") %>!</h2>
                 <p><strong>Program:</strong> <%= session.getAttribute("program") %></p>
                 <p><strong>Professor ID:</strong> <%= session.getAttribute("profid") %></p>
             </div>

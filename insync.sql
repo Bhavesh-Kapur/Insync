@@ -66,7 +66,7 @@ CREATE TABLE `faculty` (
 
 LOCK TABLES `faculty` WRITE;
 /*!40000 ALTER TABLE `faculty` DISABLE KEYS */;
-INSERT INTO `faculty` VALUES (101,'Dr. Smith',1,0,0,'Devops','pass'),(102,'Dr. Jones',0,1,1,'BTech DevOps','pass'),(103,'Dr. Allen',0,0,0,'BTech AI','pass'),(104,'Dr. Clark',1,0,0,'BTech DS','pass'),(105,'Dr. Brown',0,1,0,'BTech IT','pass');
+INSERT INTO `faculty` VALUES (101,'Dr. Smith',1,0,0,'Devops','pass'),(102,'Dr. Jones',1,1,1,'BTech DevOps','pass'),(103,'Dr. Allen',0,0,0,'BTech AI','pass'),(104,'Dr. Clark',1,0,0,'BTech DS','pass'),(105,'Dr. Brown',0,1,0,'BTech IT','pass');
 /*!40000 ALTER TABLE `faculty` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -126,7 +126,7 @@ CREATE TABLE `mentor_invite` (
 
 LOCK TABLES `mentor_invite` WRITE;
 /*!40000 ALTER TABLE `mentor_invite` DISABLE KEYS */;
-INSERT INTO `mentor_invite` VALUES (1,12,102,'Pending');
+INSERT INTO `mentor_invite` VALUES (1,12,102,'accept');
 /*!40000 ALTER TABLE `mentor_invite` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -138,7 +138,7 @@ DROP TABLE IF EXISTS `mentor_marks`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `mentor_marks` (
-  `markid` int NOT NULL,
+  `markid` int NOT NULL AUTO_INCREMENT,
   `profid` int DEFAULT NULL,
   `team_id` int DEFAULT NULL,
   `synopsis_marks` int DEFAULT NULL,
@@ -149,7 +149,7 @@ CREATE TABLE `mentor_marks` (
   KEY `team_id` (`team_id`),
   CONSTRAINT `mentor_marks_ibfk_1` FOREIGN KEY (`profid`) REFERENCES `faculty` (`profid`),
   CONSTRAINT `mentor_marks_ibfk_2` FOREIGN KEY (`team_id`) REFERENCES `team` (`team_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -158,6 +158,7 @@ CREATE TABLE `mentor_marks` (
 
 LOCK TABLES `mentor_marks` WRITE;
 /*!40000 ALTER TABLE `mentor_marks` DISABLE KEYS */;
+INSERT INTO `mentor_marks` VALUES (6,101,11,20,20,20);
 /*!40000 ALTER TABLE `mentor_marks` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -186,7 +187,7 @@ CREATE TABLE `mentor_proj` (
   CONSTRAINT `mentor_proj_ibfk_3` FOREIGN KEY (`projectid2`) REFERENCES `project` (`project_id`),
   CONSTRAINT `mentor_proj_ibfk_4` FOREIGN KEY (`projectid3`) REFERENCES `project` (`project_id`),
   CONSTRAINT `mentor_proj_ibfk_5` FOREIGN KEY (`projectid4`) REFERENCES `project` (`project_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -195,6 +196,7 @@ CREATE TABLE `mentor_proj` (
 
 LOCK TABLES `mentor_proj` WRITE;
 /*!40000 ALTER TABLE `mentor_proj` DISABLE KEYS */;
+INSERT INTO `mentor_proj` VALUES (1,102,11,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `mentor_proj` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -242,7 +244,7 @@ CREATE TABLE `panel_invites` (
   PRIMARY KEY (`invite_id`),
   KEY `profid` (`profid`),
   CONSTRAINT `panel_invites_ibfk_1` FOREIGN KEY (`profid`) REFERENCES `faculty` (`profid`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -251,7 +253,7 @@ CREATE TABLE `panel_invites` (
 
 LOCK TABLES `panel_invites` WRITE;
 /*!40000 ALTER TABLE `panel_invites` DISABLE KEYS */;
-INSERT INTO `panel_invites` VALUES (1,102,101,'accept'),(2,102,103,'pending');
+INSERT INTO `panel_invites` VALUES (1,102,101,'accept'),(2,102,103,'pending'),(3,105,101,'pending'),(4,104,101,'pending');
 /*!40000 ALTER TABLE `panel_invites` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -300,12 +302,15 @@ CREATE TABLE `panel_proj` (
   `projectid2` int DEFAULT NULL,
   `projectid3` int DEFAULT NULL,
   `projectid4` int DEFAULT NULL,
+  `profid_2` int DEFAULT NULL,
   PRIMARY KEY (`srno`),
   KEY `profid` (`profid`),
   KEY `projectid1` (`projectid1`),
   KEY `projectid2` (`projectid2`),
   KEY `projectid3` (`projectid3`),
   KEY `projectid4` (`projectid4`),
+  KEY `fk_profid_2` (`profid_2`),
+  CONSTRAINT `fk_profid_2` FOREIGN KEY (`profid_2`) REFERENCES `faculty` (`profid`),
   CONSTRAINT `panel_proj_ibfk_1` FOREIGN KEY (`profid`) REFERENCES `faculty` (`profid`),
   CONSTRAINT `panel_proj_ibfk_2` FOREIGN KEY (`projectid1`) REFERENCES `project` (`project_id`),
   CONSTRAINT `panel_proj_ibfk_3` FOREIGN KEY (`projectid2`) REFERENCES `project` (`project_id`),
@@ -381,6 +386,33 @@ LOCK TABLES `project` WRITE;
 /*!40000 ALTER TABLE `project` DISABLE KEYS */;
 INSERT INTO `project` VALUES (10,11,'Project Title',5,101),(11,12,'Project Title',5,101);
 /*!40000 ALTER TABLE `project` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `project_messages`
+--
+
+DROP TABLE IF EXISTS `project_messages`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `project_messages` (
+  `message_id` int NOT NULL AUTO_INCREMENT,
+  `prof_id` int DEFAULT NULL,
+  `project_id` int DEFAULT NULL,
+  `message` text,
+  `timestamp` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`message_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `project_messages`
+--
+
+LOCK TABLES `project_messages` WRITE;
+/*!40000 ALTER TABLE `project_messages` DISABLE KEYS */;
+INSERT INTO `project_messages` VALUES (1,101,11,'come to my cabin','2024-11-28 19:48:48'),(2,101,11,'testing','2024-11-29 04:51:24'),(3,101,11,'done','2024-11-29 05:58:53');
+/*!40000 ALTER TABLE `project_messages` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -499,4 +531,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-11-24 17:11:32
+-- Dump completed on 2024-11-29 11:38:28

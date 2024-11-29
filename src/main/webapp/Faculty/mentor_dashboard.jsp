@@ -219,7 +219,10 @@
              <div class ='a'>
                
                 <!-- <a href="javascript:void(0);" onclick="studentList();">Students List</a> -->
-                 <a href="mentor.jsp">Evaluate</a>
+                <%-- <a href="javascript:void(0);" onclick="processMarks();">Evalute</a> --%>
+                <form action="mentorProject" method="GET">
+                <button type="submit">Evaluate</button>
+</form>
              </div>
         </div>
 
@@ -228,7 +231,7 @@
             <!-- No text here, just the image background -->
              <div class="a">
                 <!-- <a href="javascript:void(0);" onclick="profList();">Panel List</a>  -->
-                 <a href="">Call Students</a>
+                 <a href="message.jsp">Call Students</a>
              </div>
         </div>
         <div class="activity-box activity-4">
@@ -259,6 +262,12 @@
         window.location.href = url;
     }
     
+
+    function processMarks() {
+        const contextPath = window.location.pathname.substring(0, window.location.pathname.indexOf("/", 1)); // Gets your context path
+        const url = contextPath + "/processMarks";   
+        window.location.href = url;
+    }
     </script> 
     </html>
     

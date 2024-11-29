@@ -24,7 +24,7 @@ public class mentorProject extends HttpServlet {
         try {
             // Get professor id from the session
             HttpSession session = request.getSession();
-            int profid = (int) session.getAttribute("profid");
+            Integer profid = (Integer) session.getAttribute("profid");
 
             // Initialize the database connection
             conn = databaseConnection.initializeDatabase();
@@ -53,7 +53,7 @@ public class mentorProject extends HttpServlet {
                         if (rsProject.next()) {
                             String projectName = rsProject.getString("project_details");
                             String semester = rsProject.getString("semester");
-
+                            System.out.println(projectName);
                             // Create a new mProject object and add it to the list
                             mProject mproject = new mProject(projectId, projectName, semester);
                             mProjectList.add(mproject);
@@ -65,7 +65,7 @@ public class mentorProject extends HttpServlet {
 
             // Set the list of mentor projects as an attribute in the request
             request.setAttribute("mProjectList", mProjectList);
-
+            System.out.println(mProjectList);
             // Forward the request to a JSP page to display the projects
             request.getRequestDispatcher("mentor.jsp").forward(request, response);
 

@@ -1,191 +1,155 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Portal Login</title>
+    <title>University Project Portal</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
     <style>
-        :root {
-            --primary-color: #4a90e2;
-            --secondary-color: #d6e9f8;
-            --accent-color: #ffffff;
-            --background-gradient: linear-gradient(135deg, #d6e9f8, #ffffff);
-            --heading-color: #0a0a0a;
-            --text-color: #333333;
-            --glass-bg: rgba(255, 255, 255, 0.85);
-            --glass-border: rgba(255, 255, 255, 0.3);
-        }
-        
-        body {
-            font-family: "Poppins", sans-serif;
-            background: var(--background-gradient);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            padding: 20px;
-            box-sizing: border-box;
-            color: var(--text-color);
-            position: relative;
-        }
-
-        body::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('https://smartcampuses.com/wp-content/uploads/revslider/web-agency-home-content/Slide-2-Background.jpg');
-            background-size: cover;
-            background-position: center;
-            z-index: -1;
-            filter: blur(2px);
-            opacity: 0.7555;
-        }
-
-        .container {
-            background: var(--glass-bg);
-            border-radius: 20px;
-            border: 1px solid var(--glass-border);
-            padding: 30px;
-            width: 100%;
-            max-width: 400px;
-            box-shadow: 0 10px 30px rgba(31, 38, 135, 0.2);
-            z-index: 1;
-        }
-
-        h2 {
-            text-align: center;
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--heading-color);
-            margin: 10px 0 20px;
-            letter-spacing: 1px;
-        }
-
-        .input-group {
-            margin-bottom: 15px;
-            position: relative;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: var(--text-color);
-        }
-
-        input {
-            width: calc(100% - 30px);
-            padding: 0.75rem;
-            border: 2px solid var(--primary-color);
-            border-radius: 12px;
-            background: var(--accent-color);
-            color: var(--text-color);
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            margin-left: 0;
-        }
-
-        input:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 4px rgba(97, 162, 238, 0.3);
-        }
-
-        button {
-            width: 100%;
-            padding: 0.9rem;
-            background: var(--primary-color);
+        .hero-section {
+            background: linear-gradient(135deg, #0d6efd 0%, #0dcaf0 100%);
             color: white;
+            padding: 100px 0;
+        }
+        .feature-card {
             border: none;
-            border-radius: 12px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 20px;
-            text-transform: uppercase;
-        }
-
-        button:hover {
-            background: #3b7cd3;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
-        }
-
-        button:active {
-            transform: translateY(0);
-        }
-
-        .error {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: #f44336;
-            border: 1px solid #c62828;
-            color: #ffffff;
-            padding: 10px;
-            border-radius: 5px;
-            width: 300px;
-            z-index: 10;
-            transition: opacity 0.5s;
-            opacity: 1;
-            line-height: 1.2;
-            max-height: 60px;
+            transition: transform 0.3s;
+            border-radius: 15px;
             overflow: hidden;
         }
-
-        .error.hidden {
-            opacity: 0;
-            visibility: hidden;
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
-
-        @keyframes fadeOut {
-            0% {
-                opacity: 1;
-            }
-            80% {
-                opacity: 1;
-            }
-            100% {
-                opacity: 0;
-                visibility: hidden;
-            }
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #0d6efd;
         }
     </style>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <div class="container">
-        <h2>Login</h2>
-        <form action="Student/login" method="post">
-            <div class="input-group">
-                <label for="uname">SAP ID</label>
-                <input type="number" id="uname" placeholder="Enter SAP ID" name="sapId" required>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">InSync Portal</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#how-it-works">How It Works</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-primary ms-2" href="Student/login.jsp">Login</a>
+                    </li>
+                </ul>
             </div>
-            <div class="input-group">
-                <label for="psw">Password</label>
-                <input type="password" id="psw" placeholder="Enter Password" name="password" required>
-            </div>
-            <button type="submit">Login</button>
-        </form>
-    </div>
-
-    <% if (request.getParameter("error") != null) { %>
-        <div id="errorBox" class="error">
-            Invalid SAP ID or Password. Please try again.
         </div>
-        <style>
-            #errorBox {
-                animation: fadeOut 3s forwards;
-            }
-        </style>
-        <div id="errorBox" class=error <%= request.getParameter("error") != null ? "" : "hidden" %>">
-        Invalid SAP ID or Password. Please try again.
-    </div>  
-    <% } %>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container text-center">
+            <h1 class="display-4 fw-bold mb-4">Welcome to InSync Project Portal</h1>
+            <p class="lead mb-4">Connect, Collaborate, and Create Amazing Projects Together</p>
+            <div class="d-flex justify-content-center gap-3">
+                <a href="register.jsp" class="btn btn-light btn-lg">Get Started</a>
+                <a href="#features" class="btn btn-outline-light btn-lg">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Key Features</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card feature-card h-100">
+                        <div class="card-body text-center">
+                            <i class="fas fa-users feature-icon"></i>
+                            <h3 class="card-title">Team Formation</h3>
+                            <p class="card-text">Find and connect with like-minded students to form the perfect project team.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card feature-card h-100">
+                        <div class="card-body text-center">
+                            <i class="fas fa-chalkboard-teacher feature-icon"></i>
+                            <h3 class="card-title">Mentor Matching</h3>
+                            <p class="card-text">Get guidance from experienced mentors who can help shape your project.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card feature-card h-100">
+                        <div class="card-body text-center">
+                            <i class="fas fa-chart-line feature-icon"></i>
+                            <h3 class="card-title">Progress Tracking</h3>
+                            <p class="card-text">Activity coordinators can monitor and track project progress efficiently.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">How It Works</h2>
+            <div class="row">
+                <div class="col-md-3 text-center">
+                    <div class="mb-4">
+                        <i class="fas fa-user-plus fa-3x text-primary"></i>
+                    </div>
+                    <h4>1. Register</h4>
+                    <p>Create your account and complete your profile</p>
+                </div>
+                <div class="col-md-3 text-center">
+                    <div class="mb-4">
+                        <i class="fas fa-search fa-3x text-primary"></i>
+                    </div>
+                    <h4>2. Find Teams</h4>
+                    <p>Browse and join existing teams or create your own</p>
+                </div>
+                <div class="col-md-3 text-center">
+                    <div class="mb-4">
+                        <i class="fas fa-handshake fa-3x text-primary"></i>
+                    </div>
+                    <h4>3. Connect</h4>
+                    <p>Match with mentors and start collaborating</p>
+                </div>
+                <div class="col-md-3 text-center">
+                    <div class="mb-4">
+                        <i class="fas fa-rocket fa-3x text-primary"></i>
+                    </div>
+                    <h4>4. Succeed</h4>
+                    <p>Track progress and achieve your goals</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-4">
+        <div class="container text-center">
+            <p class="mb-0">© 2024 InSync Project Portal. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-</html>
+</html> 

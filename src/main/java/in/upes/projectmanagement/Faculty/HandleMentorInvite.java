@@ -32,7 +32,7 @@ public class HandleMentorInvite extends HttpServlet {
             // Retrieve inviteId, action, and teamId from the request
             int inviteId = Integer.parseInt(request.getParameter("inviteId"));
             String action = request.getParameter("action");
-            // int teamid = Integer.parseInt(request.getParameter("teamId")); // Assuming teamId is passed as well
+            // int teamid = Integer.parseInt(request.getParameter("teamId")); 
 
             System.out.println("Invite ID: " + inviteId);
             System.out.println("Action: " + action);
@@ -63,7 +63,7 @@ public class HandleMentorInvite extends HttpServlet {
             psCountProjects.setInt(1, profid);
             rs = psCountProjects.executeQuery();
 
-            int projectCount = 0;
+            int projectCount = 0;   
             if (rs.next()) {
                 projectCount = rs.getInt(1);
             }

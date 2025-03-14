@@ -47,7 +47,7 @@ public class fetchPanelInvite extends HttpServlet {
 
             // Fetch pending mentor invites
             String sqlMentorInvites = "SELECT mi.inviteid, t.team_id, t.team_name " +
-                                      "FROM mentor_invite mi " +
+                                    "FROM mentor_invite mi " +
                                       "JOIN team t ON mi.team_id = t.team_id " +
                                       "WHERE mi.profid = ? AND mi.status = 'pending'";
             PreparedStatement psMentor = conn.prepareStatement(sqlMentorInvites);

@@ -42,7 +42,7 @@ public class LoginServlet extends HttpServlet{
                     session.setAttribute("program", program);
                     session.setAttribute("sapid", sapid);
                     session.setAttribute("semester", semester);
-                    response.sendRedirect("dashboard.jsp");
+                    response.sendRedirect("Student/dashboard.jsp");
                 }else{
                     response.sendRedirect("index.jsp?error=1");
                 }

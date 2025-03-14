@@ -165,16 +165,16 @@
 <load-on-startup>1</load-on-startup>
 </servlet>
 
-<servlet>
+<!-- <servlet>
 <servlet-name>FetchMentorProjects</servlet-name>
 <servlet-class>in.upes.projectmanagement.Faculty.FetchMentorProjects</servlet-class>
 <load-on-startup>1</load-on-startup>
-</servlet>
+</servlet> -->
 
-<servlet-mapping>
+<!-- <servlet-mapping>
 <servlet-name>FetchMentorProjects</servlet-name>
 <url-pattern>/Faculty/FetchMentorProjects</url-pattern>
-</servlet-mapping>
+</servlet-mapping> -->
 
 <servlet>
 <servlet-name>sendMessage</servlet-name>
@@ -317,7 +317,7 @@
 
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
-        <url-pattern>/Student/login</url-pattern>
+        <url-pattern>/login</url-pattern>
     </servlet-mapping>
 
     

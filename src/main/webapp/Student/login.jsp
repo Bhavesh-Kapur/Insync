@@ -161,7 +161,7 @@
 <body>
     <div class="container">
         <h2>Login</h2>
-        <form action="Student/login" method="post">
+        <form action="/login" method="post">
             <div class="input-group">
                 <label for="uname">SAP ID</label>
                 <input type="number" id="uname" placeholder="Enter SAP ID" name="sapId" required>
